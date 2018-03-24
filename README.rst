@@ -1,4 +1,4 @@
-intera_interface
+avalos_intera
 ================
 
 Python interface classes and action servers for control of
@@ -10,19 +10,19 @@ Code & Tickets
 +-----------------+----------------------------------------------------------------+
 | Documentation   | http://sdk.rethinkrobotics.com/intera/                         |
 +-----------------+----------------------------------------------------------------+
-| Issues          | https://github.com/RethinkRobotics/intera_interface/issues     |
+| Issues          | https://github.com/RethinkRobotics/avalos_intera/issues     |
 +-----------------+----------------------------------------------------------------+
 | Contributions   | http://sdk.rethinkrobotics.com/intera/Contributions            |
 +-----------------+----------------------------------------------------------------+
 
-intera_interface Repository Overview
+avalos_intera Repository Overview
 ------------------------------------
 
 ::
 
      .
      |
-     +-- src/                                  intera_interface api
+     +-- src/                                  avalos_intera api
      |   +-- intera_io/                        basic interface for IO Framework
      |   +-- intera_interface/                 intera component classes
      |       +-- camera.py
