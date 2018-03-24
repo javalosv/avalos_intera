@@ -20,48 +20,48 @@ Code & Tickets
 avalos_intera Repository Overview
 ------------------------------------
 ::
-
-
-jose@avalos:~/avalos_ros_ws/src$ tree -L 2
-.
-├── CMakeLists.txt -> /opt/ros/kinetic/share/catkin/cmake/toplevel.cmake
-├── intera_common
-│   ├── CHANGELOG.rst
-│   ├── CONTRIBUTING.md
-│   ├── intera_common
-│   ├── intera_core_msgs
-│   ├── intera_motion_msgs
-│   ├── intera_tools_description
-│   ├── LICENSE
-│   └── README.rst
-├── intera_sdk
-│   ├── avalos_intera <<<--------------------------------------------------------
-│   ├── CHANGELOG.rst
-│   ├── CONTRIBUTING.md
-│   ├── intera_examples
-│   ├── intera_interface
-│   ├── intera_sdk
-│   ├── intera.sh
-│   ├── LICENSE
-│   └── README.rst
-├── sawyer_robot
-│   ├── CHANGELOG.rst
-│   ├── CONTRIBUTING.md
-│   ├── LICENSE
-│   ├── README.rst
-│   ├── sawyer_description
-│   ├── sawyer_robot
-│   └── sawyer_robot.rosinstall
-└── sawyer_simulator
-    ├── CONTRIBUTING.md
-    ├── LICENSE
-    ├── README.rst
-    ├── sawyer_gazebo
-    ├── sawyer_hardware_interface
-    ├── sawyer_sim_controllers
-    ├── sawyer_sim_examples
-    ├── sawyer_simulator
-    └── sawyer_simulator.rosinstall
+     jose@avalos:~/avalos_ros_ws/src$ tree -L 2
+     .
+     |
+     +-- CMakeLists.txt -> /opt/ros/kinetic/share/catkin/cmake/toplevel.cmake
+     |
+     +--intera_common
+     |   +--  CHANGELOG.rst
+     |   +--  CONTRIBUTING.md
+     |   +--  intera_common
+     |   +--  intera_core_msgs
+     |   +--  intera_motion_msgs
+     |   +--  intera_tools_description
+     |   +--  LICENSE
+     |   +--  README.rst
+     +--intera_sdk
+     |   +--  avalos_intera <<<--------------------------------------------------------
+     |   +--  CHANGELOG.rst
+     |   +--  CONTRIBUTING.md
+     |   +--  intera_examples
+     |   +--  intera_interface
+     |   +--  intera_sdk
+     |   +--  intera.sh
+     |   +--  LICENSE
+     |   +--  README.rst
+     +--sawyer_robot
+     |   +--  CHANGELOG.rst
+     |   +--  CONTRIBUTING.md
+     |   +--  LICENSE
+     |   +--  README.rst
+     |   +--  sawyer_description
+     |   +--  sawyer_robot
+     |   +--  sawyer_robot.rosinstall
+     +--sawyer_simulator
+     |   +--  CONTRIBUTING.md
+     |   +--  LICENSE
+     |   +--  README.rst
+     |   +--  sawyer_gazebo
+     |   +--  sawyer_hardware_interface
+     |   +--  sawyer_sim_controllers
+     |   +--  sawyer_sim_examples
+     |   +--  sawyer_simulator
+     |   +--  sawyer_simulator.rosinstall
 
 19 directories, 19 files
 
