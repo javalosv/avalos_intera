@@ -19,8 +19,8 @@ Code & Tickets
 
 avalos_intera Repository Overview
 ------------------------------------
-::
      jose@avalos:~/avalos_ros_ws/src$ tree -L 2
+::
      .
      |
      +-- CMakeLists.txt -> /opt/ros/kinetic/share/catkin/cmake/toplevel.cmake
