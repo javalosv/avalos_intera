@@ -41,7 +41,7 @@ catkin_package(
 )
 
 install(
-  DIRECTORY scripts/
+  DIRECTORY scripts/ scripts/test/
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   USE_SOURCE_PERMISSIONS
 )
