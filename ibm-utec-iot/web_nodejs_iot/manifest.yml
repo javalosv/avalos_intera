@@ -1,0 +1,12 @@
+declared-services:
+  iot-service:
+    label: iotf-service
+    plan: iotf-service-free
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
+  disk_quota: 1024M
+  services:  
+    - iot-service

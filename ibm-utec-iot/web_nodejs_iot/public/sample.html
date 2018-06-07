@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ui Preview</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" >
+    <link href="lib/c3/c3.min.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+      <div class="container-fluid" candrop="true">
+        <div class="row">
+          <div class="col-md-4" candrop="true">
+            <div class="panel  panel-primary">
+              <div class="panel-heading">Motor Speed</div>
+              <div class="panel-body" candrop="true">
+                <!--- place holder for rpm gauge  -->
+                <div id="rpmgauge" ></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" candrop="true">
+            <div class="panel  panel-primary">
+              <div class="panel-heading">Accelerometer</div>
+              <div class="panel-body" candrop="true">
+              <!--- place holder for accelerometer gauge  -->
+              <div id="aygauge" ></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" candrop="true">
+            <div class="panel  panel-primary">
+            <div class="panel-heading">Motor Speed Chart</div>
+            <div class="panel-body" candrop="true">
+              <!--- place holder for motor speed chart  -->
+              <div id="speedchart" ></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="lib/d3/d3.min.js" charset="utf-8"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/d3-floorplan/d3.floorplan.min.js"></script>
+    <script src="lib/c3/c3.min.js"></script>
+    <script src="wiotpwidgets.min.js"></script>
+
+    <script type="text/javascript">
+        /// Add your scripts here
+        WIoTPWidget.CreateGauge("rpmgauge","sensorData", "iot-conveyor-belt", "belt1", "rpm" ,{
+                label: {
+                   format: function(value, ratio) {
+                       return value;
+                   },
+                   show: true // to turn off the min/max labels.
+                },
+                min: 0.0, // 0 is default, can handle negative min e.g. vacuum / voltage / current flow / rate of change
+                max: 5.0, // 100 is default
+                units: 'rpm'
+                },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+        WIoTPWidget.CreateGauge("aygauge","sensorData", "iot-conveyor-belt", "belt1", "ay" ,{
+                label: {
+                  format: function(value, ratio) {
+                    return value;
+                  },
+                  show: true // to turn off the min/max labels.
+                },
+                min: -1.0, // 0 is default,can handle negative min e.g. vacuum / voltage / current flow / rate of change
+                max: 1.0, // 100 is default
+                units: 'g'//,
+                },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+        WIoTPWidget.CreateChart("speedchart","sensorData", "iot-conveyor-belt", "belt1",["rpm", "ay"], [["line","rpm"],["line","ay"]],['#2ca02c','#d62728']);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<title>IOT SAWYER</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" >
+<link href="lib/c3/c3.min.css" rel="stylesheet" type="text/css">
+<body>
+
+
+
+	<!-- Navbar (sit on top) -->
+	<div class="w3-top">
+		<div class="w3-bar w3-white w3-wide w3-padding w3-card">
+			<a href="#home" class="w3-bar-item w3-button"><b>JA</b>_IOT-Robotics</a>
+			<!-- Float links to the right. Hide them on small screens -->
+			<div class="w3-right w3-hide-small">
+				<!-- <a href="#projects" class="w3-bar-item w3-button">Projects</a>> --> 
+				<a href="#about" class="w3-bar-item w3-button">About</a>  
+			</div>
+		</div>
+	</div>
+
+<!-- Header 
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="/w3images/architect.jpg" alt="Architecture" width="1500" height="800">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>BR</b></span> <span class="w3-hide-small w3-text-light-grey">Architects</span></h1>
+  </div>
+</header>
+-->
+<!-- Page content -->
+
+HolaAAAAAAAAAAAAAAA
+
+<button onclick="getResponse()">the button text</button>
+
+<script>
+function getResponse(){
+  var request = new XMLHttpRequest();
+  request.open("GET", "https://my-json-server.typicode.com/typicode/demo/comments");
+  request.send();
+}
+</script>
+
+
+HolaAAAAAAAAAAAAAAA
+<div class="w3-content w3-padding" style="max-width:1564px">
+	<!-- Project Section -->
+	<div class="w3-container w3-padding-32" id="projects">
+		<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Monitoring</h3>
+	</div>
+
+	<div class="container-fluid" candrop="true">
+		<div class="row">
+			<div class="col-md-12" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/JointState</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for motor speed chart  -->
+						<div id="chart_00" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container-fluid" candrop="true">
+		<div class="row">
+			<div class="col-md-3" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/head_pan</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for rpm gauge  -->
+						<div id="chart_01" ></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/right_j0</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for accelerometer gauge  -->
+						<div id="chart_02" ></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/right_j1</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for motor speed chart  -->
+						<div id="chart_03"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/right_j2</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for rpm gauge  -->
+						<div id="chart_04" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid" candrop="true">
+		<div class="row">
+			<div class="col-md-3" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/right_j3</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for accelerometer gauge  -->
+						<div id="chart_05" ></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3" candrop="true">
+				<div class="panel  panel-primary">
+					<div class="panel-heading">/right_j4</div>
+					<div class="panel-body" candrop="true">
+						<!--- place holder for motor speed chart  -->
+						<div id="chart_06"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3" candrop="true">
+					<div class="panel  panel-primary">
+						<div class="panel-heading">/right_j5</div>
+						<div class="panel-body" candrop="true">
+							<!--- place holder for rpm gauge  -->
+							<div id="chart_07" ></div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3" candrop="true">
+					<div class="panel  panel-primary">
+						<div class="panel-heading">/right_j6</div>
+						<div class="panel-body" candrop="true">
+							<!--- place holder for accelerometer gauge  -->
+							<div id="chart_08" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="container-fluid" candrop="true">
+
+		</div>
+
+
+		<!-- About Section -->
+		<div class="w3-container w3-padding-32" id="about">
+			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+				occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+				laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+		</div>
+
+
+
+		<!-- End page content -->
+	</div>
+
+	<!-- Footer -->
+	<footer class="w3-center w3-black w3-padding-16">
+		<p>JoseAvalos</p>
+	</footer>
+
+
+	<!-- UI -->
+	<script src="lib/d3/d3.min.js" charset="utf-8"></script>
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="lib/d3-floorplan/d3.floorplan.min.js"></script>
+	<script src="lib/c3/c3.min.js"></script>
+	<script src="wiotpwidgets.min.js"></script>
+	<script type="text/javascript">
+    /// Add your scripts here
+    /// WIoTPWidget.CreateWIDGET_TYPE("ELEMENT_ID","EVENT_NAME", "DEVICE_TYPE", "DEVICE_ID", "PROPERTY" , {WIDGET_DEFAULT_OVERRIDE}, [WIDGET_SPECIFIC_SETTINGS])
+    WIoTPWidget.CreateGauge("chart_01","joint_angle", "robot-utec", "sawyer-intera", "head_pan" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+            show: true // to turn off the min/max labels.
+          },
+              min: -180.0, // 0 is default, can handle negative min e.g. vacuum / voltage / current flow / rate of change
+              max: 180.0, // 100 is default
+              units: 'Grados'
+            },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_02","joint_angle", "robot-utec", "sawyer-intera", "right_j0" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+    show: true // to turn off the min/max labels.
+  },
+    min: -180.0, // 0 is default,can handle negative min e.g. vacuum / voltage / current flow / rate of change
+    max: 180.0, // 100 is default
+    units: 'Grados'//,
+  },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_03","joint_angle", "robot-utec", "sawyer-intera", "right_j1" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+            show: true // to turn off the min/max labels.
+          },
+              min: -180.0, // 0 is default, can handle negative min e.g. vacuum / voltage / current flow / rate of change
+              max: 180.0, // 100 is default
+              units: 'Grados'
+            },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_04","joint_angle", "robot-utec", "sawyer-intera", "right_j2" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+    show: true // to turn off the min/max labels.
+  },
+    min: -180.0, // 0 is default,can handle negative min e.g. vacuum / voltage / current flow / rate of change
+    max: 180.0, // 100 is default
+    units: 'Grados'//,
+  },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_05","joint_angle", "robot-utec", "sawyer-intera", "right_j3" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+            show: true // to turn off the min/max labels.
+          },
+              min: -180.0, // 0 is default, can handle negative min e.g. vacuum / voltage / current flow / rate of change
+              max: 180.0, // 100 is default
+              units: 'Grados'
+            },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_06","joint_angle", "robot-utec", "sawyer-intera", "right_j4" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+    show: true // to turn off the min/max labels.
+  },
+    min: -180.0, // 0 is default,can handle negative min e.g. vacuum / voltage / current flow / rate of change
+    max: 180.0, // 100 is default
+    units: 'Grados'//,
+  },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_07","joint_angle", "robot-utec", "sawyer-intera", "right_j5" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+            show: true // to turn off the min/max labels.
+          },
+              min: -180.0, // 0 is default, can handle negative min e.g. vacuum / voltage / current flow / rate of change
+              max: 180.0, // 100 is default
+              units: 'Grados'
+            },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+    WIoTPWidget.CreateGauge("chart_08","joint_angle", "robot-utec", "sawyer-intera", "right_j6" ,{
+    	label: {
+    		format: function(value, ratio) {
+    			return value;
+    		},
+            show: true // to turn off the min/max labels.
+          },
+              min: -180.0, // 0 is default, can handle negative min e.g. vacuum / voltage / current flow / rate of change
+              max: 180.0, // 100 is default
+              units: 'Grados'
+            },['#FF0000', '#F97600', '#F6C600', '#60B044']);
+
+
+
+
+    WIoTPWidget.CreateChart("chart_00","joint_angle", "robot-utec", "sawyer-intera",["head_pan", "right_j0", "right_j1", "right_j2", "right_j3", "right_j4", "right_j5", "right_j6"]);
+  </script>
+
+
+</body>
+</html>
