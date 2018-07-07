@@ -1,6 +1,5 @@
 # *****************************************************************************
-# Copyright (c) 2017 IBM Corporation and other Contributors.
-# Jose Avalos
+# Copyright (c) 2017 Jose Avalos
 # *****************************************************************************
 #!/usr/bin/env python
 import rospy
