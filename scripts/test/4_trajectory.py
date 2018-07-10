@@ -3,7 +3,7 @@ import rospy
 import intera_interface
 import intera_external_devices
 import time
-import record_data #file to record data.
+
 import numpy as np
 
 from avalos_sawyer import * 
@@ -36,21 +36,21 @@ def set_j():
     print "Posicion inicial terminada"
     names=["right_j0","right_j1","right_j2","right_j3","right_j4","right_j5","right_j6"]
 
-    k=3  #Factor de Tiempo
+    k=1.5  #Factor de Tiempo
     F=100   #Frecuencia de envio
     rate = rospy.Rate(F) # hz
     pub = rospy.Publisher('/robot/limb/right/joint_command', JointCommand, queue_size=10)
    
     t=[0, 1, 2, 3, 4, 5, 6];
     t_points = [k*x for x in t]
-    # Inicia en el joint 0-6
+    # Inicia en el joint [j0,j1,j2,j3,j4,j5,j6]
     j_points=[[-0.0497081518 ,   -0.0537617656 ,  -0.245754079 ,   -0.1561610521,   -0.4432674925 ,  -0.5804805548,   -0.9952186238] ,\
     [-0.4451660593,  -0.634860939,    -0.6609938085 ,  -0.8471579158  , -0.8995330045 ,  -0.6558273922 ,  -0.434025672] ,\
     [0.4873428837 ,  0.1991682519 ,   0.2152131246  ,  0.0130412921 ,   0.2191921688  ,  0.171808715, 0.7121382962] ,\
     [1.2309618386 ,  1.7489810486 ,   1.8203601335,    1.502603275 ,1.539734643 ,1.8250517027 ,   1.2631597975] ,\
     [-0.5633900383,  -0.3468272648 ,  -0.3965199381 ,  0.0115052335,    -0.1665613231  , -0.330217831 ,   -0.7716105727] ,\
     [0.91  , 0.488365349, 0.450784998 ,0.9126277329 ,   0.9462226755,    0.4267531801  ,  1.012701208] ,\
-    [-2.4257682103 , -2.5931771058,   -2.719486461 ,   -3.14 ,  -3.14 ,  -3.14,   -3.14]]
+    [3.94257682103 , 3.6931771058,   3.719486461 ,   3.14 ,  3.14 ,  3.14,   3.14]]
     # J devuelto como lista 
     [j,ext]=generate_path(j_points,t_points,F)
     [v,ext]=generate_vel(j,F)

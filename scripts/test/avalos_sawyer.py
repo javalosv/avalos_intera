@@ -10,7 +10,7 @@ from avalos_sawyer import *
 from intera_interface import CHECK_VERSION
 from intera_core_msgs.msg import JointCommand
 from scipy import interpolate
-from scipy.interpolate import UnivariateSpline
+from scipy.interpolate import InterpolatedUnivariateSpline
 from scipy.interpolate import interp1d
 from geometry_msgs.msg import (
     PoseStamped,
@@ -126,17 +126,19 @@ def generate_vel(_j,_f):
     return v,ext  
 def generate_path(_points,_time,_f):
     
-    sp_0 = interpolate.UnivariateSpline(_time, _points[0][:],k=5)
-    sp_1 = interpolate.UnivariateSpline(_time, _points[1][:],k=5)
-    sp_2 = interpolate.UnivariateSpline(_time, _points[2][:],k=5)
-    sp_3 = interpolate.UnivariateSpline(_time, _points[3][:],k=5)
-    sp_4 = interpolate.UnivariateSpline(_time, _points[4][:],k=5)
-    sp_5 = interpolate.UnivariateSpline(_time, _points[5][:],k=5)
-    sp_6 = interpolate.UnivariateSpline(_time, _points[6][:],k=5)
+    sp_0 = interpolate.InterpolatedUnivariateSpline(_time, _points[0][:],k=5)
+    sp_1 = interpolate.InterpolatedUnivariateSpline(_time, _points[1][:],k=5)
+    sp_2 = interpolate.InterpolatedUnivariateSpline(_time, _points[2][:],k=5)
+    sp_3 = interpolate.InterpolatedUnivariateSpline(_time, _points[3][:],k=5)
+    sp_4 = interpolate.InterpolatedUnivariateSpline(_time, _points[4][:],k=5)
+    sp_5 = interpolate.InterpolatedUnivariateSpline(_time, _points[5][:],k=5)
+    sp_6 = interpolate.InterpolatedUnivariateSpline(_time, _points[6][:],k=5)
+
+    
 
     ts = np.linspace(_time[0], _time[-1], (_time[-1]-_time[0])*_f) 
     
-    print "Valores en tiempo: \n" , ts
+    print "Valores en tiempo: \n" , len(ts)
     q0= sp_0(ts)
     q1= sp_1(ts)
     q2= sp_2(ts)
@@ -190,7 +192,7 @@ def ik_service_client(_x,_y,_z):
     if (resp.result_type[0] > 0):
         # Format solution into Limb API-compatible dictionary
         limb_joints = dict(zip(resp.joints[0].name, resp.joints[0].position))
-        rospy.loginfo("Solucion IK ok:\n")
+        rospy.loginfo("Solucion IK ok.")
         print limb_joints
         _limb.move_to_joint_positions(limb_joints)
         return True

@@ -2,7 +2,7 @@
 # license removed for brevity
 import rospy
 from std_msgs.msg import String
-from avalos_intera.msg import robot_q
+#from avalos_intera.msg import robot_q
 from sensor_msgs.msg import JointState
 
 class Bridge:
