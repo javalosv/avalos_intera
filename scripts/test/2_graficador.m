@@ -68,6 +68,7 @@ subplot(1,2,1);
 for n=2:8   
     plot (P(:,1),P(:,n))
     hold on
+    grid on
 end
 legend('\theta 0','\theta 1','\theta 2','\theta 3','\theta 4','\theta 5','\theta 6')
 title('Posicion')
@@ -76,25 +77,38 @@ subplot(1,2,2);
 for n=1:7   
     plot (t,D(:,n))
     hold on
+    grid on
 end
 legend('\theta 0','\theta 1','\theta 2','\theta 3','\theta 4','\theta 5','\theta 6')
 title('Posicion Feedback')
 
+%%
+close all
 
 figure
 subplot(1,2,1);
 for n=2:8
     plot (V(:,1),V(:,n))
     hold on
+    grid on
 end
 legend('\theta 0','\theta 1','\theta 2','\theta 3','\theta 4','\theta 5','\theta 6')
 title('Velocidad')
 
+%Filtro
+Df=D;
+ws =20; 
+c= ones(1, ws)/ws;
+for n=8:14
+Df(:,n) = filter(c, 1, D(:,n));
+end
+
 subplot(1,2,2);
 legend
 for n=8:14   
-    plot (t,D(:,n))
+    plot (t,Df(:,n))
     hold on
+    grid on
 end
 legend('\theta 0','\theta 1','\theta 2','\theta 3','\theta 4','\theta 5','\theta 6')
 title('Velocidad Feedback')
