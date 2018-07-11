@@ -58,14 +58,19 @@ def set_j():
     [j,ext]=generate_path_cub(j_points,t_points,F)
     [v,ext]=generate_vel(j,F)
     [a,ext]=generate_acel(v,F)
-    [jk,ext]=generate_jerk(a,F)
+    [jk,v_jk,ext]=generate_jerk(a,F)
 
+    v_t=6*(t_points[-1]-t_points[0])
+    print "Valor tiempo: ",v_t,"Valor jerk", v_jk
+    
+    
     save_matrix(j,"save_data_p.txt",F)
     save_matrix(v,"save_data_v.txt",F)
     save_matrix(a,"save_data_a.txt",F)
     save_matrix(jk,"save_data_y.txt",F)
 
     raw_input('Iniciar?')
+
 
     my_msg=JointCommand()
     my_msg.mode=4

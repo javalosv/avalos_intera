@@ -70,9 +70,20 @@ def generate_jerk(_a,_f):
         jk5.append(jk5[-1]) 
         jk6.append(jk6[-1]) 
     ext= len(jk0)
+
+    a_jk0=get_area(jk0,_f)
+    a_jk1=get_area(jk1,_f)
+    a_jk2=get_area(jk2,_f)
+    a_jk3=get_area(jk3,_f)
+    a_jk4=get_area(jk4,_f)
+    a_jk5=get_area(jk5,_f)
+    a_jk6=get_area(jk6,_f)
+
+    a=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
+    ind=sqrt(a)
     jk= [jk0,jk1,jk2,jk3,jk4,jk5,jk6]  
     print "Knots en jerk generados.",ext
-    return jk,ext
+    return jk, ind,ext
 
 def generate_acel(_v,_f):
     ext = len(_v[0])
@@ -223,13 +234,14 @@ def path_simple_cub_v0(_point,_time,_f):
 	    _d[j]=(_c[j+1]-_c[j])/(3.0*h[j])
 
 	# Graphic
-	t_out=np.linspace(x[0], x[-1], n*f+1)
+	t_out=np.linspace(x[0], x[-1], int((x[-1]-x[0])*f)+1)
+	tl=len(t_out)
 	s =[]
 
-	for j in range(n):
-	    _t=t_out[f*j:f*(j+1)]
-	    for i in range(len(_t)):
-			s.append( float(a[j]+_b[j]*(_t[i]-x[j])+_c[j]*(_t[i]-x[j])**2+_d[j]*(_t[i]-x[j])**3))
+	for j in range(tl):
+		for i in range(n):
+			if(t_out[j]>=x[i] and t_out[j]<x[i+1]):
+				s.append( float(a[i]+_b[i]*(t_out[j]-x[i])+_c[i]*(t_out[j]-x[i])**2+_d[i]*(t_out[j]-x[i])**3))
 	s.append(float(a[-1]+_b[-1]*(t_out[-1]-x[-1])+_c[-1]*(t_out[-1]-x[-1])**2+_d[-1]*(t_out[-1]-x[-1])**3))
 	return s
 
@@ -286,6 +298,16 @@ def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
         rospy.logerr("INVALID POSE - No Valid Joint Solution Found.")
         rospy.logerr("Result Error %d", resp.result_type[0])
         return False, [0,0,0,0,0,0,0]
+
+
+def get_area(_vector,_f):
+	h=1.0/float(_f)
+	_v=np.power(_vector,2)
+	k=np.sum(_v)
+	k=k-0.5*(_v[0]+_v[-1])
+	area=k*h
+	return area
+
 
 class Rdata():
     def __init__(self,_text):
