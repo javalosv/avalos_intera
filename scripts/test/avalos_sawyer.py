@@ -234,6 +234,10 @@ def path_simple_cub_v0(_point,_time,_f):
 	return s
 
 def ik_service_client(_x,_y,_z):
+    [succes,position]=ik_service_client_complete(_x,_y,_z,1.0,0.0,0.0,0.0)
+    return succes,position
+
+def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
     _limb = intera_interface.Limb('right')
     ns = "ExternalTools/right/PositionKinematicsNode/IKService"
     iksvc = rospy.ServiceProxy(ns, SolvePositionIK)
@@ -249,10 +253,10 @@ def ik_service_client(_x,_y,_z):
                     z=_z,
                 ),
                 orientation=Quaternion(
-                    x=1,
-                    y=0.0,
-                    z=0.0,
-                    w=0.0,
+                    x=_xx,
+                    y=_yy,
+                    z=_zz,
+                    w=_ww,
                 ),
             ),
         ),
@@ -281,7 +285,7 @@ def ik_service_client(_x,_y,_z):
     else:
         rospy.logerr("INVALID POSE - No Valid Joint Solution Found.")
         rospy.logerr("Result Error %d", resp.result_type[0])
-        return False, [0,0,0,0,0,0]
+        return False, [0,0,0,0,0,0,0]
 
 class Rdata():
     def __init__(self,_text):
@@ -309,7 +313,7 @@ class real_q():
     def __init__(self):
         self.dato=None
         rospy.Subscriber("/robot/joint_states", JointState, self.talker)
-        rate = rospy.Rate(100) # 10hz
+        rate = rospy.Rate(500) # 10hz
         #while not rospy.is_shutdown():
         rate.sleep()
     
