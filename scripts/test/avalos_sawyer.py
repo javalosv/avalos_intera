@@ -34,7 +34,7 @@ from intera_core_msgs.srv import (
 
 
 def save_matrix(_j,_name,_f):
-    file2write=open(_name,'w')
+    file2write=open("files/"+_name,'w')
     l=len(_j[0][:])
     time=np.linspace(0, (l-1)/float(_f), num=l)
     for n in range(l):
@@ -147,13 +147,13 @@ def generate_vel(_j,_f):
     return v,ext  
 
 def generate_path(_points,_time,_f):   
-    sp_0 = interpolate.InterpolatedUnivariateSpline(_time, _points[0][:],k=5)
-    sp_1 = interpolate.InterpolatedUnivariateSpline(_time, _points[1][:],k=5)
-    sp_2 = interpolate.InterpolatedUnivariateSpline(_time, _points[2][:],k=5)
-    sp_3 = interpolate.InterpolatedUnivariateSpline(_time, _points[3][:],k=5)
-    sp_4 = interpolate.InterpolatedUnivariateSpline(_time, _points[4][:],k=5)
-    sp_5 = interpolate.InterpolatedUnivariateSpline(_time, _points[5][:],k=5)
-    sp_6 = interpolate.InterpolatedUnivariateSpline(_time, _points[6][:],k=5)
+    sp_0 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,0],k=5)
+    sp_1 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,1],k=5)
+    sp_2 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,2],k=5)
+    sp_3 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,3],k=5)
+    sp_4 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,4],k=5)
+    sp_5 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,5],k=5)
+    sp_6 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,6],k=5)
 
     ts = np.linspace(_time[0], _time[-1], (_time[-1]-_time[0])*_f) 
     
@@ -172,21 +172,20 @@ def generate_path(_points,_time,_f):
     return q, ext
 
 def generate_path_cub(_points,_time,_f):
-
-	q0=path_simple_cub_v0(_points[0][:],_time,_f)
-	q1=path_simple_cub_v0(_points[1][:],_time,_f)
-	q2=path_simple_cub_v0(_points[2][:],_time,_f)
-	q3=path_simple_cub_v0(_points[3][:],_time,_f)
-	q4=path_simple_cub_v0(_points[4][:],_time,_f)
-	q5=path_simple_cub_v0(_points[5][:],_time,_f)
-	q6=path_simple_cub_v0(_points[6][:],_time,_f)
-
+	q0=path_simple_cub_v0(_points[:,0],_time,_f)
+	q1=path_simple_cub_v0(_points[:,1],_time,_f)
+	q2=path_simple_cub_v0(_points[:,2],_time,_f)
+	q3=path_simple_cub_v0(_points[:,3],_time,_f)
+	q4=path_simple_cub_v0(_points[:,4],_time,_f)
+	q5=path_simple_cub_v0(_points[:,5],_time,_f)
+	q6=path_simple_cub_v0(_points[:,6],_time,_f)
 	q= [q0,q1,q2,q3,q4,q5,q6]
 	ext = len(q0)
 	print "Knots en posicion generados.",ext
 	return q, ext
 
 def path_simple_cub_v0(_point,_time,_f):
+	#print "point:",_point
 	x=_time
 	a=_point
 	f=_f
@@ -195,14 +194,14 @@ def path_simple_cub_v0(_point,_time,_f):
 	FPN=0.0
 
 	n=len(a)-1;
-	l=np.arange(n+1, dtype=np.float_)
-	u=np.arange(n, dtype=np.float_)
-	z=np.arange(n+1, dtype=np.float_)
-	h=np.arange(n, dtype=np.float_)
-	alfa=np.arange(n+1, dtype=np.float_)
-	c=np.arange(n+1, dtype=np.float_)
-	b=np.arange(n, dtype=np.float_)
-	d=np.arange(n, dtype=np.float_)
+	l=np.zeros(n+1, dtype=np.float_)
+	u=np.zeros(n, dtype=np.float_)
+	z=np.zeros(n+1, dtype=np.float_)
+	h=np.zeros(n, dtype=np.float_)
+	alfa=np.zeros(n+1, dtype=np.float_)
+	c=np.zeros(n+1, dtype=np.float_)
+	b=np.zeros(n, dtype=np.float_)
+	d=np.zeros(n, dtype=np.float_)
 
 	for i in range(n):
 	    h[i]=x[i+1]-x[i]
@@ -246,7 +245,7 @@ def path_simple_cub_v0(_point,_time,_f):
 	return s
 
 def ik_service_client(_x,_y,_z):
-    [succes,position]=ik_service_client_complete(_x,_y,_z,1.0,0.0,0.0,0.0)
+    [succes,position]=ik_service_client_full(_x,_y,_z,1.0,0.0,0.0,0.0)
     return succes,position
 
 def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
@@ -299,7 +298,6 @@ def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
         rospy.logerr("Result Error %d", resp.result_type[0])
         return False, [0,0,0,0,0,0,0]
 
-
 def get_area(_vector,_f):
 	h=1.0/float(_f)
 	_v=np.power(_vector,2)
@@ -308,6 +306,21 @@ def get_area(_vector,_f):
 	area=k*h
 	return area
 
+def opt_time(_q,_f):
+	vel_lim=[1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]
+	v_factor=0.25
+	N=len(vel_lim)
+	k=len(_q)
+	t_min=np.zeros(k, dtype=np.float_)
+	t_tmp=np.zeros(N, dtype=np.float_)
+	print "N:", N
+	print "K:", k
+	for i in range (k-1):
+		for j in range (N):
+			t_tmp[j]= abs((_q[i+1,j]-_q[i,j])/((1-v_factor)*vel_lim[j]))
+		w=np.amax(t_tmp)# Se asume t[0]=0
+		t_min[i+1]=w+t_min[i]
+	return t_min, sum(t_min)
 
 class Rdata():
     def __init__(self,_text):
