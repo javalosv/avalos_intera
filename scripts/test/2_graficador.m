@@ -1,10 +1,10 @@
 clear all 
 close all
 clc
-P = csvread('save_data_p.txt');
-V = csvread('save_data_v.txt');
-A = csvread('save_data_a.txt');
-JK = csvread('save_data_y.txt');
+P = csvread('files/save_data_p.txt');
+V = csvread('files/save_data_v.txt');
+A = csvread('files/save_data_a.txt');
+JK = csvread('files/save_data_y.txt');
 
 figure
 
