@@ -53,7 +53,7 @@ catkin_package(
 )
 
 install(
-  DIRECTORY scripts/ scripts/test/ utec-iot/ 
+  DIRECTORY scripts/ scripts/test/ utec-iot/ prueba_moveit/
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   USE_SOURCE_PERMISSIONS
 )

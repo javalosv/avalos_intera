@@ -3,9 +3,7 @@ import rospy
 import intera_interface
 import intera_external_devices
 import time
-
 import numpy as np
-
 from avalos_sawyer import * 
 from intera_interface import CHECK_VERSION
 from intera_core_msgs.msg import JointCommand
@@ -32,29 +30,39 @@ def set_move():
     rate = rospy.Rate(F) # hz
     limb = intera_interface.Limb('right')
     limb.move_to_neutral()
-    ik_service_client_full(0.662,0.450,-0.040,0.717,0,0.717,0)
+    ik_service_client_full([0.662,0.450,-0.040,0.717,0,0.717,0])
     print "Posicion neutral terminada"
     time.sleep(1)
-    getdata1=Getdata("IK_data.txt")
-    getdata1.writeon()
+    p1=np.array([0.662,0.450,-0.040,0.717,0,0.717,0])
+    p2=np.array([0.662,0.200,0.290,0.717,0,0.717,0])
+    p3=np.array([0.662,-0.150,0.290,0.717,0,0.717,0])
+    p4=np.array([0.662,-0.450,-0.040,0.717,0,0.717,0])
+    p5=np.array([0.662,-0.150,0.290,0.717,0,0.717,0])
+    p6=np.array([0.662,0.200,0.290,0.717,0,0.717,0])
+    p7=np.array([0.662,0.450,-0.040,0.717,0,0.717,0])
+    data=Data()
+    data.writeon("IK_data.txt")    
+    # Control de posicion por cinematica inversa
     time.sleep(0.75)
-    [succes,q1]=ik_service_client_full(0.662,0.450,-0.040,0.717,0,0.717,0)
-    [succes,q2]=ik_service_client_full(0.662,0.200,0.290,0.717,0,0.717,0)
-    [succes,q3]=ik_service_client_full(0.662,-0.150,0.290,0.717,0,0.717,0)
-    [succes,q4]=ik_service_client_full(0.662,-0.450,-0.040,0.717,0,0.717,0)
-    [succes,q5]=ik_service_client_full(0.662,-0.150,0.290,0.717,0,0.717,0)
-    [succes,q6]=ik_service_client_full(0.662,0.200,0.290,0.717,0,0.717,0)
-    [succes,q7]=ik_service_client_full(0.662,0.450,-0.040,0.717,0,0.717,0)
+    [succes,q1]=ik_service_client_full(p1)
+    [succes,q2]=ik_service_client_full(p2)
+    [succes,q3]=ik_service_client_full(p3)
+    [succes,q4]=ik_service_client_full(p4)
+    [succes,q5]=ik_service_client_full(p5)
+    [succes,q6]=ik_service_client_full(p6)
+    [succes,q7]=ik_service_client_full(p7)
     time.sleep(0.75)
-    getdata1.writeoff()
+    
+    data.writeoff()
 
-    # Inicia en el joint [[j0,j1,j2,j3,j4,j5,j6],[...]]
-    print "Posicion inicial terminada"
+    print "Control de Posicion Cinematica Inversa terminada"
     names=["right_j0","right_j1","right_j2","right_j3","right_j4","right_j5","right_j6"]   
     pub = rospy.Publisher('/robot/limb/right/joint_command', JointCommand, queue_size=10)
+    
+    # Control de trayectoria cinematica inversa
     q=np.matrix([q1,q2,q3,q4,q5,q6,q7])
     print q
-    [t,t_rec]=opt_time(q,F)
+    [t,t_rec]=min_time(q,F)
     k=1.25  #Factor de Tiempo
     t_points = [k*x for x in t]
     print "t_points", t_points
@@ -71,25 +79,14 @@ def set_move():
     save_matrix(a,"save_data_a.txt",F)
     save_matrix(jk,"save_data_y.txt",F)
     
-    ik_service_client_full(0.662,0.450,-0.040,0.717,0,0.717,0)
+    ik_service_client_full([0.662,0.450,-0.040,0.717,0,0.717,0])
     time.sleep(1)
     my_msg=JointCommand()
     my_msg.mode=4
     my_msg.names=["right_j0","right_j1","right_j2","right_j3","right_j4","right_j5","right_j6"]
     
-    real_data=Getdata("S_data.txt")
-    real_data.writeon()
+    data.writeon("S_data.txt")
     time.sleep(0.75)
-    if(my_msg.mode==1):
-        for n in range(ext): 
-            my_msg.position=[j[0][n],j[1][n],j[2][n],j[3][n],j[4][n],j[5][n],j[6][n]]
-            pub.publish(my_msg)
-            rate.sleep()
-    if(my_msg.mode==2):
-        for n in range(ext): 
-            my_msg.velocity=[v[0][n],v[1][n],v[2][n],v[3][n],v[4][n],v[5][n],v[6][n]]
-            pub.publish(my_msg)
-            rate.sleep()
     if(my_msg.mode==4):
         for n in range(ext): 
             my_msg.position=[j[0][n],j[1][n],j[2][n],j[3][n],j[4][n],j[5][n],j[6][n]]

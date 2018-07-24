@@ -13,8 +13,6 @@ import numpy as np
 import pandas as pd
 import scipy
 
-from avalos_sawyer import * 
-from intera_interface import CHECK_VERSION
 from intera_core_msgs.msg import JointCommand
 from scipy import interpolate
 from scipy.interpolate import InterpolatedUnivariateSpline
@@ -45,30 +43,30 @@ def save_matrix(_j,_name,_f):
 
 def generate_jerk(_a,_f):
 	ext = len(_a[0])
-	jk0=[]
-	jk1=[]
-	jk2=[]
-	jk3=[]
-	jk4=[]
-	jk5=[]
-	jk6=[]
+	jk0=np.zeros(ext)
+	jk1=np.zeros(ext)
+	jk2=np.zeros(ext)
+	jk3=np.zeros(ext)
+	jk4=np.zeros(ext)
+	jk5=np.zeros(ext)
+	jk6=np.zeros(ext)
 
 	for n in range(ext-3):
-		jk0.append((_a[0][n+1]-_a[0][n])*_f)
-		jk1.append((_a[1][n+1]-_a[1][n])*_f)
-		jk2.append((_a[2][n+1]-_a[2][n])*_f)
-		jk3.append((_a[3][n+1]-_a[3][n])*_f)
-		jk4.append((_a[4][n+1]-_a[4][n])*_f)
-		jk5.append((_a[5][n+1]-_a[5][n])*_f)
-		jk6.append((_a[6][n+1]-_a[6][n])*_f)
+		jk0[n]=((_a[0][n+1]-_a[0][n])*_f)
+		jk1[n]=((_a[1][n+1]-_a[1][n])*_f)
+		jk2[n]=((_a[2][n+1]-_a[2][n])*_f)
+		jk3[n]=((_a[3][n+1]-_a[3][n])*_f)
+		jk4[n]=((_a[4][n+1]-_a[4][n])*_f)
+		jk5[n]=((_a[5][n+1]-_a[5][n])*_f)
+		jk6[n]=((_a[6][n+1]-_a[6][n])*_f)
 	for i in range(3):
-		jk0.append(jk0[-1]) 
-		jk1.append(jk1[-1]) 
-		jk2.append(jk2[-1]) 
-		jk3.append(jk3[-1]) 
-		jk4.append(jk4[-1]) 
-		jk5.append(jk5[-1]) 
-		jk6.append(jk6[-1]) 
+		jk0[-3+i]=(jk0[-4+i]) 
+		jk1[-3+i]=(jk1[-4+i]) 
+		jk2[-3+i]=(jk2[-4+i]) 
+		jk3[-3+i]=(jk3[-4+i]) 
+		jk4[-3+i]=(jk4[-4+i]) 
+		jk5[-3+i]=(jk5[-4+i]) 
+		jk6[-3+i]=(jk6[-4+i])
 	ext= len(jk0)
 
 	a_jk0=get_area(jk0,_f)
@@ -87,89 +85,62 @@ def generate_jerk(_a,_f):
 
 def generate_acel(_v,_f):
 	ext = len(_v[0])
-	a0=[]
-	a1=[]
-	a2=[]
-	a3=[]
-	a4=[]
-	a5=[]
-	a6=[]
-
+	a0=np.zeros(ext)
+	a1=np.zeros(ext)
+	a2=np.zeros(ext)
+	a3=np.zeros(ext)
+	a4=np.zeros(ext)
+	a5=np.zeros(ext)
+	a6=np.zeros(ext)
 	for n in range(ext-2):
-		a0.append((_v[0][n+1]-_v[0][n])*_f)
-		a1.append((_v[1][n+1]-_v[1][n])*_f)
-		a2.append((_v[2][n+1]-_v[2][n])*_f)
-		a3.append((_v[3][n+1]-_v[3][n])*_f)
-		a4.append((_v[4][n+1]-_v[4][n])*_f)
-		a5.append((_v[5][n+1]-_v[5][n])*_f)
-		a6.append((_v[6][n+1]-_v[6][n])*_f)
+		a0[n]=(_v[0][n+1]-_v[0][n])*_f
+		a1[n]=(_v[1][n+1]-_v[1][n])*_f
+		a2[n]=(_v[2][n+1]-_v[2][n])*_f
+		a3[n]=(_v[3][n+1]-_v[3][n])*_f
+		a4[n]=(_v[4][n+1]-_v[4][n])*_f
+		a5[n]=(_v[5][n+1]-_v[5][n])*_f
+		a6[n]=(_v[6][n+1]-_v[6][n])*_f
 	for i in range(2):
-		a0.append(a0[-1]) 
-		a1.append(a1[-1]) 
-		a2.append(a2[-1]) 
-		a3.append(a3[-1]) 
-		a4.append(a4[-1]) 
-		a5.append(a5[-1]) 
-		a6.append(a6[-1]) 
-	ext= len(a0)
-	a= [a0,a1,a2,a3,a4,a5,a6]  
-	print "Knots en aceleracion generados.",ext
+		a0[i-2]=a0[i-3]
+		a1[i-2]=a1[i-3] 
+		a2[i-2]=a2[i-3] 
+		a3[i-2]=a3[i-3] 
+		a4[i-2]=a4[i-3] 
+		a5[i-2]=a5[i-3] 
+		a6[i-2]=a6[i-3] 
+	a= np.array([a0,a1,a2,a3,a4,a5,a6])  
+	print "Knots en aceleracion generados: ",ext
 	return a,ext 
 
 def generate_vel(_j,_f):
-	ext = len(_j[0])
-	v0=[]
-	v1=[]
-	v2=[]
-	v3=[]
-	v4=[]
-	v5=[]
-	v6=[]
-
+	print "j:",_j
+	ext = len(_j[0,:])
+	print "vel_len",ext
+	v0=np.zeros(ext)
+	v1=np.zeros(ext)
+	v2=np.zeros(ext)
+	v3=np.zeros(ext)
+	v4=np.zeros(ext)
+	v5=np.zeros(ext)
+	v6=np.zeros(ext)
 	for n in range(ext-1):
-		v0.append((_j[0][n+1]-_j[0][n])*_f)
-		v1.append((_j[1][n+1]-_j[1][n])*_f)
-		v2.append((_j[2][n+1]-_j[2][n])*_f)
-		v3.append((_j[3][n+1]-_j[3][n])*_f)
-		v4.append((_j[4][n+1]-_j[4][n])*_f)
-		v5.append((_j[5][n+1]-_j[5][n])*_f)
-		v6.append((_j[6][n+1]-_j[6][n])*_f)
-	v0.append(v0[-1]) 
-	v1.append(v1[-1]) 
-	v2.append(v2[-1]) 
-	v3.append(v3[-1]) 
-	v4.append(v4[-1]) 
-	v5.append(v5[-1]) 
-	v6.append(v6[-1]) 
-	ext= len(v0)
-	v= [v0,v1,v2,v3,v4,v5,v6]  
-	print "Knots en velocidad generados.",ext
+		v0[n]=((_j[0][n+1]-_j[0][n])*_f)
+		v1[n]=((_j[1][n+1]-_j[1][n])*_f)
+		v2[n]=((_j[2][n+1]-_j[2][n])*_f)
+		v3[n]=((_j[3][n+1]-_j[3][n])*_f)
+		v4[n]=((_j[4][n+1]-_j[4][n])*_f)
+		v5[n]=((_j[5][n+1]-_j[5][n])*_f)
+		v6[n]=((_j[6][n+1]-_j[6][n])*_f)
+	v0[-1]=v0[-2] 
+	v1[-1]=v1[-2] 
+	v2[-1]=v2[-2] 
+	v3[-1]=v3[-2] 
+	v4[-1]=v4[-2] 
+	v5[-1]=v5[-2] 
+	v6[-1]=v6[-2] 
+	v= np.array([v0,v1,v2,v3,v4,v5,v6])  
+	print "Knots en velocidad generados: ",ext
 	return v,ext  
-
-def generate_path(_points,_time,_f):   
-	sp_0 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,0],k=5)
-	sp_1 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,1],k=5)
-	sp_2 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,2],k=5)
-	sp_3 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,3],k=5)
-	sp_4 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,4],k=5)
-	sp_5 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,5],k=5)
-	sp_6 = interpolate.InterpolatedUnivariateSpline(_time, _points[:,6],k=5)
-
-	ts = np.linspace(_time[0], _time[-1], (_time[-1]-_time[0])*_f) 
-	
-	print "Valores en tiempo: \n" , len(ts)
-	q0= sp_0(ts)
-	q1= sp_1(ts)
-	q2= sp_2(ts)
-	q3= sp_3(ts)
-	q4= sp_4(ts)
-	q5= sp_5(ts)
-	q6= sp_6(ts)
-
-	q= [q0,q1,q2,q3,q4,q5,q6]
-	ext = len(ts)
-	print "Knots en posicion generados.",ext
-	return q, ext
 
 def generate_path_cub(_points,_time,_f):
 	q0=path_simple_cub_v0(_points[:,0],_time,_f)
@@ -179,7 +150,7 @@ def generate_path_cub(_points,_time,_f):
 	q4=path_simple_cub_v0(_points[:,4],_time,_f)
 	q5=path_simple_cub_v0(_points[:,5],_time,_f)
 	q6=path_simple_cub_v0(_points[:,6],_time,_f)
-	q= [q0,q1,q2,q3,q4,q5,q6]
+	q= np.array([q0,q1,q2,q3,q4,q5,q6])
 	ext = len(q0)
 	print "Knots en posicion generados.",ext
 	return q, ext
@@ -245,10 +216,11 @@ def path_simple_cub_v0(_point,_time,_f):
 	return s
 
 def ik_service_client(_x,_y,_z):
-	[succes,position]=ik_service_client_full(_x,_y,_z,1.0,0.0,0.0,0.0)
+	p=np.array([_x,_y,_z,1.0,0.0,0.0,0.0])
+	[succes,position]=ik_service_client_full(p)
 	return succes,position
 
-def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
+def ik_service_client_full(_p):
 	_limb = intera_interface.Limb('right')
 	ns = "ExternalTools/right/PositionKinematicsNode/IKService"
 	iksvc = rospy.ServiceProxy(ns, SolvePositionIK)
@@ -259,15 +231,15 @@ def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
 			header=hdr,
 			pose=Pose(
 				position=Point(
-					x=_x,
-					y=_y,
-					z=_z,
+					x=_p[0],
+					y=_p[1],
+					z=_p[2],
 				),
 				orientation=Quaternion(
-					x=_xx,
-					y=_yy,
-					z=_zz,
-					w=_ww,
+					x=_p[3],
+					y=_p[4],
+					z=_p[5],
+					w=_p[6],
 				),
 			),
 		),
@@ -291,11 +263,13 @@ def ik_service_client_full(_x,_y,_z,_xx,_yy,_zz,_ww):
 		limb_joints = dict(zip(resp.joints[0].name, resp.joints[0].position))
 		rospy.loginfo("Solucion IK ok.")
 		_limb.move_to_joint_positions(limb_joints)
-		return True , [resp.joints[0].position[0],resp.joints[0].position[1],resp.joints[0].position[2],resp.joints[0].position[3],resp.joints[0].position[4],resp.joints[0].position[5],resp.joints[0].position[6]]
+		q=np.array([resp.joints[0].position[0],resp.joints[0].position[1],resp.joints[0].position[2],resp.joints[0].position[3],resp.joints[0].position[4],resp.joints[0].position[5],resp.joints[0].position[6]])
+		return True , q
 	else:
 		rospy.logerr("INVALID POSE - No Valid Joint Solution Found.")
 		rospy.logerr("Result Error %d", resp.result_type[0])
-		return False, [0,0,0,0,0,0,0]
+		q=np.array([0,0,0,0,0,0,0])
+		return False, q
 
 def get_area(_vector,_f):
 	h=1.0/float(_f)
@@ -305,9 +279,11 @@ def get_area(_vector,_f):
 	area=k*h
 	return area
 
-def opt_time(_q,_f):
+# Se determina el minimo tiempo para ejecutar el movimiento
+def min_time(_q,_f):
 	vel_lim=[1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]
-	v_factor=0.75 # Luego de pruebas es el valor minimo para las pruebas
+	# Luego de pruebas es el valor minimo para las pruebas. Es un concepto de seguridad para las pruebas.
+	v_factor=0.75 
 	N=len(vel_lim)
 	k=len(_q)
 	
@@ -321,19 +297,16 @@ def opt_time(_q,_f):
 		t_min[i+1]=w+t_min[i]
 	return t_min, sum(t_min)
 
-class Getdata():
-	def __init__(self,_text):
-		self.file=_text
-		self.write=False
-		file=open(self.file,"w")
-		file.close()
+class Data():
+	def __init__(self):
+		self.write=False		
 		rospy.Subscriber("/robot/joint_states", JointState, self.talker)
 		print("Init bridge")
 		rate = rospy.Rate(100) # 10hz
 
 	def talker(self,data):
 		if(data.name[0]=="head_pan"):
-			self.dato=data.position[1:8]# extrae solo 7			
+			self.position=data.position[1:7]# extrae solo 7			
 			if(self.write):
 				_file=open(self.file,"a")
 				_file.write(str(data.position[1])+","+str(data.position[2])+","+str(data.position[3])+","\
@@ -342,11 +315,14 @@ class Getdata():
 				+str(data.velocity[4])+","+str(data.velocity[5])+","+str(data.velocity[6])+","+str(data.velocity[7])+"\n")
 				_file.close()
 	
-	def value(self):
-		return self.dato
+	def actual_joint_position(self):
+		return self.position
 
-	def writeon(self):
+	def writeon(self,_text):
 		self.write=True
+		self.file=_text
+		file=open(_text,"w")
+		file.close()
 		return True
 
 	def writeoff(self):
