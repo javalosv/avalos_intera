@@ -1,0 +1,22 @@
+site_name: THESIS@AVALOS
+theme: 'cosmo'
+extra:
+    theme_inverse: true
+pages:
+    - Introduction: index.md
+    - Organization: tesis.md
+    - Progress:
+      - 'Session 1'  : 'session/w1.md'
+      - 'Session 2'  : 'session/w2.md'
+      - 'Session 3'  : 'session/w3.md'
+      - 'Session 4'  : 'session/w4.md'
+      - 'Session 5'  : 'session/w5.md'
+      - 'Session 6'  : 'session/w6.md'
+      - 'Session 7'  : 'session/w7.md'
+    - WorkSetup: WorkSetup.md
+    - Sawyer:
+      - 'Description': 'sawyer/sawyer.md'
+      - 'ROS':  'sawyer/ROS.md'
+      - 'Examples': 'sawyer/examples.md'
+      - 'Simulator':  'sawyer/simulator.md'
+    - Links: links.md

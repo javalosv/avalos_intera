@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>WorkSetup - THESIS@AVALOS</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">THESIS@AVALOS</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Introduction</a>
+                    </li>
+                    <li >
+                        <a href="../PW/">Progress</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">WorkSetup</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../PW/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#1-configure-ubuntu-repositories-install-ros">1.-Configure Ubuntu repositories / Install ROS</a></li>
+            <li><a href="#setup-your-sourceslist">Setup your sources.list</a></li>
+            <li><a href="#setup-your-keys">Setup your keys</a></li>
+            <li><a href="#update-to-latest-software-lists">Update to Latest Software Lists</a></li>
+            <li><a href="#install-ros-kinetic-desktop-full">Install ROS Kinetic Desktop Full</a></li>
+        <li class="main "><a href="#2-create-workspace">2.- Create Workspace</a></li>
+            <li><a href="#this-step-will-depende-of-the-user-directory-could-change-according-to-your-preferences">This step will depende of the user. Directory could change according to your preferences.</a></li>
+        <li class="main "><a href="#3-install-intera-robot-sdk">3.-Install INTERA Robot SDK</a></li>
+            <li><a href="#this-git-will-contain-the-default-software-to-use-the-robot">This git will contain the default software to use the robot.</a></li>
+            <li><a href="#build-again">Build again</a></li>
+        <li class="main "><a href="#4-add-to-bash">4 Add to Bash</a></li>
+        <li class="main "><a href="#5-define-envioroment">5.- Define envioroment</a></li>
+            <li><a href="#change-version-in-sh-file">Change version in *.sh file</a></li>
+            <li><a href="#update-intera-version">Update intera version</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<p>Official information could be find:</p>
+<p>http://sdk.rethinkrobotics.com/intera/Main_Page</p>
+<h1 id="1-configure-ubuntu-repositories-install-ros">1.-Configure Ubuntu repositories / Install ROS</h1>
+<p>http://sdk.rethinkrobotics.com/intera/Workstation_Setup</p>
+<h2 id="setup-your-sourceslist">Setup your sources.list</h2>
+<pre><code>sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu xenial main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+</code></pre>
+
+<h2 id="setup-your-keys">Setup your keys</h2>
+<pre><code>sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+</code></pre>
+
+<h2 id="update-to-latest-software-lists">Update to Latest Software Lists</h2>
+<pre><code>sudo apt-get update
+</code></pre>
+
+<h2 id="install-ros-kinetic-desktop-full">Install ROS Kinetic Desktop Full</h2>
+<pre><code>sudo apt-get install ros-kinetic-desktop-full
+</code></pre>
+
+<h1 id="2-create-workspace">2.- Create Workspace</h1>
+<h3 id="this-step-will-depende-of-the-user-directory-could-change-according-to-your-preferences">This step will depende of the user. Directory could change according to your preferences.</h3>
+<pre><code>mkdir -p ~/avalos_ros_ws/src
+source /opt/ros/kinetic/setup.bash
+cd ~/avalos_ros_ws
+catkin_make
+</code></pre>
+
+<h1 id="3-install-intera-robot-sdk">3.-Install INTERA Robot SDK</h1>
+<h3 id="this-git-will-contain-the-default-software-to-use-the-robot">This git will contain the default software to use the robot.</h3>
+<pre><code>cd ~/avalos_ros_ws/src
+wstool init .
+git clone https://github.com/RethinkRobotics/sawyer_robot.git
+wstool merge sawyer_robot/sawyer_robot.rosinstall
+wstool update
+</code></pre>
+
+<h3 id="build-again">Build again</h3>
+<pre><code>cd ~/avalos_ros_ws
+catkin_make
+</code></pre>
+
+<h1 id="4-add-to-bash">4 Add to Bash</h1>
+<p>In order to use <code>roscd</code> you have to add your directory to your bash file. Using Sublime :</p>
+<pre><code>subl ~/.bashrc 
+-- add at the end
+source /opt/ros/kinetic/setup.bash
+source /home/jose/avalos_ros_ws/devel/setup.bash
+</code></pre>
+
+<p>To check you could try <code>echo $ROS_PACKAGE_PATH</code> in terminal.</p>
+<h1 id="5-define-envioroment">5.- Define envioroment</h1>
+<p>We have to copy a default file wich contain the network connection information.</p>
+<pre><code>cp ~/avalos_ros_ws/src/intera_sdk/intera.sh ~/avalos_ros_ws
+</code></pre>
+
+<p>To edit the file I reccommed ~Sublime~ https://www.sublimetext.com/3</p>
+<h2 id="change-version-in-sh-file">Change version in *.sh file</h2>
+<p>A important point is define the ROS version. In this work, it is kinectic</p>
+<pre><code>ros_version=&quot;kinetic&quot;
+</code></pre>
+
+<p>In order to move fast to this directories, we define  :</p>
+<pre><code>test=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test
+avalos=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera
+</code></pre>
+
+<h2 id="update-intera-version">Update intera version</h2>
+<p>There are no specific step to upgrade but in this case my action are based in the UTEC sawyer.</p>
+<p>First of all, you need a keyboard to access to boot actions.  </p>
+<p>You have to connect it through the USB y keep press <code>Ctrl+f</code> after press boton ON.  When you see a regressive count (like 5,4,...) you have to keep press <code>Crtl</code> and press and depress <code>f</code>.</p>
+<p>You have to wait until a white scree white red  <code>"Preparing to boot...</code> , in this momento you have to press <code>Ctrl+f</code>  to access to the menu.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
