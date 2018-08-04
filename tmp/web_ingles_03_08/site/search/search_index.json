@@ -1,0 +1,324 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome\n\n\nHello! My name is Jose and the goal of this website is follow my thesis development. Also, It will work as a fast guide to introduce and help student with the Robot Sawyer and ROS envioroment.  This work is taking in my semesters 2018 I - II. Where my personal computer-workstation has the following characteristics:\n\n\n\n\n\n\n\n\nCOMPONENT\n\n\nDESCRIPTION\n\n\n\n\n\n\n\n\n\n\nS.O.\n\n\nUbuntu 16.04\n\n\n\n\n\n\nROS\n\n\nKinetic\n\n\n\n\n\n\nProcessor\n\n\nIntel\u00ae Core\u2122 i7-7500U CPU @ 2.70GHz \u00d7 4\n\n\n\n\n\n\nDedicated\n\n\nSolid State 100Gb\n\n\n\n\n\n\nRAM\n\n\n16 GB\n\n\n\n\n\n\n\n\nThe main idea of this work is built optimizate trajectories and  make automatic classification task. All information will be complementary with my personal github account. If you have some specify question write to: jose.avalos@utec.edu.pe\n\n\nOfficial information could be find about the sawyer:\nhttp://sdk.rethinkrobotics.com/intera/Main_Page\n\n\nRegards!\n\n\n\n\nSources\n\n\n\n    \nAyten, K. K., Sahinkaya, M. N., \n&\n Dumlu, A. (2016). Optimum trajectory generation for redundant/hyper-redundant manipulators. IFAC-PapersOnLine, 49(21), 493-500.\nhttps://www.sciencedirect.com/science/article/pii/S2405896316322637\n\n    \nGasparetto, A., \n&\n Zanotto, V. (2010). Optimal trajectory planning for industrial robots. Advances in Engineering Software, 41(4), 548-556.\nhttps://www.sciencedirect.com/science/article/pii/S0965997809002464\n\n    \nHuang, J., Hu, P., Wu, K., \n&\n Zeng, M. (2018). Optimal time-jerk trajectory planning for industrial robots. Mechanism and Machine Theory, 121, 530-544.\nhttps://www.sciencedirect.com/science/article/pii/S0094114X17302914\n\n    \nRubio, F., Llopis-Albert, C., Valero, F., \n&\n Su\u00f1er, J. L. (2016). Industrial robot efficient trajectory generation without collision through the evolution of the optimal trajectory. Robotics and Autonomous Systems, 86, 106-112. https://www.sciencedirect.com/science/article/pii/S0921889015301998", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#welcome", 
+            "text": "Hello! My name is Jose and the goal of this website is follow my thesis development. Also, It will work as a fast guide to introduce and help student with the Robot Sawyer and ROS envioroment.  This work is taking in my semesters 2018 I - II. Where my personal computer-workstation has the following characteristics:     COMPONENT  DESCRIPTION      S.O.  Ubuntu 16.04    ROS  Kinetic    Processor  Intel\u00ae Core\u2122 i7-7500U CPU @ 2.70GHz \u00d7 4    Dedicated  Solid State 100Gb    RAM  16 GB     The main idea of this work is built optimizate trajectories and  make automatic classification task. All information will be complementary with my personal github account. If you have some specify question write to: jose.avalos@utec.edu.pe  Official information could be find about the sawyer:\nhttp://sdk.rethinkrobotics.com/intera/Main_Page  Regards!", 
+            "title": "Welcome"
+        }, 
+        {
+            "location": "/#sources", 
+            "text": "Ayten, K. K., Sahinkaya, M. N.,  &  Dumlu, A. (2016). Optimum trajectory generation for redundant/hyper-redundant manipulators. IFAC-PapersOnLine, 49(21), 493-500.\nhttps://www.sciencedirect.com/science/article/pii/S2405896316322637 \n     Gasparetto, A.,  &  Zanotto, V. (2010). Optimal trajectory planning for industrial robots. Advances in Engineering Software, 41(4), 548-556.\nhttps://www.sciencedirect.com/science/article/pii/S0965997809002464 \n     Huang, J., Hu, P., Wu, K.,  &  Zeng, M. (2018). Optimal time-jerk trajectory planning for industrial robots. Mechanism and Machine Theory, 121, 530-544.\nhttps://www.sciencedirect.com/science/article/pii/S0094114X17302914 \n     Rubio, F., Llopis-Albert, C., Valero, F.,  &  Su\u00f1er, J. L. (2016). Industrial robot efficient trajectory generation without collision through the evolution of the optimal trajectory. Robotics and Autonomous Systems, 86, 106-112. https://www.sciencedirect.com/science/article/pii/S0921889015301998", 
+            "title": "Sources"
+        }, 
+        {
+            "location": "/tesis/", 
+            "text": "Sprint 1 [March 2018]\n\n\nGetting the information about the course I have already organice the information as follow. \n\n\nFor the first part, the proffesor will be \n\n\nSprint 2 [July 2018]", 
+            "title": "Organization"
+        }, 
+        {
+            "location": "/tesis/#sprint-1-march-2018", 
+            "text": "Getting the information about the course I have already organice the information as follow.  \nFor the first part, the proffesor will be", 
+            "title": "Sprint 1 [March 2018]"
+        }, 
+        {
+            "location": "/tesis/#sprint-2-july-2018", 
+            "text": "", 
+            "title": "Sprint 2 [July 2018]"
+        }, 
+        {
+            "location": "/session/w1/", 
+            "text": "This section will explain my progress based in some specific work. This will be divide in weeks trying to follow the organization propouse in Thesis organization.\n\n\nConecction with the robot and variable envioroment\n\n\n\n\nWeek 1\n\n\nThe robot has been working with ROS envioroment which could access using terminala interace. However, in order to make automatic task is necesary to introduce them in a language program interface. Normally, ROS work overs some popular language as C++ and Python. Respect to the Sawyer robot this develop its libraries in Python interface. For that, we have to accomplish our task in this language.", 
+            "title": "Session 1"
+        }, 
+        {
+            "location": "/session/w1/#conecction-with-the-robot-and-variable-envioroment", 
+            "text": "", 
+            "title": "Conecction with the robot and variable envioroment"
+        }, 
+        {
+            "location": "/session/w1/#week-1", 
+            "text": "The robot has been working with ROS envioroment which could access using terminala interace. However, in order to make automatic task is necesary to introduce them in a language program interface. Normally, ROS work overs some popular language as C++ and Python. Respect to the Sawyer robot this develop its libraries in Python interface. For that, we have to accomplish our task in this language.", 
+            "title": "Week 1"
+        }, 
+        {
+            "location": "/session/w2/", 
+            "text": "w2", 
+            "title": "Session 2"
+        }, 
+        {
+            "location": "/session/w3/", 
+            "text": "w2", 
+            "title": "Session 3"
+        }, 
+        {
+            "location": "/session/w4/", 
+            "text": "w2", 
+            "title": "Session 4"
+        }, 
+        {
+            "location": "/session/w5/", 
+            "text": "w2", 
+            "title": "Session 5"
+        }, 
+        {
+            "location": "/session/w6/", 
+            "text": "w2", 
+            "title": "Session 6"
+        }, 
+        {
+            "location": "/session/w7/", 
+            "text": "w2", 
+            "title": "Session 7"
+        }, 
+        {
+            "location": "/WorkSetup/", 
+            "text": "Configure Ubuntu\n\n\n1.-Install ROS\n\n\nOfficial information could be find:\n\n\n\n\nhttp://sdk.rethinkrobotics.com/intera/Main_Page\n\n\nhttp://sdk.rethinkrobotics.com/intera/Workstation_Setup\n\n\n\n\nWe set the step in order to install ROS.\n\n\nSetup your sources.list\n\n\nsudo sh -c 'echo \ndeb http://packages.ros.org/ros/ubuntu xenial main\n \n /etc/apt/sources.list.d/ros-latest.list'\n\n\n\n\nSetup your keys\n\n\nsudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116\n\n\n\n\nUpdate to Latest Software Lists\n\n\nsudo apt-get update\n\n\n\n\nInstall ROS Kinetic Desktop Full\n\n\nsudo apt-get install ros-kinetic-desktop-full\n\n\n\n\n2.- Create Workspace\n\n\nDirectory name will depende of the user. Directory could change according to your preferences in my case will be \navalos_ros_ws\n.\n\n\nmkdir -p ~/avalos_ros_ws/src\nsource /opt/ros/kinetic/setup.bash\ncd ~/avalos_ros_ws\ncatkin_make\n\n\n\n\n3.-Install INTERA Robot SDK\n\n\nThis git will contain the default software to use the robot.\n\n\ncd ~/avalos_ros_ws/src\nwstool init .\ngit clone https://github.com/RethinkRobotics/sawyer_robot.git\nwstool merge sawyer_robot/sawyer_robot.rosinstall\nwstool update\n\n\n\n\nBuild again\n\n\ncd ~/avalos_ros_ws\ncatkin_make\n\n\n\n\n4.-Add to Bash\n\n\nIn order to use \nroscd\n you have to add your directory to your bash file. Using Sublime :\n\n\nsubl ~/.bashrc \n-- add at the end\nsource /opt/ros/kinetic/setup.bash\nsource /home/jose/avalos_ros_ws/devel/setup.bash\n\n\n\n\nTo check you could try \necho $ROS_PACKAGE_PATH\n in terminal.\n\n\n5.- Define envioroment\n\n\nWe have to copy a default file wich contain the network connection information.\n\n\ncp ~/avalos_ros_ws/src/intera_sdk/intera.sh ~/avalos_ros_ws\n\n\n\n\nTo edit the file I reccommed ~Sublime~ https://www.sublimetext.com/3\n\n\nChange version in *.sh file\n\n\nA important point is define the ROS version. In this work, it is kinectic\n\n\nros_version=\nkinetic\n\n\n\n\n\nIn order to move fast to this directories, we define  :\n\n\ntest=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test\navalos=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera\n\n\n\n\nAVADHI Conecction\n\n\nThis is used when the robot don't generate a IP. Refresh withouth close all envioroments. This is nedded to add for python msg\n\n\nsource ~/avalos_ros_ws/devel/setup.bash\n\n\n\n\nIn order to conect. We have to disable the internet\n\n\nsudo avahi-autoipd  enp0s31f6\n\n\n\n\nIn another window open:\n\n\navahi-browse -a -r\n\n\n\n\nUpdate intera version\n\n\nThere are no specific step to upgrade but in this case my action are based in the UTEC sawyer. The files had to be dowload in a USB from Intera foroum.\n\n\n1.-Enter to boot interface\n\n\nFirst of all, you need a keyboard to access to boot actions.\n\nYou have to connect it through the USB y keep press \nCtrl+f\n after press boton ON.  When you see a regressive count (like 5,4,...) you have to keep press \nCrtl\n and press and depress \nf\n. You have to wait until a white scree white red  \n\"Preparing to boot...\n , in this momento you have to press \nCtrl+f\n  to access to the menu.\n\n\n[working]", 
+            "title": "WorkSetup"
+        }, 
+        {
+            "location": "/WorkSetup/#configure-ubuntu", 
+            "text": "", 
+            "title": "Configure Ubuntu"
+        }, 
+        {
+            "location": "/WorkSetup/#1-install-ros", 
+            "text": "Official information could be find:   http://sdk.rethinkrobotics.com/intera/Main_Page  http://sdk.rethinkrobotics.com/intera/Workstation_Setup   We set the step in order to install ROS.", 
+            "title": "1.-Install ROS"
+        }, 
+        {
+            "location": "/WorkSetup/#setup-your-sourceslist", 
+            "text": "sudo sh -c 'echo  deb http://packages.ros.org/ros/ubuntu xenial main    /etc/apt/sources.list.d/ros-latest.list'", 
+            "title": "Setup your sources.list"
+        }, 
+        {
+            "location": "/WorkSetup/#setup-your-keys", 
+            "text": "sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116", 
+            "title": "Setup your keys"
+        }, 
+        {
+            "location": "/WorkSetup/#update-to-latest-software-lists", 
+            "text": "sudo apt-get update", 
+            "title": "Update to Latest Software Lists"
+        }, 
+        {
+            "location": "/WorkSetup/#install-ros-kinetic-desktop-full", 
+            "text": "sudo apt-get install ros-kinetic-desktop-full", 
+            "title": "Install ROS Kinetic Desktop Full"
+        }, 
+        {
+            "location": "/WorkSetup/#2-create-workspace", 
+            "text": "Directory name will depende of the user. Directory could change according to your preferences in my case will be  avalos_ros_ws .  mkdir -p ~/avalos_ros_ws/src\nsource /opt/ros/kinetic/setup.bash\ncd ~/avalos_ros_ws\ncatkin_make", 
+            "title": "2.- Create Workspace"
+        }, 
+        {
+            "location": "/WorkSetup/#3-install-intera-robot-sdk", 
+            "text": "This git will contain the default software to use the robot.  cd ~/avalos_ros_ws/src\nwstool init .\ngit clone https://github.com/RethinkRobotics/sawyer_robot.git\nwstool merge sawyer_robot/sawyer_robot.rosinstall\nwstool update", 
+            "title": "3.-Install INTERA Robot SDK"
+        }, 
+        {
+            "location": "/WorkSetup/#build-again", 
+            "text": "cd ~/avalos_ros_ws\ncatkin_make", 
+            "title": "Build again"
+        }, 
+        {
+            "location": "/WorkSetup/#4-add-to-bash", 
+            "text": "In order to use  roscd  you have to add your directory to your bash file. Using Sublime :  subl ~/.bashrc \n-- add at the end\nsource /opt/ros/kinetic/setup.bash\nsource /home/jose/avalos_ros_ws/devel/setup.bash  To check you could try  echo $ROS_PACKAGE_PATH  in terminal.", 
+            "title": "4.-Add to Bash"
+        }, 
+        {
+            "location": "/WorkSetup/#5-define-envioroment", 
+            "text": "We have to copy a default file wich contain the network connection information.  cp ~/avalos_ros_ws/src/intera_sdk/intera.sh ~/avalos_ros_ws  To edit the file I reccommed ~Sublime~ https://www.sublimetext.com/3", 
+            "title": "5.- Define envioroment"
+        }, 
+        {
+            "location": "/WorkSetup/#change-version-in-sh-file", 
+            "text": "A important point is define the ROS version. In this work, it is kinectic  ros_version= kinetic   In order to move fast to this directories, we define  :  test=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test\navalos=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera", 
+            "title": "Change version in *.sh file"
+        }, 
+        {
+            "location": "/WorkSetup/#avadhi-conecction", 
+            "text": "This is used when the robot don't generate a IP. Refresh withouth close all envioroments. This is nedded to add for python msg  source ~/avalos_ros_ws/devel/setup.bash  In order to conect. We have to disable the internet  sudo avahi-autoipd  enp0s31f6  In another window open:  avahi-browse -a -r", 
+            "title": "AVADHI Conecction"
+        }, 
+        {
+            "location": "/WorkSetup/#update-intera-version", 
+            "text": "There are no specific step to upgrade but in this case my action are based in the UTEC sawyer. The files had to be dowload in a USB from Intera foroum.", 
+            "title": "Update intera version"
+        }, 
+        {
+            "location": "/WorkSetup/#1-enter-to-boot-interface", 
+            "text": "First of all, you need a keyboard to access to boot actions. \nYou have to connect it through the USB y keep press  Ctrl+f  after press boton ON.  When you see a regressive count (like 5,4,...) you have to keep press  Crtl  and press and depress  f . You have to wait until a white scree white red   \"Preparing to boot...  , in this momento you have to press  Ctrl+f   to access to the menu.  [working]", 
+            "title": "1.-Enter to boot interface"
+        }, 
+        {
+            "location": "/sawyer/sawyer/", 
+            "text": "Sawyer Hardware\n\n\nTotal information could be find:\nhttp://sdk.rethinkrobotics.com/intera/Hardware_Components\nThe robot baxter have the following order. \n\n\nJoint and Link Names\n\n\n\n\nLink Lengths\n\n\n\n\nRange of Motion - Roll Joints\n\n\n\n\nRange of Motion - Pitch Joints\n\n\n\n\nJoint Limits\n\n\njoint_names: [head_pan, right_j0, right_j1, right_j2, right_j3, right_j4, right_j5, right_j6]\n\n\nposition_lower: [-5.0952, -3.0503, -3.8095, -3.0426, -3.0439, -2.9761, -2.9761, -3.14]\n\n\nposition_upper: [0.9064, 3.0503, 2.2736, 3.0426, 3.0439, 2.9761, 2.9761, 3.14]\n\n\nvelocity: [1.8, 1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]\n\n\naccel: [10.0, 10.0, 8.0, 10.0, 10.0, 12.0, 12.0, 12.0]\n\n\neffort: [8.0, 80.0, 80.0, 40.0, 40.0, 9.0, 9.0, 9.0]", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/sawyer/sawyer/#sawyer-hardware", 
+            "text": "Total information could be find:\nhttp://sdk.rethinkrobotics.com/intera/Hardware_Components\nThe robot baxter have the following order.", 
+            "title": "Sawyer Hardware"
+        }, 
+        {
+            "location": "/sawyer/sawyer/#joint-and-link-names", 
+            "text": "", 
+            "title": "Joint and Link Names"
+        }, 
+        {
+            "location": "/sawyer/sawyer/#link-lengths", 
+            "text": "", 
+            "title": "Link Lengths"
+        }, 
+        {
+            "location": "/sawyer/sawyer/#range-of-motion-roll-joints", 
+            "text": "", 
+            "title": "Range of Motion - Roll Joints"
+        }, 
+        {
+            "location": "/sawyer/sawyer/#range-of-motion-pitch-joints", 
+            "text": "", 
+            "title": "Range of Motion - Pitch Joints"
+        }, 
+        {
+            "location": "/sawyer/sawyer/#joint-limits", 
+            "text": "joint_names: [head_pan, right_j0, right_j1, right_j2, right_j3, right_j4, right_j5, right_j6]  position_lower: [-5.0952, -3.0503, -3.8095, -3.0426, -3.0439, -2.9761, -2.9761, -3.14]  position_upper: [0.9064, 3.0503, 2.2736, 3.0426, 3.0439, 2.9761, 2.9761, 3.14]  velocity: [1.8, 1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]  accel: [10.0, 10.0, 8.0, 10.0, 10.0, 12.0, 12.0, 12.0]  effort: [8.0, 80.0, 80.0, 40.0, 40.0, 9.0, 9.0, 9.0]", 
+            "title": "Joint Limits"
+        }, 
+        {
+            "location": "/sawyer/ROS/", 
+            "text": "Arm Control\n\n\nhttp://sdk.rethinkrobotics.com/intera/Arm_Control_Systems\n\n\nTo control the limb, we must publish the JointCommand message on the topic:\n\n\nrobot/limb/right/joint_command\n\n\n\n\nExample msg topic:\n\n\nname: [head_pan, right_j0, right_j1, right_j2, right_j3, right_j4, right_j5, right_j6]\n\nposition: [0.0009954930312199295, -0.09533564475893463, 0.0013658189490914907, 0.003917532706931404, -1.649114553723206, -0.011475677835472986, -0.09970574050413106, 0.021091250273193474]\n\nposition: [0.000, -0.0953, 0.001, 0.003, -1.649, -0.011, -0.099, 0.0210]\n\n\n\n\nJOINT FORMAT\n\n\nHeader header\n\n\nint32 \nmode  \n           # Mode in which to command arm\n\n\nstring[]  \nnames \n       # Joint names order for command\n\n\nFields of commands indexed according to the Joint names vector.\n\nCommand fields required for a desired mode are listed in the comments\n\n\nfloat64[] \nposition \n    # (radians)       Required for POSITION_MODE and TRAJECTORY_MODE\n\n\nfloat64[] \nvelocity \n    # (radians/sec)   Required for VELOCITY_MODE and TRAJECTORY_MODE\n\n\nfloat64[] \nacceleration\n # (radians/sec^2) Required for                   TRAJECTORY_MODE\n\n\nfloat64[] \neffort\n       # (newton-meters) Required for TORQUE_MODE\n\n\n*Modes available to command arm\nint32 POSITION_MODE=1\n\n\nint32 VELOCITY_MODE=2\n\n\nint32 TORQUE_MODE=3\n\n\nint32 TRAJECTORY_MODE=4\n\n\nTopics\n\n\n[intera - http://localhost:11311] jose@avalos:~/avalos_ros_ws$ rostopic list\n\n\n\n\n/clock\n\n\n/gazebo/link_states\n\n\n/gazebo/model_states\n\n\n/gazebo/parameter_descriptions\n\n\n/gazebo/parameter_updates\n\n\n/gazebo/set_link_state\n\n\n/gazebo/set_model_state\n\n\n/head_camera/parameter_descriptions\n\n\n/head_camera/parameter_updates\n\n\n/io/internal_camera/config\n\n\n/io/internal_camera/head_camera/camera_info\n\n\n/io/internal_camera/head_camera/command\n\n\n/io/internal_camera/head_camera/config\n\n\n/io/internal_camera/head_camera/image_raw\n\n\n/io/internal_camera/head_camera/image_raw/compressed\n\n\n/io/internal_camera/head_camera/image_raw/compressed/parameter_descriptions\n\n\n/io/internal_camera/head_camera/image_raw/compressed/parameter_updates\n\n\n/io/internal_camera/head_camera/image_raw/compressedDepth\n\n\n/io/internal_camera/head_camera/image_raw/compressedDepth/parameter_descriptions\n\n\n/io/internal_camera/head_camera/image_raw/compressedDepth/parameter_updates\n\n\n/io/internal_camera/head_camera/image_raw/theora\n\n\n/io/internal_camera/head_camera/image_raw/theora/parameter_descriptions\n\n\n/io/internal_camera/head_camera/image_raw/theora/parameter_updates\n\n\n/io/internal_camera/head_camera/image_rect_color\n\n\n/io/internal_camera/head_camera/image_rect_color/compressed\n\n\n/io/internal_camera/head_camera/image_rect_color/compressed/parameter_descriptions\n\n\n/io/internal_camera/head_camera/image_rect_color/compressed/parameter_updates\n\n\n/io/internal_camera/head_camera/image_rect_color/compressedDepth\n\n\n/io/internal_camera/head_camera/image_rect_color/compressedDepth/parameter_descriptions\n\n\n/io/internal_camera/head_camera/image_rect_color/compressedDepth/parameter_updates\n\n\n/io/internal_camera/head_camera/image_rect_color/theora\n\n\n/io/internal_camera/head_camera/image_rect_color/theora/parameter_descriptions\n\n\n/io/internal_camera/head_camera/image_rect_color/theora/parameter_updates\n\n\n/io/internal_camera/head_camera/rectify_color/parameter_descriptions\n\n\n/io/internal_camera/head_camera/rectify_color/parameter_updates\n\n\n/io/internal_camera/head_camera/state\n\n\n/io/internal_camera/right_hand_camera/camera_info\n\n\n/io/internal_camera/right_hand_camera/command\n\n\n/io/internal_camera/right_hand_camera/config\n\n\n/io/internal_camera/right_hand_camera/image_raw\n\n\n/io/internal_camera/right_hand_camera/image_raw/compressed\n\n\n/io/internal_camera/right_hand_camera/image_raw/compressed/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/image_raw/compressed/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/image_raw/compressedDepth\n\n\n/io/internal_camera/right_hand_camera/image_raw/compressedDepth/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/image_raw/compressedDepth/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/image_raw/theora\n\n\n/io/internal_camera/right_hand_camera/image_raw/theora/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/image_raw/theora/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/image_rect\n\n\n/io/internal_camera/right_hand_camera/image_rect/compressed\n\n\n/io/internal_camera/right_hand_camera/image_rect/compressed/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/image_rect/compressed/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/image_rect/compressedDepth\n\n\n/io/internal_camera/right_hand_camera/image_rect/compressedDepth/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/image_rect/compressedDepth/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/image_rect/theora\n\n\n/io/internal_camera/right_hand_camera/image_rect/theora/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/image_rect/theora/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/rectify_mono/parameter_descriptions\n\n\n/io/internal_camera/right_hand_camera/rectify_mono/parameter_updates\n\n\n/io/internal_camera/right_hand_camera/state\n\n\n/io/robot/config\n\n\n/io/robot/cuff/config\n\n\n/io/robot/cuff/state\n\n\n/io/robot/navigator/config\n\n\n/io/robot/navigator/state\n\n\n/io/robot/robot/config\n\n\n/io/robot/robot/state\n\n\n/right_hand_camera/parameter_descriptions\n\n\n/right_hand_camera/parameter_updates\n\n\n/robot/head/command_head_pan\n\n\n/robot/head/head_state\n\n\n/robot/head_display\n\n\n/robot/head_position_controller/joints/head_controller/command\n\n\n/robot/head_position_controller/joints/head_controller/pid/parameter_descriptions\n\n\n/robot/head_position_controller/joints/head_controller/pid/parameter_updates\n\n\n/robot/head_position_controller/joints/head_controller/state\n\n\n/robot/joint_limits\n\n\n/robot/joint_states\n\n\n/robot/limb/right/endpoint_state\n\n\n/robot/limb/right/gravity_compensation_torques\n\n\n/robot/limb/right/joint_command\n\n\n/robot/limb/right/joint_command_timeout\n\n\n/robot/limb/right/set_speed_ratio\n\n\n/robot/limb/right/suppress_gravity_compensation\n\n\n/robot/limb/right/tip_states\n\n\n/robot/right_joint_effort_controller/joints/right_j0_controller/command\n\n\n/robot/right_joint_effort_controller/joints/right_j1_controller/command\n\n\n/robot/right_joint_effort_controller/joints/right_j2_controller/command\n\n\n/robot/right_joint_effort_controller/joints/right_j3_controller/command\n\n\n/robot/right_joint_effort_controller/joints/right_j4_controller/command\n\n\n/robot/right_joint_effort_controller/joints/right_j5_controller/command\n\n\n/robot/right_joint_effort_controller/joints/right_j6_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j0_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j0_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j0_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j0_controller/state\n\n\n/robot/right_joint_position_controller/joints/right_j1_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j1_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j1_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j1_controller/state\n\n\n/robot/right_joint_position_controller/joints/right_j2_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j2_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j2_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j2_controller/state\n\n\n/robot/right_joint_position_controller/joints/right_j3_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j3_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j3_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j3_controller/state\n\n\n/robot/right_joint_position_controller/joints/right_j4_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j4_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j4_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j4_controller/state\n\n\n/robot/right_joint_position_controller/joints/right_j5_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j5_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j5_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j5_controller/state\n\n\n/robot/right_joint_position_controller/joints/right_j6_controller/command\n\n\n/robot/right_joint_position_controller/joints/right_j6_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_position_controller/joints/right_j6_controller/pid/parameter_updates\n\n\n/robot/right_joint_position_controller/joints/right_j6_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j0_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j0_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j0_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j0_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j1_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j1_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j1_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j1_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j2_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j2_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j2_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j2_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j3_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j3_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j3_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j3_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j4_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j4_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j4_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j4_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j5_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j5_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j5_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j5_controller/state\n\n\n/robot/right_joint_velocity_controller/joints/right_j6_controller/command\n\n\n/robot/right_joint_velocity_controller/joints/right_j6_controller/pid/parameter_descriptions\n\n\n/robot/right_joint_velocity_controller/joints/right_j6_controller/pid/parameter_updates\n\n\n/robot/right_joint_velocity_controller/joints/right_j6_controller/state\n\n\n/robot/set_super_enable\n\n\n/robot/set_super_reset\n\n\n/robot/set_super_stop\n\n\n/robot/sim_estop\n\n\n/robot/state\n\n\n/rosout\n\n\n/rosout_agg\n\n\n/tf\n\n\n/tf_static", 
+            "title": "ROS"
+        }, 
+        {
+            "location": "/sawyer/ROS/#arm-control", 
+            "text": "http://sdk.rethinkrobotics.com/intera/Arm_Control_Systems  To control the limb, we must publish the JointCommand message on the topic:  robot/limb/right/joint_command  Example msg topic:  name: [head_pan, right_j0, right_j1, right_j2, right_j3, right_j4, right_j5, right_j6]\n\nposition: [0.0009954930312199295, -0.09533564475893463, 0.0013658189490914907, 0.003917532706931404, -1.649114553723206, -0.011475677835472986, -0.09970574050413106, 0.021091250273193474]\n\nposition: [0.000, -0.0953, 0.001, 0.003, -1.649, -0.011, -0.099, 0.0210]", 
+            "title": "Arm Control"
+        }, 
+        {
+            "location": "/sawyer/ROS/#joint-format", 
+            "text": "Header header  int32  mode              # Mode in which to command arm  string[]   names         # Joint names order for command  Fields of commands indexed according to the Joint names vector. Command fields required for a desired mode are listed in the comments  float64[]  position      # (radians)       Required for POSITION_MODE and TRAJECTORY_MODE  float64[]  velocity      # (radians/sec)   Required for VELOCITY_MODE and TRAJECTORY_MODE  float64[]  acceleration  # (radians/sec^2) Required for                   TRAJECTORY_MODE  float64[]  effort        # (newton-meters) Required for TORQUE_MODE  *Modes available to command arm\nint32 POSITION_MODE=1  int32 VELOCITY_MODE=2  int32 TORQUE_MODE=3  int32 TRAJECTORY_MODE=4", 
+            "title": "JOINT FORMAT"
+        }, 
+        {
+            "location": "/sawyer/ROS/#topics", 
+            "text": "[intera - http://localhost:11311] jose@avalos:~/avalos_ros_ws$ rostopic list   /clock  /gazebo/link_states  /gazebo/model_states  /gazebo/parameter_descriptions  /gazebo/parameter_updates  /gazebo/set_link_state  /gazebo/set_model_state  /head_camera/parameter_descriptions  /head_camera/parameter_updates  /io/internal_camera/config  /io/internal_camera/head_camera/camera_info  /io/internal_camera/head_camera/command  /io/internal_camera/head_camera/config  /io/internal_camera/head_camera/image_raw  /io/internal_camera/head_camera/image_raw/compressed  /io/internal_camera/head_camera/image_raw/compressed/parameter_descriptions  /io/internal_camera/head_camera/image_raw/compressed/parameter_updates  /io/internal_camera/head_camera/image_raw/compressedDepth  /io/internal_camera/head_camera/image_raw/compressedDepth/parameter_descriptions  /io/internal_camera/head_camera/image_raw/compressedDepth/parameter_updates  /io/internal_camera/head_camera/image_raw/theora  /io/internal_camera/head_camera/image_raw/theora/parameter_descriptions  /io/internal_camera/head_camera/image_raw/theora/parameter_updates  /io/internal_camera/head_camera/image_rect_color  /io/internal_camera/head_camera/image_rect_color/compressed  /io/internal_camera/head_camera/image_rect_color/compressed/parameter_descriptions  /io/internal_camera/head_camera/image_rect_color/compressed/parameter_updates  /io/internal_camera/head_camera/image_rect_color/compressedDepth  /io/internal_camera/head_camera/image_rect_color/compressedDepth/parameter_descriptions  /io/internal_camera/head_camera/image_rect_color/compressedDepth/parameter_updates  /io/internal_camera/head_camera/image_rect_color/theora  /io/internal_camera/head_camera/image_rect_color/theora/parameter_descriptions  /io/internal_camera/head_camera/image_rect_color/theora/parameter_updates  /io/internal_camera/head_camera/rectify_color/parameter_descriptions  /io/internal_camera/head_camera/rectify_color/parameter_updates  /io/internal_camera/head_camera/state  /io/internal_camera/right_hand_camera/camera_info  /io/internal_camera/right_hand_camera/command  /io/internal_camera/right_hand_camera/config  /io/internal_camera/right_hand_camera/image_raw  /io/internal_camera/right_hand_camera/image_raw/compressed  /io/internal_camera/right_hand_camera/image_raw/compressed/parameter_descriptions  /io/internal_camera/right_hand_camera/image_raw/compressed/parameter_updates  /io/internal_camera/right_hand_camera/image_raw/compressedDepth  /io/internal_camera/right_hand_camera/image_raw/compressedDepth/parameter_descriptions  /io/internal_camera/right_hand_camera/image_raw/compressedDepth/parameter_updates  /io/internal_camera/right_hand_camera/image_raw/theora  /io/internal_camera/right_hand_camera/image_raw/theora/parameter_descriptions  /io/internal_camera/right_hand_camera/image_raw/theora/parameter_updates  /io/internal_camera/right_hand_camera/image_rect  /io/internal_camera/right_hand_camera/image_rect/compressed  /io/internal_camera/right_hand_camera/image_rect/compressed/parameter_descriptions  /io/internal_camera/right_hand_camera/image_rect/compressed/parameter_updates  /io/internal_camera/right_hand_camera/image_rect/compressedDepth  /io/internal_camera/right_hand_camera/image_rect/compressedDepth/parameter_descriptions  /io/internal_camera/right_hand_camera/image_rect/compressedDepth/parameter_updates  /io/internal_camera/right_hand_camera/image_rect/theora  /io/internal_camera/right_hand_camera/image_rect/theora/parameter_descriptions  /io/internal_camera/right_hand_camera/image_rect/theora/parameter_updates  /io/internal_camera/right_hand_camera/rectify_mono/parameter_descriptions  /io/internal_camera/right_hand_camera/rectify_mono/parameter_updates  /io/internal_camera/right_hand_camera/state  /io/robot/config  /io/robot/cuff/config  /io/robot/cuff/state  /io/robot/navigator/config  /io/robot/navigator/state  /io/robot/robot/config  /io/robot/robot/state  /right_hand_camera/parameter_descriptions  /right_hand_camera/parameter_updates  /robot/head/command_head_pan  /robot/head/head_state  /robot/head_display  /robot/head_position_controller/joints/head_controller/command  /robot/head_position_controller/joints/head_controller/pid/parameter_descriptions  /robot/head_position_controller/joints/head_controller/pid/parameter_updates  /robot/head_position_controller/joints/head_controller/state  /robot/joint_limits  /robot/joint_states  /robot/limb/right/endpoint_state  /robot/limb/right/gravity_compensation_torques  /robot/limb/right/joint_command  /robot/limb/right/joint_command_timeout  /robot/limb/right/set_speed_ratio  /robot/limb/right/suppress_gravity_compensation  /robot/limb/right/tip_states  /robot/right_joint_effort_controller/joints/right_j0_controller/command  /robot/right_joint_effort_controller/joints/right_j1_controller/command  /robot/right_joint_effort_controller/joints/right_j2_controller/command  /robot/right_joint_effort_controller/joints/right_j3_controller/command  /robot/right_joint_effort_controller/joints/right_j4_controller/command  /robot/right_joint_effort_controller/joints/right_j5_controller/command  /robot/right_joint_effort_controller/joints/right_j6_controller/command  /robot/right_joint_position_controller/joints/right_j0_controller/command  /robot/right_joint_position_controller/joints/right_j0_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j0_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j0_controller/state  /robot/right_joint_position_controller/joints/right_j1_controller/command  /robot/right_joint_position_controller/joints/right_j1_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j1_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j1_controller/state  /robot/right_joint_position_controller/joints/right_j2_controller/command  /robot/right_joint_position_controller/joints/right_j2_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j2_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j2_controller/state  /robot/right_joint_position_controller/joints/right_j3_controller/command  /robot/right_joint_position_controller/joints/right_j3_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j3_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j3_controller/state  /robot/right_joint_position_controller/joints/right_j4_controller/command  /robot/right_joint_position_controller/joints/right_j4_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j4_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j4_controller/state  /robot/right_joint_position_controller/joints/right_j5_controller/command  /robot/right_joint_position_controller/joints/right_j5_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j5_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j5_controller/state  /robot/right_joint_position_controller/joints/right_j6_controller/command  /robot/right_joint_position_controller/joints/right_j6_controller/pid/parameter_descriptions  /robot/right_joint_position_controller/joints/right_j6_controller/pid/parameter_updates  /robot/right_joint_position_controller/joints/right_j6_controller/state  /robot/right_joint_velocity_controller/joints/right_j0_controller/command  /robot/right_joint_velocity_controller/joints/right_j0_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j0_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j0_controller/state  /robot/right_joint_velocity_controller/joints/right_j1_controller/command  /robot/right_joint_velocity_controller/joints/right_j1_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j1_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j1_controller/state  /robot/right_joint_velocity_controller/joints/right_j2_controller/command  /robot/right_joint_velocity_controller/joints/right_j2_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j2_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j2_controller/state  /robot/right_joint_velocity_controller/joints/right_j3_controller/command  /robot/right_joint_velocity_controller/joints/right_j3_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j3_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j3_controller/state  /robot/right_joint_velocity_controller/joints/right_j4_controller/command  /robot/right_joint_velocity_controller/joints/right_j4_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j4_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j4_controller/state  /robot/right_joint_velocity_controller/joints/right_j5_controller/command  /robot/right_joint_velocity_controller/joints/right_j5_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j5_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j5_controller/state  /robot/right_joint_velocity_controller/joints/right_j6_controller/command  /robot/right_joint_velocity_controller/joints/right_j6_controller/pid/parameter_descriptions  /robot/right_joint_velocity_controller/joints/right_j6_controller/pid/parameter_updates  /robot/right_joint_velocity_controller/joints/right_j6_controller/state  /robot/set_super_enable  /robot/set_super_reset  /robot/set_super_stop  /robot/sim_estop  /robot/state  /rosout  /rosout_agg  /tf  /tf_static", 
+            "title": "Topics"
+        }, 
+        {
+            "location": "/sawyer/examples/", 
+            "text": "Motion\n\n\n1.-Basic\n\n\nEnable robot\n\n\nrosrun intera_interface robot_enable.py\n\n\n\n\nRandom head move\n\n\nfrom http://sdk.rethinkrobotics.com/intera/Head_Movement_Example\n\n\nrosrun intera_examples head_wobbler.py\n\n\n\n\n2.-Input/Output\n\n\nCamera Image\n\n\nrosrun intera_examples camera_display.py -c 'head_camera'\nrosrun intera_examples camera_display.py -c 'right_hand_camera'\n\n\n\n\noptional arguments:\n\n\n\n\n-h, --help            show this help message and exit\n\n\n\n\n-c {head_camera,right_hand_camera}, --camera {head_camera,right_hand_camera}\nSetup Camera Name for Camera Display:\n\n\n\n\n\n\n-r, --raw             Specify use of the raw image (unrectified) topic\n\n\n\n\n-e, --edge            Streaming the Canny edge detection image\n\n\n\n\nImage display\n\n\nrosrun intera_examples head_display_image.py -f \nthe path to image file to send\n\n\n\n\n\n3.-Gripper\n\n\nrosrun intera_examples gripper_keyboard.py\n\n\n\n\n\n\nkey: description,\n\n\n'r': \"reboot\",\n\n\n'c': \"calibrate\",\n\n\n'q': \"close\",\n\n\n'o': \"open\",\n\n\n'u': \"decrease position\",\n\n\n'i': \"increase position\",\n\n\n\n\nINTERACTION CONTROL\n\n\nMaybe best part of example.\nhttp://sdk.rethinkrobotics.com/intera/Interaction_Control_Tutorial", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/sawyer/examples/#motion", 
+            "text": "", 
+            "title": "Motion"
+        }, 
+        {
+            "location": "/sawyer/examples/#1-basic", 
+            "text": "", 
+            "title": "1.-Basic"
+        }, 
+        {
+            "location": "/sawyer/examples/#enable-robot", 
+            "text": "rosrun intera_interface robot_enable.py", 
+            "title": "Enable robot"
+        }, 
+        {
+            "location": "/sawyer/examples/#random-head-move", 
+            "text": "from http://sdk.rethinkrobotics.com/intera/Head_Movement_Example  rosrun intera_examples head_wobbler.py", 
+            "title": "Random head move"
+        }, 
+        {
+            "location": "/sawyer/examples/#2-inputoutput", 
+            "text": "", 
+            "title": "2.-Input/Output"
+        }, 
+        {
+            "location": "/sawyer/examples/#camera-image", 
+            "text": "rosrun intera_examples camera_display.py -c 'head_camera'\nrosrun intera_examples camera_display.py -c 'right_hand_camera'  optional arguments:   -h, --help            show this help message and exit   -c {head_camera,right_hand_camera}, --camera {head_camera,right_hand_camera}\nSetup Camera Name for Camera Display:    -r, --raw             Specify use of the raw image (unrectified) topic   -e, --edge            Streaming the Canny edge detection image", 
+            "title": "Camera Image"
+        }, 
+        {
+            "location": "/sawyer/examples/#image-display", 
+            "text": "rosrun intera_examples head_display_image.py -f  the path to image file to send", 
+            "title": "Image display"
+        }, 
+        {
+            "location": "/sawyer/examples/#3-gripper", 
+            "text": "rosrun intera_examples gripper_keyboard.py   key: description,  'r': \"reboot\",  'c': \"calibrate\",  'q': \"close\",  'o': \"open\",  'u': \"decrease position\",  'i': \"increase position\",", 
+            "title": "3.-Gripper"
+        }, 
+        {
+            "location": "/sawyer/examples/#interaction-control", 
+            "text": "Maybe best part of example.\nhttp://sdk.rethinkrobotics.com/intera/Interaction_Control_Tutorial", 
+            "title": "INTERACTION CONTROL"
+        }, 
+        {
+            "location": "/sawyer/simulator/", 
+            "text": "Simulator\n\n\nThe simultor is based in gazebo. This version is just working with 16.04\n\n\nTotal information could be find at:\nhttp://sdk.rethinkrobotics.com/intera/Gazebo_Tutorial\n\n\nDependences\n\n\nOpen terminal \n\n\nsudo apt-get install gazebo7 ros-kinetic-qt-build ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros-pkgs ros-kinetic-ros-control ros-kinetic-control-toolbox ros-kinetic-realtime-tools ros-kinetic-ros-controllers ros-kinetic-xacro python-wstool ros-kinetic-tf-conversions ros-kinetic-kdl-parser ros-kinetic-sns-ik-lib\n\n\n\n\nInstall sawyer_simulator\n\n\ngit clone https://github.com/RethinkRobotics/sawyer_simulator.git\ncd ~/avalos_ros_ws/src\nwstool init .\nwstool merge sawyer_simulator/sawyer_simulator.rosinstall\nwstool update\n\n\n\n\nBuild Source\n\n\nsource /opt/ros/kinetic/setup.bash\ncd ~/ros_ws\ncatkin_make\n\n\n\n\nInitialize Simulator\n\n\nBefore to acces be your to set your IP as your local IP. With \nifconfig\nis enough to get that information. \n\n\ncd ~/avalos_ros_ws/\n./intera.sh sim\n\n\n\n\nYou have to change \nyour_ip\n varibale to 127.0.0.1. You could acces to gazebo interface trhought the following command:\n\n\nroslaunch sawyer_gazebo sawyer_world.launch", 
+            "title": "Simulator"
+        }, 
+        {
+            "location": "/sawyer/simulator/#simulator", 
+            "text": "The simultor is based in gazebo. This version is just working with 16.04  Total information could be find at:\nhttp://sdk.rethinkrobotics.com/intera/Gazebo_Tutorial", 
+            "title": "Simulator"
+        }, 
+        {
+            "location": "/sawyer/simulator/#dependences", 
+            "text": "Open terminal   sudo apt-get install gazebo7 ros-kinetic-qt-build ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros-pkgs ros-kinetic-ros-control ros-kinetic-control-toolbox ros-kinetic-realtime-tools ros-kinetic-ros-controllers ros-kinetic-xacro python-wstool ros-kinetic-tf-conversions ros-kinetic-kdl-parser ros-kinetic-sns-ik-lib", 
+            "title": "Dependences"
+        }, 
+        {
+            "location": "/sawyer/simulator/#install-sawyer_simulator", 
+            "text": "git clone https://github.com/RethinkRobotics/sawyer_simulator.git\ncd ~/avalos_ros_ws/src\nwstool init .\nwstool merge sawyer_simulator/sawyer_simulator.rosinstall\nwstool update", 
+            "title": "Install sawyer_simulator"
+        }, 
+        {
+            "location": "/sawyer/simulator/#build-source", 
+            "text": "source /opt/ros/kinetic/setup.bash\ncd ~/ros_ws\ncatkin_make", 
+            "title": "Build Source"
+        }, 
+        {
+            "location": "/sawyer/simulator/#initialize-simulator", 
+            "text": "Before to acces be your to set your IP as your local IP. With  ifconfig is enough to get that information.   cd ~/avalos_ros_ws/\n./intera.sh sim  You have to change  your_ip  varibale to 127.0.0.1. You could acces to gazebo interface trhought the following command:  roslaunch sawyer_gazebo sawyer_world.launch", 
+            "title": "Initialize Simulator"
+        }, 
+        {
+            "location": "/links/", 
+            "text": "Links\n\n\nMy workplace is upload using github:\n\n\nhttps://github.com/JoseAvalos/avalos_intera\n\n\nMain official source is available in:\n\n\nhttps://rethinkrobotics.github.io/intera_sdk_docs/5.1.0/index.html\n\n\nOther links\n\n\n\n\nhttp://rethinkrobotics.interaforum.com/\n\n\nhttp://sdk.rethinkrobotics.com/intera/Community_Research\n\n\nhttp://sdk.rethinkrobotics.com/intera/Running_Examples_Overview\n\n\nhttp://sdk.rethinkrobotics.com/intera/Robot_Interface\n\n\nhttp://sdk.rethinkrobotics.com/intera/API_Reference\n\n\nhttp://sdk.rethinkrobotics.com/intera/SDK_System_Overview\n\n\nhttp://sdk.rethinkrobotics.com/intera/Hardware_Components\n\n\nhttp://sdk.rethinkrobotics.com/intera/Running_Examples_Overview\n\n\n\n\nInfo online:\n\n\n*https://octave-online.net/#cmd=length(t1)\n\n\nMOTION PLANING\n\n\nOficial Source\n\n\nhttp://sdk.rethinkrobotics.com/intera/MoveIt_Tutorial\nhttp://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/move_group_python_interface/move_group_python_interface_tutorial.html\n\n\nhttps://github.com/krishauser/Klampt\n\n\nhttps://github.com/krishauser/Klampt/blob/master/Documentation/Tutorials/Install-Linux.md\n\n\nThe message:\nhttp://docs.ros.org/melodic/api/moveit_msgs/html/msg/RobotTrajectory.html\n\n\ntype group:\nhttp://docs.ros.org/jade/api/moveit_commander/html/move__group_8py_source.html#l00094\n\n\ntype msg:\nhttp://docs.ros.org/jade/api/moveit_commander/html/classmoveitcommander_1_1movegroup_1_1MoveGroupCommander.html\nhttp://docs.ros.org/jade/api/moveit_commander/html/classmoveitcommander_1_1movegroup_1_1MoveGroupCommander.html\n\n\nFILES ORGANIZATION\n\n\n\n\n2_trajectory.py : Send trajectory \n\n\ncalculos : All joints data         \n\n\nnew_topic.py : suscriber topic to send to cloud   \n\n\ntest_head.py : ---\n\n\nangulos.py : Inverse kinematic  \n\n\nik_service_client.py : --- \n\n\nrecord_data.py  : record data for joints(in progress)\n\n\ntrajectory.py : First try, no working\n\n\n\n\nIOT\n\n\nWe have already decide to work with IBM Cloud. \n\n\n--\n Service name IIOT-UTEC\n\n\n--\n Device type:robot-utec\n\n\n--\nDevice id:sawyer-intera\n\n\nauth-method = token\nauth-token  = s4wyer-inter4\n\n\neventoutec\n7dbnx", 
+            "title": "Links"
+        }, 
+        {
+            "location": "/links/#links", 
+            "text": "My workplace is upload using github:  https://github.com/JoseAvalos/avalos_intera  Main official source is available in:  https://rethinkrobotics.github.io/intera_sdk_docs/5.1.0/index.html", 
+            "title": "Links"
+        }, 
+        {
+            "location": "/links/#other-links", 
+            "text": "http://rethinkrobotics.interaforum.com/  http://sdk.rethinkrobotics.com/intera/Community_Research  http://sdk.rethinkrobotics.com/intera/Running_Examples_Overview  http://sdk.rethinkrobotics.com/intera/Robot_Interface  http://sdk.rethinkrobotics.com/intera/API_Reference  http://sdk.rethinkrobotics.com/intera/SDK_System_Overview  http://sdk.rethinkrobotics.com/intera/Hardware_Components  http://sdk.rethinkrobotics.com/intera/Running_Examples_Overview   Info online:  *https://octave-online.net/#cmd=length(t1)", 
+            "title": "Other links"
+        }, 
+        {
+            "location": "/links/#motion-planing", 
+            "text": "Oficial Source  http://sdk.rethinkrobotics.com/intera/MoveIt_Tutorial\nhttp://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/move_group_python_interface/move_group_python_interface_tutorial.html  https://github.com/krishauser/Klampt  https://github.com/krishauser/Klampt/blob/master/Documentation/Tutorials/Install-Linux.md  The message:\nhttp://docs.ros.org/melodic/api/moveit_msgs/html/msg/RobotTrajectory.html  type group:\nhttp://docs.ros.org/jade/api/moveit_commander/html/move__group_8py_source.html#l00094  type msg:\nhttp://docs.ros.org/jade/api/moveit_commander/html/classmoveitcommander_1_1movegroup_1_1MoveGroupCommander.html\nhttp://docs.ros.org/jade/api/moveit_commander/html/classmoveitcommander_1_1movegroup_1_1MoveGroupCommander.html", 
+            "title": "MOTION PLANING"
+        }, 
+        {
+            "location": "/links/#files-organization", 
+            "text": "2_trajectory.py : Send trajectory   calculos : All joints data           new_topic.py : suscriber topic to send to cloud     test_head.py : ---  angulos.py : Inverse kinematic    ik_service_client.py : ---   record_data.py  : record data for joints(in progress)  trajectory.py : First try, no working", 
+            "title": "FILES ORGANIZATION"
+        }, 
+        {
+            "location": "/links/#iot", 
+            "text": "We have already decide to work with IBM Cloud.   --  Service name IIOT-UTEC  --  Device type:robot-utec  -- Device id:sawyer-intera  auth-method = token\nauth-token  = s4wyer-inter4  eventoutec\n7dbnx", 
+            "title": "IOT"
+        }
+    ]
+}

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>WorkSetup - THESIS@AVALOS</title>
+        <title>Organization - THESIS@AVALOS</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -48,11 +48,68 @@
                     <li >
                         <a href="..">Introduction</a>
                     </li>
-                    <li >
-                        <a href="../PW/">Progress</a>
-                    </li>
                     <li class="active">
-                        <a href="./">WorkSetup</a>
+                        <a href="./">Organization</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Progress <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../session/w1/">Session 1</a>
+</li>
+                            
+<li >
+    <a href="../session/w2/">Session 2</a>
+</li>
+                            
+<li >
+    <a href="../session/w3/">Session 3</a>
+</li>
+                            
+<li >
+    <a href="../session/w4/">Session 4</a>
+</li>
+                            
+<li >
+    <a href="../session/w5/">Session 5</a>
+</li>
+                            
+<li >
+    <a href="../session/w6/">Session 6</a>
+</li>
+                            
+<li >
+    <a href="../session/w7/">Session 7</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../WorkSetup/">WorkSetup</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sawyer <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../sawyer/sawyer/">Description</a>
+</li>
+                            
+<li >
+    <a href="../sawyer/ROS/">ROS</a>
+</li>
+                            
+<li >
+    <a href="../sawyer/examples/">Examples</a>
+</li>
+                            
+<li >
+    <a href="../sawyer/simulator/">Simulator</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../links/">Links</a>
                     </li>
                 </ul>
 
@@ -63,12 +120,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../PW/">
+                        <a rel="next" href="..">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../session/w1/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -80,96 +137,17 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#1-configure-ubuntu-repositories-install-ros">1.-Configure Ubuntu repositories / Install ROS</a></li>
-            <li><a href="#setup-your-sourceslist">Setup your sources.list</a></li>
-            <li><a href="#setup-your-keys">Setup your keys</a></li>
-            <li><a href="#update-to-latest-software-lists">Update to Latest Software Lists</a></li>
-            <li><a href="#install-ros-kinetic-desktop-full">Install ROS Kinetic Desktop Full</a></li>
-        <li class="main "><a href="#2-create-workspace">2.- Create Workspace</a></li>
-            <li><a href="#this-step-will-depende-of-the-user-directory-could-change-according-to-your-preferences">This step will depende of the user. Directory could change according to your preferences.</a></li>
-        <li class="main "><a href="#3-install-intera-robot-sdk">3.-Install INTERA Robot SDK</a></li>
-            <li><a href="#this-git-will-contain-the-default-software-to-use-the-robot">This git will contain the default software to use the robot.</a></li>
-            <li><a href="#build-again">Build again</a></li>
-        <li class="main "><a href="#4-add-to-bash">4 Add to Bash</a></li>
-        <li class="main "><a href="#5-define-envioroment">5.- Define envioroment</a></li>
-            <li><a href="#change-version-in-sh-file">Change version in *.sh file</a></li>
-            <li><a href="#update-intera-version">Update intera version</a></li>
+        <li class="main active"><a href="#sprint-1-march-2018">Sprint 1 [March 2018]</a></li>
+        <li class="main "><a href="#sprint-2-july-2018">Sprint 2 [July 2018]</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>Official information could be find:</p>
-<p>http://sdk.rethinkrobotics.com/intera/Main_Page</p>
-<h1 id="1-configure-ubuntu-repositories-install-ros">1.-Configure Ubuntu repositories / Install ROS</h1>
-<p>http://sdk.rethinkrobotics.com/intera/Workstation_Setup</p>
-<h2 id="setup-your-sourceslist">Setup your sources.list</h2>
-<pre><code>sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu xenial main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
-</code></pre>
-
-<h2 id="setup-your-keys">Setup your keys</h2>
-<pre><code>sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-</code></pre>
-
-<h2 id="update-to-latest-software-lists">Update to Latest Software Lists</h2>
-<pre><code>sudo apt-get update
-</code></pre>
-
-<h2 id="install-ros-kinetic-desktop-full">Install ROS Kinetic Desktop Full</h2>
-<pre><code>sudo apt-get install ros-kinetic-desktop-full
-</code></pre>
-
-<h1 id="2-create-workspace">2.- Create Workspace</h1>
-<h3 id="this-step-will-depende-of-the-user-directory-could-change-according-to-your-preferences">This step will depende of the user. Directory could change according to your preferences.</h3>
-<pre><code>mkdir -p ~/avalos_ros_ws/src
-source /opt/ros/kinetic/setup.bash
-cd ~/avalos_ros_ws
-catkin_make
-</code></pre>
-
-<h1 id="3-install-intera-robot-sdk">3.-Install INTERA Robot SDK</h1>
-<h3 id="this-git-will-contain-the-default-software-to-use-the-robot">This git will contain the default software to use the robot.</h3>
-<pre><code>cd ~/avalos_ros_ws/src
-wstool init .
-git clone https://github.com/RethinkRobotics/sawyer_robot.git
-wstool merge sawyer_robot/sawyer_robot.rosinstall
-wstool update
-</code></pre>
-
-<h3 id="build-again">Build again</h3>
-<pre><code>cd ~/avalos_ros_ws
-catkin_make
-</code></pre>
-
-<h1 id="4-add-to-bash">4 Add to Bash</h1>
-<p>In order to use <code>roscd</code> you have to add your directory to your bash file. Using Sublime :</p>
-<pre><code>subl ~/.bashrc 
--- add at the end
-source /opt/ros/kinetic/setup.bash
-source /home/jose/avalos_ros_ws/devel/setup.bash
-</code></pre>
-
-<p>To check you could try <code>echo $ROS_PACKAGE_PATH</code> in terminal.</p>
-<h1 id="5-define-envioroment">5.- Define envioroment</h1>
-<p>We have to copy a default file wich contain the network connection information.</p>
-<pre><code>cp ~/avalos_ros_ws/src/intera_sdk/intera.sh ~/avalos_ros_ws
-</code></pre>
-
-<p>To edit the file I reccommed ~Sublime~ https://www.sublimetext.com/3</p>
-<h2 id="change-version-in-sh-file">Change version in *.sh file</h2>
-<p>A important point is define the ROS version. In this work, it is kinectic</p>
-<pre><code>ros_version=&quot;kinetic&quot;
-</code></pre>
-
-<p>In order to move fast to this directories, we define  :</p>
-<pre><code>test=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test
-avalos=/home/jose/avalos_ros_ws/src/intera_sdk/avalos_intera
-</code></pre>
-
-<h2 id="update-intera-version">Update intera version</h2>
-<p>There are no specific step to upgrade but in this case my action are based in the UTEC sawyer.</p>
-<p>First of all, you need a keyboard to access to boot actions.  </p>
-<p>You have to connect it through the USB y keep press <code>Ctrl+f</code> after press boton ON.  When you see a regressive count (like 5,4,...) you have to keep press <code>Crtl</code> and press and depress <code>f</code>.</p>
-<p>You have to wait until a white scree white red  <code>"Preparing to boot...</code> , in this momento you have to press <code>Ctrl+f</code>  to access to the menu.</p></div>
+<h1 id="sprint-1-march-2018">Sprint 1 [March 2018]</h1>
+<p>Getting the information about the course I have already organice the information as follow. 
+<center><img src="../img/tesis_org/01.png" width="60%"></center>
+For the first part, the proffesor will be </p>
+<h1 id="sprint-2-july-2018">Sprint 2 [July 2018]</h1></div>
         </div>
 
         <footer class="col-md-12">
