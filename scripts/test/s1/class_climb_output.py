@@ -17,12 +17,11 @@ def main():
                     "right_j0": 0.0}
         print positions
         limb.move_to_joint_positions(positions)
-        print "Moveo ok"
+        #limb.move_to_neutral()
+        print "Move ok"
 
     except rospy.ROSInterruptException:
         rospy.logerr('Keyboard interrupt detected from the user. Exiting before trajectory completion.')
-
-
 
 if __name__ == '__main__':
     main()
