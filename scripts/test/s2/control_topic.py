@@ -4,7 +4,7 @@ from intera_interface import Limb
 from intera_interface import CHECK_VERSION
 from intera_core_msgs.msg import JointCommand
 import time
-
+# Control robot using topics
 def main():
 
     try:

@@ -1,7 +1,7 @@
 import rospy
 import argparse
 from intera_interface import Limb
-
+# Control robot using class Limb
 def main():
 
     try:
