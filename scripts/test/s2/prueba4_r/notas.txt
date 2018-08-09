@@ -1,0 +1,1 @@
+Para esta prueba se aumenta el tiempo a unos 8 s de trayectoria

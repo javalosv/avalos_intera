@@ -1,0 +1,1 @@
+En este caso se ve que el tiempo de desplzamiento en el robot es mucho mayor que la simulación
