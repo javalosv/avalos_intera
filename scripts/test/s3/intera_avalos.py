@@ -1,6 +1,5 @@
-# 0.3.1
-# Se introduce save_matrix
-# We generate the position, velocity and acceleration based in frecuency
+# 0.3.2
+# Get jerk value
 from __future__ import division
 import argparse
 import rospy
@@ -32,6 +31,13 @@ from intera_core_msgs.srv import (
 	SolvePositionIKRequest,
 )
 
+def get_area(_vector,_f):
+	h=1.0/float(_f)
+	_v=np.power(_vector,2)
+	k=np.sum(_v)
+	k=k-0.5*(_v[0]+_v[-1])
+	area=k*h
+	return area
 
 def save_matrix(_j,_name,_f):
 	file2write=open(_name,'w')
@@ -122,7 +128,7 @@ def generate_jerk(_a,_f):
 	jk5=np.zeros(ext)
 	jk6=np.zeros(ext)
 
-	for n in range(ext-3):
+	for n in range(ext-1):
 		jk0[n]=((_a[0][n+1]-_a[0][n])*_f)
 		jk1[n]=((_a[1][n+1]-_a[1][n])*_f)
 		jk2[n]=((_a[2][n+1]-_a[2][n])*_f)
@@ -130,26 +136,25 @@ def generate_jerk(_a,_f):
 		jk4[n]=((_a[4][n+1]-_a[4][n])*_f)
 		jk5[n]=((_a[5][n+1]-_a[5][n])*_f)
 		jk6[n]=((_a[6][n+1]-_a[6][n])*_f)
-	for i in range(3):
-		jk0[-3+i]=(jk0[-4+i])
-		jk1[-3+i]=(jk1[-4+i])
-		jk2[-3+i]=(jk2[-4+i])
-		jk3[-3+i]=(jk3[-4+i])
-		jk4[-3+i]=(jk4[-4+i])
-		jk5[-3+i]=(jk5[-4+i])
-		jk6[-3+i]=(jk6[-4+i])
+	jk0[-1]=0
+	jk1[-1]=0
+	jk2[-1]=0
+	jk3[-1]=0
+	jk4[-1]=0
+	jk5[-1]=0
+	jk6[-1]=0
 	ext= len(jk0)
 
-	#a_jk0=get_area(jk0,_f)
-	#a_jk1=get_area(jk1,_f)
-	#a_jk2=get_area(jk2,_f)
-	#a_jk3=get_area(jk3,_f)
-	#a_jk4=get_area(jk4,_f)
-	#a_jk5=get_area(jk5,_f)
-	#a_jk6=get_area(jk6,_f)
+	a_jk0=get_area(jk0,_f)
+	a_jk1=get_area(jk1,_f)
+	a_jk2=get_area(jk2,_f)
+	a_jk3=get_area(jk3,_f)
+	a_jk4=get_area(jk4,_f)
+	a_jk5=get_area(jk5,_f)
+	a_jk6=get_area(jk6,_f)
 
-	#a=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
-	ind=0#sqrt(a)
+	a=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
+	ind=sqrt(a)
 	jk= [jk0,jk1,jk2,jk3,jk4,jk5,jk6]
 	print "Knots en jerk generados.",ext
 	return jk, ind,ext

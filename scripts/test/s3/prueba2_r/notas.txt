@@ -1,0 +1,1 @@
+Se añade la determinación de valores de jerk y tiempo

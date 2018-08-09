@@ -71,6 +71,12 @@ def main():
         save_matrix(a,"data_a.txt",f)
         save_matrix(jk,"data_y.txt",f)
 
+        v_t=round(6*(ext/f),2)
+        print "Valor tiempo: ",v_t
+        print "Valor jerk", v_jk
+
+        raw_input('Iniciar?')
+
         #Build message
         my_msg=JointCommand()
         # POSITION_MODE

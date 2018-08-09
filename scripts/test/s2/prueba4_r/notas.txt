@@ -1,1 +1,4 @@
-Para esta prueba se aumenta el tiempo a unos 8 s de trayectoria
+Para esta prueba se aumenta el tiempo a unos 8 s de trayectoria. Y se realiza la comparación de ambos modos
+
+files:
+spline_directa_v0.py
