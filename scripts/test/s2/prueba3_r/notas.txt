@@ -1,1 +1,4 @@
 En este caso se ve que el tiempo de desplzamiento en el robot es mucho mayor que la simulación
+Se emplea el tiempo de 3s 
+Se observa que la posicion es uniforme para la cinematica directa
+pero para la trayectoria no puede llegar a tiempo. Se recomienda aumentar el tiempo.
