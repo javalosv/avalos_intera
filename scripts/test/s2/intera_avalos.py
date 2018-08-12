@@ -43,6 +43,16 @@ def generate_path_cub(_points,_time,_f):
 	print "Knots en posicion generados.",ext
 	return q, ext
 
+def save_matrix(_j,_name,_f):
+	file2write=open(_name,'w')
+	l=len(_j[0][:])
+	time=np.linspace(0, (l-1)/float(_f), num=l)
+	for n in range(l):
+		file2write.write(str(time[n])+' , '+str(_j[0][n])+' , '+str(_j[1][n])+' , '+str(_j[2][n])+' , '+str(_j[3][n])+' , '+ str(_j[4][n])+' , '+str(_j[5][n])+' , '+str(_j[6][n])+'\n')
+	file2write.close()
+	print "save data en",_name
+	return True
+	
 def path_simple_cub_v0(_point,_time,_f):
 	x=_time
 	a=_point

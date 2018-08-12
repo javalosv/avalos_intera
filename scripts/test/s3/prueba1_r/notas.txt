@@ -1,2 +1,3 @@
 Se reduce la extensión de programación.
+Se anade las generacion de la trayectoria a la libreria. 
 Y se extrae la información de los valores de posicion velocidad acelereacion jerk

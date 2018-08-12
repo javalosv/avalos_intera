@@ -85,6 +85,15 @@ def main():
         a_j5= np.zeros(l)
         a_j6= np.zeros(l)
 
+        # Vector for acceleration
+        jk_j0= np.zeros(l)
+        jk_j1= np.zeros(l)
+        jk_j2= np.zeros(l)
+        jk_j3= np.zeros(l)
+        jk_j4= np.zeros(l)
+        jk_j5= np.zeros(l)
+        jk_j6= np.zeros(l)
+        
         for i in xrange(l-1):
             v_j0[i]= (j0[i+1]-j0[i])*f
             v_j1[i]= (j1[i+1]-j1[i])*f
@@ -94,13 +103,13 @@ def main():
             v_j5[i]= (j5[i+1]-j5[i])*f
             v_j6[i]= (j6[i+1]-j6[i])*f
 
-        v_j0[-1]=0
-        v_j1[-1]=0
-        v_j2[-1]=0
-        v_j3[-1]=0
-        v_j4[-1]=0
-        v_j5[-1]=0
-        v_j6[-1]=0
+        v_j0[-1]=v_j0[-2]
+        v_j1[-1]=v_j1[-2]
+        v_j2[-1]=v_j2[-2]
+        v_j3[-1]=v_j3[-2]
+        v_j4[-1]=v_j4[-2]
+        v_j5[-1]=v_j5[-2]
+        v_j6[-1]=v_j6[-2]
 
         for i in xrange(l-1):
             a_j0[i]= (v_j0[i+1]-v_j0[i])*f
@@ -111,13 +120,42 @@ def main():
             a_j5[i]= (v_j5[i+1]-v_j5[i])*f
             a_j6[i]= (v_j6[i+1]-v_j6[i])*f
 
-        a_j0[-1]=0
-        a_j1[-1]=0
-        a_j2[-1]=0
-        a_j3[-1]=0
-        a_j4[-1]=0
-        a_j5[-1]=0
-        a_j6[-1]=0
+        a_j0[-1]=a_j0[-2]
+        a_j1[-1]=a_j0[-2]
+        a_j2[-1]=a_j0[-2]
+        a_j3[-1]=a_j0[-2]
+        a_j4[-1]=a_j0[-2]
+        a_j5[-1]=a_j0[-2]
+        a_j6[-1]=a_j0[-2]
+
+        for i in xrange(l-1):
+            jk_j0[i]= (a_j0[i+1]-a_j0[i])*f
+            jk_j1[i]= (a_j1[i+1]-a_j1[i])*f
+            jk_j2[i]= (a_j2[i+1]-a_j2[i])*f
+            jk_j3[i]= (a_j3[i+1]-a_j3[i])*f
+            jk_j4[i]= (a_j4[i+1]-a_j4[i])*f
+            jk_j5[i]= (a_j5[i+1]-a_j5[i])*f
+            jk_j6[i]= (a_j6[i+1]-a_j6[i])*f
+
+        jk_j0[-1]=jk_j0[-2]
+        jk_j1[-1]=jk_j1[-2]
+        jk_j2[-1]=jk_j2[-2]
+        jk_j3[-1]=jk_j3[-2]
+        jk_j4[-1]=jk_j4[-2]
+        jk_j5[-1]=jk_j5[-2]
+        jk_j6[-1]=jk_j6[-2]
+
+
+        j= np.array([j0,j1,j2,j3,j4,j5,j6])
+        v= np.array([v_j0,v_j1,v_j2,v_j3,v_j4,v_j5,v_j6])
+        a= np.array([a_j0,a_j1,a_j2,a_j3,a_j4,a_j5,a_j6])
+        jk= np.array([jk_j0,jk_j1,jk_j2,jk_j3,jk_j4,jk_j5,jk_j6])
+
+        save_matrix(j,"data_p.txt",f)
+        save_matrix(v,"data_v.txt",f)
+        save_matrix(a,"data_a.txt",f)
+        save_matrix(jk,"data_y.txt",f)
+
 
         #Build message
         my_msg=JointCommand()

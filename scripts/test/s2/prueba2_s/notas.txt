@@ -1,0 +1,3 @@
+Se analiza la simulacion con v igual a 0
+301 puntos
+

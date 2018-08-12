@@ -1,0 +1,2 @@
+Se analiza la simulacion con v inicial no igual a 0
+se emplea la libreri np y genera solo 300 puntos
