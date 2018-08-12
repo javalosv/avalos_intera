@@ -26,7 +26,7 @@ def main():
         #Class limb to acces information sawyer
         limb = Limb()
         #Initial position
-        #limb.move_to_neutral()
+        limb.move_to_neutral()
         #time.sleep(1)
         # Position init
         initial=limb.joint_angles()
@@ -60,10 +60,17 @@ def main():
         k_j5 = sp.interpolate.interp1d(k_pt, [p0[5],p1[5],p2[5]], kind='linear')(k_t)
         k_j6 = sp.interpolate.interp1d(k_pt, [p0[6],p1[6],p2[6]], kind='linear')(k_t)
         q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
-
+        [j,v,a,jk,ext]=generate_path_cub(q,k_t,f)
+        save_matrix(j,"data_p.txt",f)
+        save_matrix(v,"data_v.txt",f)
+        save_matrix(a,"data_a.txt",f)
+        save_matrix(jk,"data_y.txt",f)
+        #raw_input('Iniciar?')
         start = time.time()
-        opt_v=Opt_avalos(q,f)
+        opt_value=Opt_avalos(q,f)
         end = time.time()
+        [t_min,k]=opt_value.value()
+        print k*t_min
         print time
         print end - start
         #raw_input('Iniciar?')

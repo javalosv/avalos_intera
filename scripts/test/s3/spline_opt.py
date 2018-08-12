@@ -63,11 +63,7 @@ def main():
         [t,t_rec]=min_time(q)
         print "t:"
         print t
-        [j,ext]=generate_path_cub(q,t,f)
-        [v,ext]=generate_vel(j,f)
-        [a,ext]=generate_acel(v,f)
-        [jk,v_jk,ext]=generate_jerk(a,f)
-
+        [j,v,a,jk,ext]=generate_path_cub(q,t,f)
         save_matrix(j,"data_p.txt",f)
         save_matrix(v,"data_v.txt",f)
         save_matrix(a,"data_a.txt",f)

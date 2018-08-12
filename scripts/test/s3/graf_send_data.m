@@ -1,5 +1,5 @@
 clear all, close all, clc
-semana='3';prueba='3';tipo='_s';
+semana='3';prueba='4';tipo='_s';
 
 dir=strcat('prueba',prueba,tipo)
 p = csvread(strcat(dir,'/data_p.txt'));
@@ -7,7 +7,7 @@ v = csvread(strcat(dir,'/data_v.txt'));
 a = csvread(strcat(dir,'/data_a.txt'));
 y = csvread(strcat(dir,'/data_y.txt'));
 
-knots= 1:297:298
+knots= 1:700:701
 
 leg=cell(7,1);
 for n=2:8   
