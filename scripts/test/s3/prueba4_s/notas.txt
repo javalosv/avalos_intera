@@ -1,0 +1,8 @@
+optimizacion con desplzamiento de neutro a 0 a neutro 
+optimizado con 0.5 alfa 
+
+
+knots= round(100*[ 0.01        ,  0.71999909,  1.43999818,  2.15999726,  2.87999635, ...
+    3.59999544,  4.31999453,  5.03999361,  5.7599927 ,  6.47999179, ...
+        7.19999088]);
+

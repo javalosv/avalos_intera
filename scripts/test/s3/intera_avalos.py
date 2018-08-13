@@ -1,5 +1,4 @@
-# 0.3.2
-# Get jerk value
+# 0.3.4
 from __future__ import division
 import argparse
 import rospy
@@ -159,25 +158,27 @@ def min_time(_q):
 		t_min[i+1]=w+t_min[i]
 	return t_min, sum(t_min)
 
-class Opt_avalos():
+class Opt_1_avalos():
 
-	def __init__(self,_q,_f):
+	def __init__(self,_q,_f,_alfa):
 		self.q=_q
 		self.f=_f
+		self.alfa=_alfa
 		[self.t_v,self.t_rec]=min_time(self.q)
 		g=np.array([0.0])
 		x0 = np.array([1.0])
 		self.res = minimize(self.costo, x0, method='nelder-mead',options={'xtol': 1e-1, 'disp': True})
 
-
 	def costo(self,k):
 		t=k*self.t_v
 		[v_jk,ext]=self.value_sum_jerk(self.q,t,self.f)
 		v_t=round(6*(ext/float(self.f)),2)
-		ecu=v_jk+v_t
+		ecu=self.alfa*v_t+(1-self.alfa)*v_jk
 		return ecu
+
 	def value(self):
 		return self.t_v,self.res.x
+
 	def value_sum_jerk(self,_points,_time,_f):
 		jk0=path_simple_cub_v0(_points[0],_time,_f,jerk_value=True)
 		jk1=path_simple_cub_v0(_points[1],_time,_f,jerk_value=True)

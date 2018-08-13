@@ -9,9 +9,6 @@ from scipy.interpolate import interp1d
 import time
 from intera_avalos import *
 
-# This example show how the robot move from neutral position to zero position and return to neutral position
-# we are using spline based on own library
-
 def main():
 
     try:
@@ -46,35 +43,28 @@ def main():
         p1=[0,0,0,0,0,0,0]
         p2=p0
         # Knost vector time. We assum the process will take 10 sec
-
         k=np.array([0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
-        tiempo_estimado=7
-        k_t=tiempo_estimado*k
-        k_pt=np.array([k_t[0],k_t[5],k_t[-1]])
+        k_pt=np.array([k[0],k[5],k[-1]])
         # Define KNOTS. Set inperpolation in linear form
-        k_j0 = sp.interpolate.interp1d(k_pt, [p0[0],p1[0],p2[0]], kind='linear')(k_t)
-        k_j1 = sp.interpolate.interp1d(k_pt, [p0[1],p1[1],p2[1]], kind='linear')(k_t)
-        k_j2 = sp.interpolate.interp1d(k_pt, [p0[2],p1[2],p2[2]], kind='linear')(k_t)
-        k_j3 = sp.interpolate.interp1d(k_pt, [p0[3],p1[3],p2[3]], kind='linear')(k_t)
-        k_j4 = sp.interpolate.interp1d(k_pt, [p0[4],p1[4],p2[4]], kind='linear')(k_t)
-        k_j5 = sp.interpolate.interp1d(k_pt, [p0[5],p1[5],p2[5]], kind='linear')(k_t)
-        k_j6 = sp.interpolate.interp1d(k_pt, [p0[6],p1[6],p2[6]], kind='linear')(k_t)
+        k_j0 = sp.interpolate.interp1d(k_pt, [p0[0],p1[0],p2[0]], kind='linear')(k)
+        k_j1 = sp.interpolate.interp1d(k_pt, [p0[1],p1[1],p2[1]], kind='linear')(k)
+        k_j2 = sp.interpolate.interp1d(k_pt, [p0[2],p1[2],p2[2]], kind='linear')(k)
+        k_j3 = sp.interpolate.interp1d(k_pt, [p0[3],p1[3],p2[3]], kind='linear')(k)
+        k_j4 = sp.interpolate.interp1d(k_pt, [p0[4],p1[4],p2[4]], kind='linear')(k)
+        k_j5 = sp.interpolate.interp1d(k_pt, [p0[5],p1[5],p2[5]], kind='linear')(k)
+        k_j6 = sp.interpolate.interp1d(k_pt, [p0[6],p1[6],p2[6]], kind='linear')(k)
         q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
-        [j,v,a,jk,ext]=generate_path_cub(q,k_t,f)
+        alfa=0.7
+        opt_1=Opt_1_avalos(q,f,alfa)
+        start = time.time()
+        [t_min,k]=opt_1.value()
+        [j,v,a,jk,ext]=generate_path_cub(q,k*t_min,f)
+        end = time.time()
         save_matrix(j,"data_p.txt",f)
         save_matrix(v,"data_v.txt",f)
         save_matrix(a,"data_a.txt",f)
         save_matrix(jk,"data_y.txt",f)
-        #raw_input('Iniciar?')
-        start = time.time()
-        opt_value=Opt_avalos(q,f)
-        end = time.time()
-        [t_min,k]=opt_value.value()
-        print k*t_min
-        print time
-        print end - start
-        #raw_input('Iniciar?')
-
+        print("Time",k*t_min)
 
     except rospy.ROSInterruptException:
         rospy.logerr('Keyboard interrupt detected from the user.')
