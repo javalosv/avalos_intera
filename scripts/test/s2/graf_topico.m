@@ -1,11 +1,11 @@
 clear all, close all, clc
-semana='2';prueba='4';tipo='_r';
+semana='2';prueba='8';tipo='_r';
 dir=strcat('prueba',prueba,tipo)
-file='cin_directa'
+file='trayectoria'
 A = csvread(strcat(dir,'/',file,'.txt'));
 % erase stable data
-A=A(1:850,:);
-knots= 50:(800-50):801
+%A=A(1:350,:);
+%knots= [1,350]
 %%
 l1=length(A);t1=0.01*[1:l1];
 ws_v=15;ws_a=25;ws_j=35;

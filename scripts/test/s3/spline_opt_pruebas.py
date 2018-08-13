@@ -8,7 +8,7 @@ import scipy as sp
 from scipy.interpolate import interp1d
 import time
 from intera_avalos import *
-
+# Python 3.5
 def main():
 
     try:
@@ -27,16 +27,16 @@ def main():
         #time.sleep(1)
         # Position init
         initial=limb.joint_angles()
-        print "Posicion inicial terminada"
+        print("Posicion inicial terminada")
         #begin to record data
-        data.writeon("cin_directa.txt")
-        print "Control por cinematica directa iniciado."
-        time.sleep(0.5)
-        limb.move_to_joint_positions({"right_j6": 0.0,"right_j5": 0.0,"right_j4": 0.0,"right_j3": 0.0,"right_j2": 0.0,"right_j1": 0.0,"right_j0": 0.0})
-        limb.move_to_joint_positions({"right_j6": initial["right_j6"],"right_j5": initial["right_j5"],"right_j4": initial["right_j4"],"right_j3": initial["right_j3"],"right_j2": initial["right_j2"],"right_j1": initial["right_j1"],"right_j0": initial["right_j0"]})
-        time.sleep(1)
-        data.writeoff()
-        print "Control por cinematica directa terminado."
+        #data.writeon("cin_directa.txt")
+        #print "Control por cinematica directa iniciado."
+        #time.sleep(0.5)
+        #limb.move_to_joint_positions({"right_j6": 0.0,"right_j5": 0.0,"right_j4": 0.0,"right_j3": 0.0,"right_j2": 0.0,"right_j1": 0.0,"right_j0": 0.0})
+        #limb.move_to_joint_positions({"right_j6": initial["right_j6"],"right_j5": initial["right_j5"],"right_j4": initial["right_j4"],"right_j3": initial["right_j3"],"right_j2": initial["right_j2"],"right_j1": initial["right_j1"],"right_j0": initial["right_j0"]})
+        #time.sleep(1)
+        #data.writeoff()
+        print("Control por cinematica directa terminado.")
         initial=limb.joint_angles()
         p0=np.array([initial["right_j0"],initial["right_j1"],initial["right_j2"],initial["right_j3"],initial["right_j4"],initial["right_j5"],initial["right_j6"]])
         # Posiition end
@@ -54,17 +54,42 @@ def main():
         k_j5 = sp.interpolate.interp1d(k_pt, [p0[5],p1[5],p2[5]], kind='linear')(k)
         k_j6 = sp.interpolate.interp1d(k_pt, [p0[6],p1[6],p2[6]], kind='linear')(k)
         q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
-        alfa=0.7
-        opt_1=Opt_1_avalos(q,f,alfa)
+        alfa=0.2
         start = time.time()
-        [t_min,k]=opt_1.value()
-        [j,v,a,jk,ext]=generate_path_cub(q,k*t_min,f)
+        opt=Opt_2_avalos(q,f,alfa)
+        v_time=opt.value()
+        j,v,a,jk=generate_path_cub(q,v_time,f)
+        ext=len(j[0,:])
         end = time.time()
+        print('Process Time:', end-start)
+        print ext
         save_matrix(j,"data_p.txt",f)
         save_matrix(v,"data_v.txt",f)
         save_matrix(a,"data_a.txt",f)
         save_matrix(jk,"data_y.txt",f)
-        print("Time",k*t_min)
+        print("Vector Time",v_time)
+        print('Optimizacion:',opt.result())
+        print('Costo Tiempo:',opt.value_time())
+        print('Costo Jerk:',opt.value_jerk())
+        raw_input('Iniciar?')
+        #Build message
+        my_msg=JointCommand()
+        # POSITION_MODE
+        my_msg.mode=4
+        my_msg.names=["right_j0","right_j1","right_j2","right_j3","right_j4","right_j5","right_j6"]
+        data.writeon("90_trayectoria.txt")
+        print("Control por trayectoria iniciado.")
+        time.sleep(0.5)
+        for n in xrange(ext):
+            my_msg.position=[j[0][n],j[1][n],j[2][n],j[3][n],j[4][n],j[5][n],j[6][n]]
+            my_msg.velocity=[v[0][n],v[1][n],v[2][n],v[3][n],v[4][n],v[5][n],v[6][n]]
+            my_msg.acceleration=[a[0][n],a[1][n],a[2][n],a[3][n],a[4][n],a[5][n],a[6][n]]
+            pub.publish(my_msg)
+            rate.sleep()
+        print("Control por trayectoria terminado.")
+        time.sleep(1)
+        data.writeoff()
+        print("Programa terminado.")
 
     except rospy.ROSInterruptException:
         rospy.logerr('Keyboard interrupt detected from the user.')

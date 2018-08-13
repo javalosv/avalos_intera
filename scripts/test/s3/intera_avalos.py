@@ -7,13 +7,11 @@ import intera_external_devices
 import time
 import numpy as np
 from math import *
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import scipy
 from scipy.optimize import minimize
-
 from intera_core_msgs.msg import JointCommand
 from scipy import interpolate
 from scipy.interpolate import InterpolatedUnivariateSpline
@@ -64,7 +62,7 @@ def generate_path_cub(_points,_time,_f,p=True):
 	ext = l
 	if(p):
 		print "Knots en posicion generados.",ext
-	return q, v,a,y,ext
+	return q,v,a,y
 
 def path_simple_cub_v0(_point,_time,_f,jerk_value=False):
 	x=_time
@@ -159,7 +157,6 @@ def min_time(_q):
 	return t_min, sum(t_min)
 
 class Opt_1_avalos():
-
 	def __init__(self,_q,_f,_alfa):
 		self.q=_q
 		self.f=_f
@@ -167,18 +164,13 @@ class Opt_1_avalos():
 		[self.t_v,self.t_rec]=min_time(self.q)
 		g=np.array([0.0])
 		x0 = np.array([1.0])
-		self.res = minimize(self.costo, x0, method='nelder-mead',options={'xtol': 1e-1, 'disp': True})
-
+		self.res = minimize(self.costo, x0, method='nelder-mead',options={'xtol': 1e-1, 'disp': False})
 	def costo(self,k):
-		t=k*self.t_v
-		[v_jk,ext]=self.value_sum_jerk(self.q,t,self.f)
-		v_t=round(6*(ext/float(self.f)),2)
-		ecu=self.alfa*v_t+(1-self.alfa)*v_jk
+		self.t=k*self.t_v
+		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.t,self.f)
+		self.value_t=round(6*(ext/float(self.f)),2)
+		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
 		return ecu
-
-	def value(self):
-		return self.t_v,self.res.x
-
 	def value_sum_jerk(self,_points,_time,_f):
 		jk0=path_simple_cub_v0(_points[0],_time,_f,jerk_value=True)
 		jk1=path_simple_cub_v0(_points[1],_time,_f,jerk_value=True)
@@ -195,10 +187,71 @@ class Opt_1_avalos():
 		a_jk4=get_area(jk4,_f)
 		a_jk5=get_area(jk5,_f)
 		a_jk6=get_area(jk6,_f)
-
 		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
 		ind=sqrt(value_jk)
 		return ind,ext
+	def value(self):
+		return self.t
+	def result(self):
+		return self.res
+	def value_time(self):
+		return self.value_t
+	def value_jerk(self):
+		return self.value_jk
+
+class Opt_2_avalos():
+	def __init__(self,_q,_f,_alfa):
+		self.q=_q
+		self.f=_f
+		self.alfa=_alfa
+		[self.min_time,self.t_rec]=min_time(self.q)
+		self.l=len(self.min_time)-1
+		self.delta_t=np.ones(self.l)
+		self.v_time=self.min_time
+		for i in range(self.l):
+			tmp=self.min_time[i+1]-self.min_time[i]
+			self.delta_t[i]=tmp
+		x0 = np.ones(self.l)
+		print "Working in solution"
+		bnds = ((1, None),(1, None), (1, None), (1, None), (1, None), (1, None), (1, None), (1, None), (1, None), (1, None))
+		self.res = minimize(self.costo, x0,method='SLSQP', bounds=bnds, tol=0.01,options={ 'disp': False})
+	def costo(self,k):
+		t=k*self.delta_t
+		for i in range(self.l):
+			tmp=self.v_time[i]+t[i]
+			self.v_time[i+1]=tmp
+		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
+		# Funcion Costo
+		self.value_t=round((ext/float(self.f))**2,2)
+		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
+		return ecu
+	def value_sum_jerk(self,_points,_time,_f):
+		jk0=path_simple_cub_v0(_points[0],_time,_f,jerk_value=True)
+		jk1=path_simple_cub_v0(_points[1],_time,_f,jerk_value=True)
+		jk2=path_simple_cub_v0(_points[2],_time,_f,jerk_value=True)
+		jk3=path_simple_cub_v0(_points[3],_time,_f,jerk_value=True)
+		jk4=path_simple_cub_v0(_points[4],_time,_f,jerk_value=True)
+		jk5=path_simple_cub_v0(_points[5],_time,_f,jerk_value=True)
+		jk6=path_simple_cub_v0(_points[6],_time,_f,jerk_value=True)
+		ext= len(jk0)
+		a_jk0=get_area(jk0,_f)
+		a_jk1=get_area(jk1,_f)
+		a_jk2=get_area(jk2,_f)
+		a_jk3=get_area(jk3,_f)
+		a_jk4=get_area(jk4,_f)
+		a_jk5=get_area(jk5,_f)
+		a_jk6=get_area(jk6,_f)
+		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
+		ind=sqrt(value_jk)
+		return ind,ext
+	def value(self):
+		return self.v_time
+	def result(self):
+		return self.res
+	def value_time(self):
+		return self.value_t
+	def value_jerk(self):
+		return self.value_jk
 
 class Data():
 	def __init__(self):

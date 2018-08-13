@@ -1,0 +1,265 @@
+Optimizador 01
+
+6 veces el tiempo + 1 de jerk
+
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 1346
+1346
+('Process Time', 0.22121405601501465)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([  0.        ,   1.34585921,   2.69171841,   4.03757762,
+         5.38343682,   6.72929603,   8.07515524,   9.42101444,
+        10.76687365,  12.11273285,  13.45859206]))
+('Optimizacion:',  final_simplex: (array([[ 6.05395508],
+       [ 6.05390625]]), array([ 11.37466917,  11.37474899]))
+           fun: 11.37466917376711
+       message: 'Optimization terminated successfully.'
+          nfev: 56
+           nit: 24
+        status: 0
+       success: True
+             x: array([ 6.05395508]))
+('Tiempo:', 80.76)
+('Jerk:', 3.6679677014925787)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 1076
+1076
+('Process Time', 0.1786661148071289)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([  0.        ,   1.07593658,   2.15187317,   3.22780975,
+         4.30374633,   5.37968291,   6.4556195 ,   7.53155608,
+         8.60749266,   9.68342925,  10.75936583]))
+('Optimizacion:',  final_simplex: (array([[ 4.83850098],
+       [ 4.83847656]]), array([ 18.04239677,  18.04247443]))
+           fun: 18.042396767219373
+       message: 'Optimization terminated successfully.'
+          nfev: 53
+           nit: 23
+        status: 0
+       success: True
+             x: array([ 4.83850098]))
+('Tiempo:', 64.56)
+('Jerk:', 6.412995959024216)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 900
+900
+('Process Time', 0.15102815628051758)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.89999996,  1.79999991,  2.69999987,  3.59999982,
+        4.49999978,  5.39999973,  6.29999969,  7.19999964,  8.0999996 ,
+        8.99999955]))
+('Optimizacion:',  final_simplex: (array([[ 4.05      ],
+       [ 4.04998779]]), array([ 23.21251091,  23.21257432]))
+           fun: 23.212510913207119
+       message: 'Optimization terminated successfully.'
+          nfev: 53
+           nit: 24
+        status: 0
+       success: True
+             x: array([ 4.05]))
+('Tiempo:', 54.0)
+('Jerk:', 10.01796331776244)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 811
+811
+('Process Time', 0.1414639949798584)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.81059896,  1.62119793,  2.43179689,  3.24239586,
+        4.05299482,  4.86359379,  5.67419275,  6.48479171,  7.29539068,
+        8.10598964]))
+('Optimizacion:',  final_simplex: (array([[ 3.64382362],
+       [ 3.64382324]]), array([ 27.26462005,  27.2646225 ]))
+           fun: 27.264620053935303
+       message: 'Optimization terminated successfully.'
+          nfev: 68
+           nit: 27
+        status: 0
+       success: True
+             x: array([ 3.64382362]))
+('Tiempo:', 48.66)
+('Jerk:', 13.001033423225506)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 729
+729
+('Process Time', 0.12488794326782227)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.7289973 ,  1.45799459,  2.18699189,  2.91598919,
+        3.64498648,  4.37398378,  5.10298108,  5.83197837,  6.56097567,
+        7.28997296]))
+('Optimizacion:',  final_simplex: (array([[ 3.27983398],
+       [ 3.27982178]]), array([ 30.34508731,  30.34518194]))
+           fun: 30.345087307007475
+       message: 'Optimization terminated successfully.'
+          nfev: 53
+           nit: 25
+        status: 0
+       success: True
+             x: array([ 3.27983398]))
+('Tiempo:', 43.74)
+('Jerk:', 16.950363873153417)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+okKnots en posicion generados. 651
+651
+('Process Time', 0.10890722274780273)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.65088448,  1.30176896,  1.95265343,  2.60353791,
+        3.25442239,  3.90530687,  4.55619134,  5.20707582,  5.8579603 ,
+        6.50884478]))
+('Optimizacion:',  final_simplex: (array([[ 2.92528991],
+       [ 2.92528991]]), array([ 32.4267308,  32.4267308]))
+           fun: 32.426730804138849
+       message: 'Optimization terminated successfully.'
+          nfev: 148
+           nit: 59
+        status: 0
+       success: True
+             x: array([ 2.92528991]))
+('Tiempo:', 39.06)
+('Jerk:', 22.476827010347144)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 567
+567
+('Process Time', 0.09490013122558594)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.56699853,  1.13399706,  1.70099559,  2.26799412,
+        2.83499265,  3.40199118,  3.96898971,  4.53598824,  5.10298677,
+        5.6699853 ]))
+('Optimizacion:',  final_simplex: (array([[ 2.55064697],
+       [ 2.55064087]]), array([ 33.35439446,  33.35446295]))
+           fun: 33.354394456254852
+       message: 'Optimization terminated successfully.'
+          nfev: 57
+           nit: 26
+        status: 0
+       success: True
+             x: array([ 2.55064697]))
+('Tiempo:', 34.02)
+('Jerk:', 31.80154315008546)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+^[[APrograma terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 481
+481
+('Process Time', 0.08175301551818848)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.48086834,  0.96173668,  1.44260502,  1.92347336,
+        2.4043417 ,  2.88521004,  3.36607839,  3.84694673,  4.32781507,
+        4.80868341]))
+('Optimizacion:',  final_simplex: (array([[ 2.1631897 ],
+       [ 2.16318359]]), array([ 32.67498061,  32.67506176]))
+           fun: 32.674980605970966
+       message: 'Optimization terminated successfully.'
+          nfev: 51
+           nit: 22
+        status: 0
+       success: True
+             x: array([ 2.1631897]))
+('Tiempo:', 28.86)
+('Jerk:', 47.93490302985483)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Knots en posicion generados. 389
+389
+('Process Time', 0.06690096855163574)
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.3889998 ,  0.77799959,  1.16699939,  1.55599919,
+        1.94499899,  2.33399878,  2.72299858,  3.11199838,  3.50099818,
+        3.88999797]))
+('Optimizacion:',  final_simplex: (array([[ 1.75130615],
+       [ 1.75130005]]), array([ 29.13405164,  29.13413662]))
+           fun: 29.13405164174166
+       message: 'Optimization terminated successfully.'
+          nfev: 53
+           nit: 25
+        status: 0
+       success: True
+             x: array([ 1.75130615]))
+('Tiempo:', 23.34)
+('Jerk:', 81.28136624089134)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
