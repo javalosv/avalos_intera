@@ -1,3 +1,5 @@
+Generacion de desplzamiento pasa de euler a generacion polinomica
+
 optimizacion con desplzamiento de neutro a 0 a neutro 
 optimizado con 0.5 alfa 
 

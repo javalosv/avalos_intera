@@ -5,7 +5,7 @@ file='cin_directa'
 A = csvread(strcat(dir,'/',file,'.txt'));
 % erase stable data
 A=A(1:850,:);
-knots= 50:(800-50):801
+knots= 60:(80-60):801
 %%
 l1=length(A);t1=0.01*[1:l1];
 ws_v=15;ws_a=25;ws_j=35;
@@ -37,9 +37,9 @@ ax.Position = [left bottom ax_width ax_height];
 
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_p','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_p','.png'));
-close all
+%close all
 
-% Velocidad A
+%% Velocidad A
 close all;clc;
 figure
 legend

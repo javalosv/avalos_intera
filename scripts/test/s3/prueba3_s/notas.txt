@@ -1,1 +1,3 @@
 minimo time 
+se oberva problemas con la congeneracion de valores comparado con la polinomica. 
+Se cambia debido a ahorrar costo computacional
