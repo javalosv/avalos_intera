@@ -1,0 +1,190 @@
+a_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 1075
+('Process Time:', 13.863278865814209)
+1075
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([  0.        ,   1.25134572,   1.90246301,   2.5849222 ,
+         3.77805063,   5.48068028,   7.04101559,   7.91281246,
+         8.59902786,   9.31669322,  10.7462438 ]))
+('Costo Tiempo:', 64.5)
+('Costo Jerk:', 2.3978258377550494)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 904
+('Process Time:', 10.242674827575684)
+904
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  1.31167601,  2.27977818,  2.94045432,  3.58442311,
+        4.70542194,  5.88271447,  6.57555556,  7.18268634,  7.81782043,
+        9.03890432]))
+('Costo Tiempo:', 54.24)
+('Costo Jerk:', 3.334558915412314)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 797
+('Process Time:', 10.735534906387329)
+797
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  1.18981609,  1.90047688,  2.45775091,  3.01589657,
+        4.02224914,  4.99329119,  5.54496724,  6.10618317,  6.81852465,
+        7.96999304]))
+('Costo Tiempo:', 47.82)
+('Costo Jerk:', 4.034089257729513)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 718
+('Process Time:', 9.19075894355774)
+718
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  1.00255234,  1.6804714 ,  2.2193066 ,  2.73913759,
+        3.60184786,  4.45803261,  4.95029645,  5.49484781,  6.16510845,
+        7.17944535]))
+('Costo Tiempo:', 43.08)
+('Costo Jerk:', 6.082151114569913)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 683
+('Process Time:', 6.182307958602905)
+683
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.82564714,  1.3008967 ,  1.81174175,  2.44522778,
+        3.41433712,  4.38416998,  5.01635429,  5.52749393,  6.00271706,
+        6.82835363]))
+('Costo Tiempo:', 40.98)
+('Costo Jerk:', 6.388929263060828)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 585
+('Process Time:', 9.239587783813477)
+585
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.72057429,  1.14608249,  1.57458541,  2.05293965,
+        2.91521729,  3.79587712,  4.31159084,  4.73553883,  5.14211887,
+        5.84793362]))
+('Costo Tiempo:', 35.1)
+('Costo Jerk:', 7.786914715815487)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 553
+('Process Time:', 4.3596508502960205)
+553
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.68256279,  1.15231952,  1.60154945,  2.06609632,
+        2.76243953,  3.45688496,  3.92231842,  4.37983756,  4.845552  ,
+        5.52957538]))
+('Costo Tiempo:', 33.18)
+('Costo Jerk:', 13.372768218519264)
+Iniciar?okok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 430
+('Process Time:', 3.9708809852600098)
+430
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.55368437,  0.89164339,  1.24692753,  1.6052393 ,
+        2.17641496,  2.73047555,  3.07268928,  3.4176953 ,  3.75209105,
+        4.29997014]))
+('Costo Tiempo:', 25.8)
+('Costo Jerk:', 19.091305100094143)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s3$ python spline_opt_pruebas.py 
+Init bridge
+Posicion inicial terminada
+Control por cinematica directa terminado.
+Working in solution
+Knots en posicion generados. 358
+('Process Time:', 1.323819875717163)
+358
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.4639681 ,  0.75686436,  1.03018574,  1.32345421,
+        1.78909097,  2.25473725,  2.54794066,  2.8212608 ,  3.11415299,
+        3.57812121]))
+('Costo Tiempo:', 21.48)
+('Costo Jerk:', 32.94786301850601)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+

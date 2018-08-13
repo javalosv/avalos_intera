@@ -222,7 +222,7 @@ class Opt_2_avalos():
 			self.v_time[i+1]=tmp
 		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
 		# Funcion Costo
-		self.value_t=round((ext/float(self.f))**2,2)
+		self.value_t=round(6*(ext/float(self.f)),2)
 		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
 		return ecu
 	def value_sum_jerk(self,_points,_time,_f):
