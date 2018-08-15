@@ -1,5 +1,5 @@
 clear all, close all, clc
-semana='2';prueba='4';tipo='_r';
+semana='2';prueba='0';tipo='_s';
 
 dir=strcat('prueba',prueba,tipo)
 p = csvread(strcat(dir,'/data_p.txt'));
@@ -7,8 +7,8 @@ v = csvread(strcat(dir,'/data_v.txt'));
 a = csvread(strcat(dir,'/data_a.txt'));
 y = csvread(strcat(dir,'/data_y.txt'));
 
-knots= 1:70:701
-
+knots= 0:100:1000
+knots(1)=1
 leg=cell(7,1);
 for n=2:8   
     plot (p(:,1),p(:,n),'-o', 'LineWidth',1,'MarkerSize',5,'MarkerIndices', knots);
