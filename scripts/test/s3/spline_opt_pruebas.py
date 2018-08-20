@@ -54,7 +54,7 @@ def main():
         k_j5 = sp.interpolate.interp1d(k_pt, [p0[5],p1[5],p2[5]], kind='linear')(k)
         k_j6 = sp.interpolate.interp1d(k_pt, [p0[6],p1[6],p2[6]], kind='linear')(k)
         q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
-        alfa=0.9
+        alfa=0.5
         start = time.time()
         opt=Opt_2_avalos(q,f,alfa)
         v_time=opt.value()

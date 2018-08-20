@@ -1,0 +1,14 @@
+2018-08-20 13:06:28,085   ibmiotf.device.Client      CRITICAL Failed to connect to IBM Watson IoT Platform: piat2e.messaging.internetofthings.ibmcloud.com - [Errno 110] Connection timed out
+2018-08-20 13:12:12,149   ibmiotf.device.Client      CRITICAL Failed to connect to IBM Watson IoT Platform: piat2e.messaging.internetofthings.ibmcloud.com - [Errno 110] Connection timed out
+2018-08-20 13:12:15,775   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:12:47,266   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:13:48,980   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:15:09,178   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:15:31,365   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:15:51,160   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:16:05,595   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:18:21,880   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:23:42,526   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:46:31,411   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:47:11,180   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
+2018-08-20 13:48:08,250   ibmiotf.device.Client      INFO    Connected successfully: d:piat2e:robot-utec:sawyer-intera
