@@ -1,11 +1,11 @@
 clear all, close all, clc
-semana='2';prueba='8';tipo='_r';
+semana='2';prueba='4';tipo='_r';
 dir=strcat('prueba',prueba,tipo)
-file='trayectoria'
+file='cin_trayectoria'
 A = csvread(strcat(dir,'/',file,'.txt'));
 % erase stable data
-%A=A(1:350,:);
-%knots= [1,350]
+A=A(1:800,:);
+knots= [1,800]
 %%
 l1=length(A);t1=0.01*[1:l1];
 ws_v=15;ws_a=25;ws_j=35;
@@ -35,8 +35,8 @@ ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
 
 
-saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_p','.pdf'));
-saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_p','.png'));
+saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,tipo,'_',file,'_p','.pdf'));
+saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,tipo,'_',file,'_p','.png'));
 close all
 
 % Velocidad A
@@ -74,9 +74,9 @@ left = outerpos(1) + ti(1);bottom = outerpos(2) + ti(2);
 ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
 
-saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_v','.pdf'));
-saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_v','.png'));
-
+saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,tipo,'_',file,'_v','.pdf'));
+saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,tipo,'_',file,'_v','.png'));
+close all
 % Aceleración 
 close all;clc
 A_A = zeros(l1,7);A_J = zeros(l1,7);
@@ -120,11 +120,11 @@ ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
 
 
-saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_a','.pdf'));
-saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_a','.png'));
+saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,tipo,'_',file,'_a','.pdf'));
+saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,tipo,'_',file,'_a','.png'));
 
 
-% Jerk A
+% Jerk Aplicado
 
 for i=1:7
     for j=1:l1-1
@@ -147,7 +147,7 @@ grid on
 dummyh = line(nan, nan, 'Linestyle', 'none', 'Marker', 'none', 'Color', 'none');
 l=legend(leg,'interpreter', 'latex','NumColumns',4,'Location','best','FontSize',12);
 xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
-ylabel("Aceleraci\'on [rad/$s^3$]",'Interpreter','latex','FontSize',12.5);
+ylabel("Jerk [rad/$s^3$]",'Interpreter','latex','FontSize',12.5);
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
 set(gcf, 'Position', [0 0 600 300]);
@@ -161,5 +161,6 @@ ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
 
 
-saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_y','.pdf'));
-saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_y','.png'));
+saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,tipo,'_',file,'_y','.pdf'));
+saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,tipo,'_',file,'_y','.png'));
+close all

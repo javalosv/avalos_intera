@@ -1,5 +1,5 @@
 # *****************************************************************************
-# Copyright (c) 2017 Jose Avalos
+# Copyright (c) 2018 Jose Avalos
 # *****************************************************************************
 #!/usr/bin/env python
 import rospy
@@ -77,8 +77,3 @@ if __name__ == "__main__":
     except Exception as e:
         print("Caught exception connecting device: %s" % str(e))
         sys.exit()
-
-    
-    #device_client.commandCallback = my_command_callback
-    #timeout = set_interval(publish, 0.3)
-    #print ('Press Ctrl+C to exit')
