@@ -58,15 +58,15 @@ def main():
         raw_input('Cerrar?')
         gripper.close()
         raw_input('Iniciar_CD?')
-        data.writeon("cin_directa.txt")
-        time.sleep(0.5)
-        limb.move_to_joint_positions({"right_j6": ik2[6],"right_j5": ik2[5], "right_j4": ik2[4], "right_j3": ik2[3], "right_j2": ik2[2],"right_j1": ik2[1],"right_j0": ik2[0]})
-        limb.move_to_joint_positions({"right_j6": ik3[6],"right_j5": ik3[5], "right_j4": ik3[4], "right_j3": ik3[3], "right_j2": ik3[2],"right_j1": ik3[1],"right_j0": ik3[0]})
-        limb.move_to_joint_positions({"right_j6": ik4[6],"right_j5": ik4[5], "right_j4": ik4[4], "right_j3": ik4[3], "right_j2": ik4[2],"right_j1": ik4[1],"right_j0": ik4[0]})
-        limb.move_to_joint_positions({"right_j6": ik5[6],"right_j5": ik5[5], "right_j4": ik5[4], "right_j3": ik5[3], "right_j2": ik5[2],"right_j1": ik5[1],"right_j0": ik5[0]})
-        time.sleep(0.5)
-        data.writeoff()
-        print("Control por cinematica directa terminado.")
+        #data.writeon("cin_directa.txt")
+        #time.sleep(0.5)
+        #limb.move_to_joint_positions({"right_j6": ik2[6],"right_j5": ik2[5], "right_j4": ik2[4], "right_j3": ik2[3], "right_j2": ik2[2],"right_j1": ik2[1],"right_j0": ik2[0]})
+        #limb.move_to_joint_positions({"right_j6": ik3[6],"right_j5": ik3[5], "right_j4": ik3[4], "right_j3": ik3[3], "right_j2": ik3[2],"right_j1": ik3[1],"right_j0": ik3[0]})
+        #limb.move_to_joint_positions({"right_j6": ik4[6],"right_j5": ik4[5], "right_j4": ik4[4], "right_j3": ik4[3], "right_j2": ik4[2],"right_j1": ik4[1],"right_j0": ik4[0]})
+        #limb.move_to_joint_positions({"right_j6": ik5[6],"right_j5": ik5[5], "right_j4": ik5[4], "right_j3": ik5[3], "right_j2": ik5[2],"right_j1": ik5[1],"right_j0": ik5[0]})
+        #time.sleep(0.5)
+        #data.writeoff()
+        #print("Control por cinematica directa terminado.")
         #initial=limb.joint_angles()
         # Define KNOTS. Set inperpolation in linear form
         limb.move_to_joint_positions({"right_j6": ik1[6],"right_j5": ik1[5], "right_j4": ik1[4], "right_j3": ik1[3], "right_j2":
@@ -83,7 +83,7 @@ def main():
         k_j5 = sp.interpolate.interp1d(t_k1, [ik1[5],ik2[5],ik3[5],ik4[5],ik5[5]], kind='linear')(t_k2)
         k_j6 = sp.interpolate.interp1d(t_k1, [ik1[6],ik2[6],ik3[6],ik4[6],ik5[6]], kind='linear')(t_k2)
         q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
-        alfa=0.1
+        alfa=0.9
         start = time.time()
         opt=Opt_2_avalos(q,f,alfa)
         v_time=opt.value()
@@ -106,7 +106,7 @@ def main():
         # POSITION_MODE
         my_msg.mode=4
         my_msg.names=["right_j0","right_j1","right_j2","right_j3","right_j4","right_j5","right_j6"]
-        data.writeon("trayectoria.txt")
+        data.writeon(str(alfa)+"trayectoria.txt")
         print("Control por trayectoria iniciado.")
         time.sleep(0.5)
         for n in xrange(ext):

@@ -1,0 +1,175 @@
+0.1------------------------------------
+[intera - http://021704CP00056.local:11311] jose@avalos:~/avalos_ros_ws/src/intera_sdk/avalos_intera/scripts/test/s6$ python spline_opt_caso1.py
+Init bridge
+Cerrar?ok
+Iniciar_CD?ok
+Working in solution
+Knots en posicion generados. 1928
+('Process Time:', 35.9282169342041)
+1928
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([  0.        ,   0.80984486,   1.24941288,   1.70210166,
+         2.34047488,   3.60063351,   5.27517007,   7.43462252,
+         8.74957865,   9.64162555,  10.10573988,  10.55883306,
+        11.10566408,  13.14272934,  15.45727609,  17.81888582,  19.27977081]))
+('Costo Tiempo:', 115.68)
+('Costo Jerk:', 3.752801853820829)
+Iniciar?ok
+Control por trayectoria iniciado.
+Control por trayectoria terminado.
+Programa terminado.
+
+0.2---------------------------------------
+Init bridge
+Cerrar?oi
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 1200
+('Process Time:', 32.974411964416504)
+1200
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([  0.        ,   0.57106394,   0.88870689,   1.22278247,
+         1.70713609,   2.487323  ,   3.52900093,   4.90075354,
+         5.8009878 ,   6.51163133,   6.83975265,   7.14610603,
+         7.51537375,   8.79728922,   9.87599022,  10.91303672,  11.99972482]))
+('Costo Tiempo:', 72.0)
+('Costo Jerk:', 9.202017122872283)
+Iniciar?ok
+
+0.3------------------------------------------------
+Init bridge
+Cerrar?
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 1049
+('Process Time:', 27.100492000579834)
+1049
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([  0.        ,   0.48325912,   0.76833819,   1.09211885,
+         1.62972633,   2.22258937,   3.08526755,   4.12946298,
+         4.83079501,   5.41217933,   5.72522313,   6.04225136,
+         6.44804464,   7.34667429,   8.29225293,   9.49109607,  10.48991577]))
+('Costo Tiempo:', 62.94)
+('Costo Jerk:', 13.679373339915825)
+Iniciar?ok
+
+0.4---------------------------------------------------
+Cerrar?
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 913
+('Process Time:', 19.53157615661621)
+913
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.55379973,  0.87665963,  1.24387125,  1.84181517,
+        2.38528125,  3.25498282,  4.25158949,  4.89432062,  5.53813367,
+        5.86802809,  6.20717938,  6.69638379,  7.53519446,  8.06198733,
+        8.46141675,  9.12993374]))
+('Costo Tiempo:', 54.78)
+('Costo Jerk:', 12.781260417466969)
+Iniciar?
+
+0.5-----------------------------------------------------
+Init bridge
+Cerrar?
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 662
+('Process Time:', 20.42796301841736)
+662
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.4669357 ,  0.72723513,  1.00732382,  1.46664422,
+        2.05485154,  2.3879343 ,  2.66990104,  3.09643777,  3.59353174,
+        3.90020406,  4.28611241,  4.86363855,  5.39890745,  5.73216069,
+        6.03630907,  6.61804613]))
+('Costo Tiempo:', 39.72)
+('Costo Jerk:', 18.328858060345976)
+Iniciar?ok
+
+0.6-----------------------------------------------
+
+Cerrar?
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 583
+('Process Time:', 17.596601009368896)
+583
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.40963268,  0.6446718 ,  0.90619267,  1.34504653,
+        1.78210909,  2.05297246,  2.29310234,  2.66237832,  3.10280577,
+        3.36251974,  3.66286615,  4.08833833,  4.62112901,  4.9634663 ,
+        5.28550165,  5.82759639]))
+('Costo Tiempo:', 34.98)
+('Costo Jerk:', 25.378888878710697)
+Iniciar?
+
+0.7--------------------------------------------
+Cerrar?
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 475
+('Process Time:', 12.673979997634888)
+475
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.35399467,  0.56184116,  0.79823001,  1.18902383,
+        1.5335173 ,  1.74960012,  1.94632242,  2.25707988,  2.60618318,
+        2.81155765,  3.03777251,  3.33258897,  3.75540591,  4.02941139,
+        4.28646575,  4.74980233]))
+('Costo Tiempo:', 28.5)
+('Costo Jerk:', 40.651657185302426)
+Iniciar?
+0.8---------------------------------------------
+Working in solution
+Knots en posicion generados. 506
+('Process Time:', 10.466961145401001)
+506
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.40363646,  0.64496964,  0.9021373 ,  1.30350464,
+        1.6606784 ,  1.894441  ,  2.11143551,  2.49262889,  2.89191665,
+        3.12152267,  3.365963  ,  3.70492375,  4.09798482,  4.34587946,
+        4.58231577,  5.05893997]))
+('Costo Tiempo:', 30.36)
+('Costo Jerk:', 31.456489450784964)
+Iniciar?ok
+0.9---------------------------------------------
+Iniciar_CD?
+Working in solution
+Knots en posicion generados. 426
+('Process Time:', 6.983028173446655)
+426
+save data en data_p.txt
+save data en data_v.txt
+save data en data_a.txt
+save data en data_y.txt
+('Vector Time', array([ 0.        ,  0.44855982,  0.66004431,  0.85954762,  1.1683317 ,
+        1.43162648,  1.60772975,  1.79565624,  2.15541545,  2.51940684,
+        2.72225492,  2.93010421,  3.17705066,  3.48145569,  3.69815785,
+        3.90245226,  4.25875747]))
+('Costo Tiempo:', 25.56)
+('Costo Jerk:', 51.92432965854635)
+
+
