@@ -1,16 +1,14 @@
 clear all, close all, clc
-semana='2';prueba='8';tipo='_r';
+semana='6';prueba='1';tipo='_r';
 dir=strcat('prueba',prueba,tipo)
-file='trayectoria'
+file='0.9trayectoria'
 A = csvread(strcat(dir,'/',file,'.txt'));
 % erase stable data
 %A=A(1:350,:);
-knots= round(100*[ 0.01        ,  1.04967943,  1.60314995,  2.1935286 ,  3.066349  , ...
-        4.38635033,  5.70339078,  6.55449457,  7.14712336,  7.7120431 , ...
-        8.76809282])
+knots=[1,575] 
 %%
 l1=length(A);t1=0.01*[1:l1];
-ws_v=15;ws_a=25;ws_j=35;
+ws_v=25;ws_a=30;ws_j=35;
 % Position A
 close all;clc;figure
 leg=cell(7,1);
@@ -80,7 +78,7 @@ saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_v','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_v','.png'));
 
 % Aceleración 
-close all;clc
+close all; clc
 A_A = zeros(l1,7);A_J = zeros(l1,7);
 
 for i=1:7
@@ -127,7 +125,7 @@ saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_a','.png'));
 
 
 % Jerk A
-
+close all
 for i=1:7
     for j=1:l1-1
         A_J(j,i)=(A_Af(j+1,i)-A_Af(j,i))*100;
@@ -149,7 +147,7 @@ grid on
 dummyh = line(nan, nan, 'Linestyle', 'none', 'Marker', 'none', 'Color', 'none');
 l=legend(leg,'interpreter', 'latex','NumColumns',4,'Location','best','FontSize',12);
 xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
-ylabel("Aceleraci\'on [rad/$s^3$]",'Interpreter','latex','FontSize',12.5);
+ylabel("Jerk [rad/$s^3$]",'Interpreter','latex','FontSize',12.5);
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
 set(gcf, 'Position', [0 0 600 300]);
@@ -165,3 +163,4 @@ ax.Position = [left bottom ax_width ax_height];
 
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_y','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_y','.png'));
+close all

@@ -195,7 +195,7 @@ def path_simple_cub_v0(_point,_time,_f,jerk_value=False):
 
 def min_time(_q):
 	vel_lim=[1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]
-	# Luego de pruebas es el valor minimo para las pruebas. Es un concepto de seguridad para las pruebas.
+	# Es un concepto de seguridad para las pruebas.
 	v_factor=1
 	N=len(vel_lim)
 	k=len(_q[0])

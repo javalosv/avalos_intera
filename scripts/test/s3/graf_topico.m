@@ -149,7 +149,7 @@ grid on
 dummyh = line(nan, nan, 'Linestyle', 'none', 'Marker', 'none', 'Color', 'none');
 l=legend(leg,'interpreter', 'latex','NumColumns',4,'Location','best','FontSize',12);
 xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
-ylabel("Aceleraci\'on [rad/$s^3$]",'Interpreter','latex','FontSize',12.5);
+ylabel("Jerk [rad/$s^3$]",'Interpreter','latex','FontSize',12.5);
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
 set(gcf, 'Position', [0 0 600 300]);
