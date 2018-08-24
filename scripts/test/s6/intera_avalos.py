@@ -266,7 +266,7 @@ class Opt_2_avalos():
 			tmp=self.min_time[i+1]-self.min_time[i]
 			self.delta_t[i]=tmp
 		x0 = np.ones(self.l)
-		print "Working in solution"
+		print "Working in solution alfa=",str(_alfa)
 
 		#print bnds
 		self.res = minimize(self.costo, x0,method='SLSQP', bounds=bnds, tol=0.01,options={ 'disp': False})
