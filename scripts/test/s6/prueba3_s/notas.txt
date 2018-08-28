@@ -1,0 +1,226 @@
+Optimizador SQP
+
+
+--------------------------------------------
+Working in solution alfa= 0.1
+Process Time: 22.1307621002
+Costo Tiempo: 98.28
+Costo Jerk: 5.92523704784
+Knots en posicion generados. 1638
+save data en 0.1_data_p.txt
+save data en 0.1_data_v.txt
+save data en 0.1_data_a.txt
+save data en 0.1_data_y.txt
+[  0.           1.19541788   1.85137117   2.79027439   8.68745634
+  10.06767446  11.06595892  12.20600795  13.33783494  14.08225701
+  14.67290551  16.37980825]
+------------------------------------------------
+Working in solution alfa= 0.15
+Process Time: 18.5366830826
+Costo Tiempo: 80.46
+Costo Jerk: 8.0568622098
+Knots en posicion generados. 1341
+save data en 0.15_data_p.txt
+save data en 0.15_data_v.txt
+save data en 0.15_data_a.txt
+save data en 0.15_data_y.txt
+[  0.           1.06673724   1.50228901   1.92626514   7.01931008
+   8.19665247   9.10646556   9.96803604  10.71873901  11.50159508
+  12.12946686  13.40965392]
+------------------------------------------------
+Working in solution alfa= 0.2
+Process Time: 17.1227250099
+Costo Tiempo: 75.0
+Costo Jerk: 10.7417992112
+Knots en posicion generados. 1250
+save data en 0.2_data_p.txt
+save data en 0.2_data_v.txt
+save data en 0.2_data_a.txt
+save data en 0.2_data_y.txt
+[  0.           0.98462935   1.41579368   1.84775359   6.73662497
+   7.96727788   8.67701925   9.70075488  10.44446239  11.00833257
+  11.47419505  12.49748296]
+------------------------------------------------
+Working in solution alfa= 0.25
+Process Time: 20.1194791794
+Costo Tiempo: 66.72
+Costo Jerk: 12.2008214053
+Knots en posicion generados. 1112
+save data en 0.25_data_p.txt
+save data en 0.25_data_v.txt
+save data en 0.25_data_a.txt
+save data en 0.25_data_y.txt
+[  0.           0.92127492   1.36391368   1.81405797   5.56897938
+   6.72229256   7.47359108   8.38472353   9.17785374   9.75487595
+  10.20705458  11.11951334]
+------------------------------------------------
+Working in solution alfa= 0.3
+Process Time: 19.4240128994
+Costo Tiempo: 63.66
+Costo Jerk: 13.0753881242
+Knots en posicion generados. 1061
+save data en 0.3_data_p.txt
+save data en 0.3_data_v.txt
+save data en 0.3_data_a.txt
+save data en 0.3_data_y.txt
+[  0.           0.85357938   1.22377963   1.56980917   4.5909451
+   5.84466327   6.5521912    7.35326025   8.27559935   9.08379048
+   9.63431214  10.60987565]
+------------------------------------------------
+Working in solution alfa= 0.35
+Process Time: 13.8943948746
+Costo Tiempo: 49.44
+Costo Jerk: 14.9621874445
+Knots en posicion generados. 824
+save data en 0.35_data_p.txt
+save data en 0.35_data_v.txt
+save data en 0.35_data_a.txt
+save data en 0.35_data_y.txt
+[ 0.          0.82555946  1.26963319  1.93919997  3.01972192  4.10407674
+  4.9275701   5.58467863  6.39091245  6.96556604  7.39612392  8.23916867]
+------------------------------------------------
+Working in solution alfa= 0.4
+Process Time: 16.7925758362
+Costo Tiempo: 49.86
+Costo Jerk: 14.7439804119
+Knots en posicion generados. 831
+save data en 0.4_data_p.txt
+save data en 0.4_data_v.txt
+save data en 0.4_data_a.txt
+save data en 0.4_data_y.txt
+[ 0.          0.81387312  1.19588092  1.62339809  3.07343406  4.23071113
+  4.94171942  5.60310027  6.40330086  6.95278572  7.37203924  8.30411117]
+------------------------------------------------
+Working in solution alfa= 0.45
+Process Time: 12.4718959332
+Costo Tiempo: 43.44
+Costo Jerk: 19.4036419093
+Knots en posicion generados. 724
+save data en 0.45_data_p.txt
+save data en 0.45_data_v.txt
+save data en 0.45_data_a.txt
+save data en 0.45_data_y.txt
+[ 0.          0.74781705  1.13760831  1.64480942  2.58486816  3.58318171
+  4.35923492  4.94708873  5.65576399  6.12209497  6.48898206  7.23916906]
+------------------------------------------------
+Working in solution alfa= 0.5
+Process Time: 11.7422378063
+Costo Tiempo: 41.52
+Costo Jerk: 22.0734142622
+Knots en posicion generados. 692
+save data en 0.5_data_p.txt
+save data en 0.5_data_v.txt
+save data en 0.5_data_a.txt
+save data en 0.5_data_y.txt
+[ 0.          0.70511457  1.05880534  1.52499922  2.47106911  3.39550985
+  4.12315521  4.67352858  5.34407548  5.82390635  6.19808783  6.91954652]
+------------------------------------------------
+Working in solution alfa= 0.55
+Process Time: 10.7378978729
+Costo Tiempo: 37.44
+Costo Jerk: 27.3724058215
+Knots en posicion generados. 624
+save data en 0.55_data_p.txt
+save data en 0.55_data_v.txt
+save data en 0.55_data_a.txt
+save data en 0.55_data_y.txt
+[ 0.          0.65920359  1.01134429  1.4860093   2.19643952  3.11212534
+  3.83445259  4.33286476  4.90168288  5.27509007  5.57555476  6.23472352]
+------------------------------------------------
+Working in solution alfa= 0.6
+Process Time: 9.91244101524
+Costo Tiempo: 35.1
+Costo Jerk: 31.7634577128
+Knots en posicion generados. 585
+save data en 0.6_data_p.txt
+save data en 0.6_data_v.txt
+save data en 0.6_data_a.txt
+save data en 0.6_data_y.txt
+[ 0.          0.60855044  0.92880988  1.37938143  2.08409943  2.90951192
+  3.55069583  3.98464745  4.50592876  4.89941342  5.20403733  5.84722948]
+------------------------------------------------
+Working in solution alfa= 0.65
+Process Time: 8.3729531765
+Costo Tiempo: 33.0
+Costo Jerk: 37.3168168163
+Knots en posicion generados. 550
+save data en 0.65_data_p.txt
+save data en 0.65_data_v.txt
+save data en 0.65_data_a.txt
+save data en 0.65_data_y.txt
+[ 0.          0.56938268  0.88009598  1.29334329  1.98818518  2.74674586
+  3.3318819   3.72115722  4.20711896  4.59276817  4.89063301  5.49806011]
+------------------------------------------------
+Working in solution alfa= 0.7
+Process Time: 7.5452671051
+Costo Tiempo: 33.9
+Costo Jerk: 26.3045479066
+Knots en posicion generados. 565
+save data en 0.7_data_p.txt
+save data en 0.7_data_v.txt
+save data en 0.7_data_a.txt
+save data en 0.7_data_y.txt
+[ 0.          0.77634539  1.12778794  1.59451045  2.19834095  2.87377385
+  3.38032831  3.76806189  4.21680482  4.58965486  4.91915743  5.6419436 ]
+------------------------------------------------
+Working in solution alfa= 0.75
+Process Time: 6.78368520737
+Costo Tiempo: 34.08
+Costo Jerk: 28.2439615918
+Knots en posicion generados. 568
+save data en 0.75_data_p.txt
+save data en 0.75_data_v.txt
+save data en 0.75_data_a.txt
+save data en 0.75_data_y.txt
+[ 0.          0.70343747  1.05685036  1.50622341  2.14185767  2.93810402
+  3.55888169  3.90228763  4.39666869  4.74251675  5.03018306  5.67835317]
+------------------------------------------------
+Working in solution alfa= 0.8
+Process Time: 5.88051891327
+Costo Tiempo: 31.92
+Costo Jerk: 35.9251964632
+Knots en posicion generados. 532
+save data en 0.8_data_p.txt
+save data en 0.8_data_v.txt
+save data en 0.8_data_a.txt
+save data en 0.8_data_y.txt
+[ 0.          0.61560236  0.9325425   1.33975512  1.92320375  2.69886259
+  3.30919542  3.6952288   4.15342369  4.47495072  4.73373555  5.31977541]
+------------------------------------------------
+Working in solution alfa= 0.85
+Process Time: 5.3661968708
+Costo Tiempo: 29.7
+Costo Jerk: 36.289716053
+Knots en posicion generados. 495
+save data en 0.85_data_p.txt
+save data en 0.85_data_v.txt
+save data en 0.85_data_a.txt
+save data en 0.85_data_y.txt
+[ 0.          0.80109697  1.11425277  1.51445552  2.04062315  2.63450546
+  3.08017518  3.39336329  3.77890499  4.0977981   4.34916759  4.9488695 ]
+------------------------------------------------
+Working in solution alfa= 0.9
+Process Time: 3.46991586685
+Costo Tiempo: 23.4
+Costo Jerk: 66.7738791508
+Knots en posicion generados. 390
+save data en 0.9_data_p.txt
+save data en 0.9_data_v.txt
+save data en 0.9_data_a.txt
+save data en 0.9_data_y.txt
+[ 0.          0.62914073  0.88350825  1.1847865   1.57859976  2.07183679
+  2.44632068  2.68817191  2.98590852  3.24264542  3.4545968   3.89560326]
+------------------------------------------------
+Working in solution alfa= 0.95
+Process Time: 3.03738808632
+Costo Tiempo: 20.88
+Costo Jerk: 91.1287304604
+Knots en posicion generados. 348
+save data en 0.95_data_p.txt
+save data en 0.95_data_v.txt
+save data en 0.95_data_a.txt
+save data en 0.95_data_y.txt
+[ 0.          0.61102285  0.83510008  1.10155279  1.42496008  1.85646583
+  2.18366707  2.37834491  2.6411483   2.87640513  3.07103818  3.47776621]
+Programa terminado.
+

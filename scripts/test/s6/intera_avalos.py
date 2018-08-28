@@ -170,7 +170,43 @@ def path_simple_cub_get_jerk(_point,_time,_f):
 		for j in range(tl):
 			if(t_out[j]>=x[i] and t_out[j]<x[i+1]):
 				y[j]=6*_d[i]
-	y[-1]=y[-2]
+	k1=int((h[0])*f)
+	k2=int((h[-1])*f+1)
+
+	s_v=_b[1]
+	s_ac=2*_c[1]
+	s_y=6*_d[1]
+	h_0=h[0]
+	h_e=h[-1]
+
+	# Spline 7 grade begin
+	a00 =(10*s_v)/h_0**6 - (2*s_ac)/h_0**5 + s_y/(6*h_0**4) + (20*(a[0]-a[1]))/h_0**7
+	a01 =(13*s_ac)/(2*h_0**4) - (34*s_v)/h_0**5 - s_y/(2*h_0**3) - (70*(a[0]-a[1]))/h_0**6
+	a02 =(39*s_v)/h_0**4 - (7*s_ac)/h_0**3 + s_y/(2*h_0**2) + (84*(a[0]-a[1]))/h_0**5
+	a03 =(5*s_ac)/(2*h_0**2) - (15*s_v)/h_0**3 - s_y/(6*h_0) - (35*(a[0]-a[1]))/h_0**4
+	for j in range(k1):
+	    y[j]=210*a00*(j*0.01)**4+120*a01*(j*0.01)**3+60*a02*(j*0.01)**2+24*a03*(j*0.01)**1
+
+	#  Spline 7 grade end
+	a7=a[-2]
+	a6=_b[-1]
+	a5= _c[i]
+	a4= -_d[i]
+	h_e=h[-1]
+	p_e=a[-1]
+
+	ak0 = (2*(2*a5 + 6*a4*h_e))/h_e**5 - a4/h_e**4 - (10*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**6 + (20*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**7
+	ak1 = (3*a4)/h_e**3 - (13*(2*a5 + 6*a4*h_e))/(2*h_e**4) + (34*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**5 - (70*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**6
+	ak2 = (7*(2*a5 + 6*a4*h_e))/h_e**3 - (3*a4)/h_e**2 - (39*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**4 + (84*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**5
+	ak3 = a4/h_e - (5*(2*a5 + 6*a4*h_e))/(2*h_e**2) + (15*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**3 - (35*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**4
+	ak4 =a4
+	ak5 =a5
+	ak6 =a6
+	ak7 =a7
+
+	for j in range(k2):
+	    y[-k2+j]=210*ak0*(j*0.01)**4+120*ak1*(j*0.01)**3+60*ak2*(j*0.01)**2+24*ak3*(j*0.01)**1+6*ak4
+
 	return y
 
 def path_simple_cub_v0(_point,_time,_f):
@@ -358,7 +394,7 @@ class Opt_2_avalos():
 		print "Working in solution alfa=",str(_alfa)
 
 		#print bnds
-		self.res = minimize(self.costo, x0,method='SLSQP', bounds=bnds, tol=0.1,options={ 'disp': False})
+		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds, tol=0.01,options={ 'disp': False})
 	def costo(self,k):
 		t=k*self.delta_t
 		for i in range(self.l):
@@ -388,7 +424,7 @@ class Opt_2_avalos():
 		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
 		ind=sqrt(value_jk)
 		return ind,ext
-	def value(self):
+	def full_time(self):
 		return self.v_time
 	def result(self):
 		return self.res

@@ -1,11 +1,11 @@
 clear all, close all, clc
-semana='6';prueba='1';tipo='_r';
+semana='6';prueba='6';tipo='_r';
 dir=strcat('prueba',prueba,tipo)
-file='0.9trayectoria'
+file='0.8trayectoria'
 A = csvread(strcat(dir,'/',file,'.txt'));
 % erase stable data
 %A=A(1:350,:);
-knots=[1,575] 
+knots=[1,526] 
 %%
 l1=length(A);t1=0.01*[1:l1];
 ws_v=25;ws_a=30;ws_j=35;
@@ -38,7 +38,7 @@ ax.Position = [left bottom ax_width ax_height];
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba',tipo,'_',file,'_env_p','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba',tipo,'_',file,'_env_p','.png'));
 close all
-
+%
 % Velocidad A
 close all;clc;
 figure

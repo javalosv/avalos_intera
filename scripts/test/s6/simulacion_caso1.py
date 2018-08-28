@@ -60,16 +60,22 @@ def main():
     v_t=np.ones(l_alfa)
     v_jk=np.ones(l_alfa)
     for i in xrange(l_alfa):
+        print "------------------------------------------------"
         start = time.time()
         opt=Opt_2_avalos(q,f,alfa[i])
-        v_time=opt.value()
+        v_time=opt.full_time()
         end = time.time()
         print 'Process Time:', end-start
-        #print "Vector Time",v_time
         v_t[i]=opt.value_time()
         v_jk[i]=opt.value_jerk()
         print 'Costo Tiempo:',v_t[i]
         print 'Costo Jerk:',v_jk[i]
+        j,v,a,jk=generate_path_cub(q,v_time,f)
+        save_matrix(j,str(alfa[i])+"_data_p.txt",f)
+        save_matrix(v,str(alfa[i])+"_data_v.txt",f)
+        save_matrix(a,str(alfa[i])+"_data_a.txt",f)
+        save_matrix(jk,str(alfa[i])+"_data_y.txt",f)
+        print v_time
     plt.plot(v_t,v_jk,'r*',v_t,v_jk,)
     plt.xlabel("Variable_tiempo")
     plt.ylabel("Variable_jerk")

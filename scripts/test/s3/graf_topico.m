@@ -1,13 +1,13 @@
 clear all, close all, clc
-semana='2';prueba='8';tipo='_r';
+semana='6';prueba='6';tipo='_r';
 dir=strcat('prueba',prueba,tipo)
-file='trayectoria'
+file='0.2trayectoria'
 A = csvread(strcat(dir,'/',file,'.txt'));
 % erase stable data
 %A=A(1:350,:);
-knots= round(100*[ 0.01        ,  1.04967943,  1.60314995,  2.1935286 ,  3.066349  , ...
-        4.38635033,  5.70339078,  6.55449457,  7.14712336,  7.7120431 , ...
-        8.76809282])
+%knots= round(100*[ 0.01        ,  1.04967943,  1.60314995,  2.1935286 ,  3.066349  , ...
+ %       4.38635033,  5.70339078,  6.55449457,  7.14712336,  7.7120431 , ...
+   %     8.76809282])
 %%
 l1=length(A);t1=0.01*[1:l1];
 ws_v=15;ws_a=25;ws_j=35;

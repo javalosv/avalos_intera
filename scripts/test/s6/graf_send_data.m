@@ -1,16 +1,14 @@
 clear all, close all, clc
-semana='3';prueba='8';tipo='_r';
+semana='6';prueba='3';tipo='_s';
 
 dir=strcat('prueba',prueba,tipo)
-p = csvread(strcat(dir,'/data_p.txt'));
-v = csvread(strcat(dir,'/data_v.txt'));
-a = csvread(strcat(dir,'/data_a.txt'));
-y = csvread(strcat(dir,'/data_y.txt'));
-
-knots= round(100*[ 0.01        ,  1.04967943,  1.60314995,  2.1935286 ,  3.066349  , ...
-        4.38635033,  5.70339078,  6.55449457,  7.14712336,  7.7120431 , ...
-        8.76809282]);
-
+p = csvread(strcat(dir,'/0.2_data_p.txt'));
+v = csvread(strcat(dir,'/0.2_data_v.txt'));
+a = csvread(strcat(dir,'/0.2_data_a.txt'));
+y = csvread(strcat(dir,'/0.2_data_y.txt'));
+%%
+%0.8%knots= round(100*[ 0.01,          0.61560236 , 0.9325425,   1.33975512 , 1.92320375 , 2.69886259  ,3.30919542 , 3.6952288  , 4.15342369  ,4.47495072 , 4.73373555  ,5.31977541]);
+knots=round(100*[  0.01,           0.98462935  , 1.41579368,   1.84775359,   6.73662497,   7.96727788,   8.67701925  , 9.70075488 , 10.44446239,  11.00833257,  11.47419505 , 12.49748296]);
 leg=cell(7,1);
 for n=2:8   
     plot (p(:,1),p(:,n),'-o', 'LineWidth',1,'MarkerSize',5,'MarkerIndices', knots);
@@ -25,21 +23,23 @@ xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
 ylabel("Posici\'on [rad]",'Interpreter','latex','FontSize',12.5);
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
-set(gcf, 'Position', [0 0 600 300]);
-set(gcf, 'PaperPosition', [0 0 8.1 4.1]); % For pdf generation
+xlim([0 (10+knots(end))/100])
+set(gcf, 'Position', [0 0 590 320]);
+set(gcf, 'PaperPosition', [0.0 0.0 8.1 4.1]); % For pdf generation
 set(gcf, 'PaperSize', [8.1 4.1]); 
 set(gcf, 'Color', 'w');
 
 ax = gca;outerpos = ax.OuterPosition;ti = ax.TightInset; 
 left = outerpos(1) + ti(1);bottom = outerpos(2) + ti(2);
-ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
+ax_width = outerpos(3) - 1.5*ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
+
 
 
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,'_env_p','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,'_env_p','.png'));
 close all
-
+%
 figure;
 for n=2:8   
     plot (v(:,1),v(:,n),'-o', 'LineWidth',1,'MarkerSize',5,'MarkerIndices', knots);
@@ -53,14 +53,16 @@ xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
 ylabel("Velocidad [rad/s]",'FontSize',12.5,'Interpreter','latex')
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
-set(gcf, 'Position', [0 0 600 300]);
+xlim([0 (10+knots(end))/100])
+set(gcf, 'Position', [0 0 590 320]);
 set(gcf, 'PaperPosition', [0.0 0.0 8.1 4.1]); % For pdf generation
 set(gcf, 'PaperSize', [8.1 4.1]); 
 set(gcf, 'Color', 'w');
 
+
 ax = gca;outerpos = ax.OuterPosition;ti = ax.TightInset; 
 left = outerpos(1) + ti(1);bottom = outerpos(2) + ti(2);
-ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
+ax_width = outerpos(3) - 1.5*ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
 
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,'_env_v','.pdf'));
@@ -79,21 +81,23 @@ xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
 ylabel("Aceleraci\'on [rad/$s^2$]",'FontSize',12.5,'Interpreter','latex')
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
-set(gcf, 'Position', [0 0 600 300]);
+xlim([0 (10+knots(end))/100])
+set(gcf, 'Position', [0 0 590 320]);
 set(gcf, 'PaperPosition', [0.0 0.0 8.1 4.1]); % For pdf generation
 set(gcf, 'PaperSize', [8.1 4.1]); 
 set(gcf, 'Color', 'w');
 
+
 ax = gca;outerpos = ax.OuterPosition;ti = ax.TightInset; 
 left = outerpos(1) + ti(1);bottom = outerpos(2) + ti(2);
-ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
+ax_width = outerpos(3) - 1.5*ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
 
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,'_env_a','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,'_env_a','.png'));
 close all
 
-%
+%%
 figure;
 clc
 for n=2:8   
@@ -107,15 +111,18 @@ xlabel('Tiempo [s]','FontSize',12.5,'Interpreter','latex');
 ylabel("Jerk [rad/$s^3$]",'FontSize',12.5,'Interpreter','latex')
 set(gca,'GridLineStyle','--');set(gca,'GridColor','k');set(gca,'GridAlpha',0.25);
 
-set(gcf, 'Position', [0 0 600 300]);
+xlim([0 (10+knots(end))/100])
+set(gcf, 'Position', [0 0 590 320]);
 set(gcf, 'PaperPosition', [0.0 0.0 8.1 4.1]); % For pdf generation
 set(gcf, 'PaperSize', [8.1 4.1]); 
 set(gcf, 'Color', 'w');
 
+
 ax = gca;outerpos = ax.OuterPosition;ti = ax.TightInset; 
 left = outerpos(1) + ti(1);bottom = outerpos(2) + ti(2);
-ax_width = outerpos(3) - ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
+ax_width = outerpos(3) - 1.5*ti(1) - ti(3);ax_height = outerpos(4) - ti(2) - ti(4);
 ax.Position = [left bottom ax_width ax_height];
+
 
 saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,'_env_y','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,'_env_y','.png'));
