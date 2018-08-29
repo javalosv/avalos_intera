@@ -1,14 +1,15 @@
 clear all, close all, clc
-semana='6';prueba='3';tipo='_s';
+semana='6';prueba='7';tipo='_s';
 
 dir=strcat('prueba',prueba,tipo)
-p = csvread(strcat(dir,'/0.2_data_p.txt'));
-v = csvread(strcat(dir,'/0.2_data_v.txt'));
-a = csvread(strcat(dir,'/0.2_data_a.txt'));
-y = csvread(strcat(dir,'/0.2_data_y.txt'));
-%%
+p = csvread(strcat(dir,'/0.5_data_p.txt'));
+v = csvread(strcat(dir,'/0.5_data_v.txt'));
+a = csvread(strcat(dir,'/0.5_data_a.txt'));
+y = csvread(strcat(dir,'/0.5_data_y.txt'));
+%
 %0.8%knots= round(100*[ 0.01,          0.61560236 , 0.9325425,   1.33975512 , 1.92320375 , 2.69886259  ,3.30919542 , 3.6952288  , 4.15342369  ,4.47495072 , 4.73373555  ,5.31977541]);
-knots=round(100*[  0.01,           0.98462935  , 1.41579368,   1.84775359,   6.73662497,   7.96727788,   8.67701925  , 9.70075488 , 10.44446239,  11.00833257,  11.47419505 , 12.49748296]);
+knots=round(100*[ 0.01,          0.86399493,  1.29226531  ,1.83870673,  2.64116435 , 3.55737892, ...
+  4.16490384  ,4.56355755,  5.10095785 , 5.61306328 , 6.0164334,   6.86985952]);
 leg=cell(7,1);
 for n=2:8   
     plot (p(:,1),p(:,n),'-o', 'LineWidth',1,'MarkerSize',5,'MarkerIndices', knots);
@@ -97,7 +98,7 @@ saveas(gcf,strcat(dir,'/pdf/s',semana,'_prueba_',prueba,'_env_a','.pdf'));
 saveas(gcf,strcat(dir,'/png/s',semana,'_prueba_',prueba,'_env_a','.png'));
 close all
 
-%%
+%
 figure;
 clc
 for n=2:8   

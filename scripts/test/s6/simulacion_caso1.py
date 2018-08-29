@@ -12,6 +12,7 @@ import sys
 import intera_interface
 import intera_external_devices
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Python 3.5
 def main():
@@ -59,15 +60,18 @@ def main():
     l_alfa=len(alfa)
     v_t=np.ones(l_alfa)
     v_jk=np.ones(l_alfa)
+    t_p=np.ones(l_alfa)
     for i in xrange(l_alfa):
         print "------------------------------------------------"
         start = time.time()
         opt=Opt_2_avalos(q,f,alfa[i])
         v_time=opt.full_time()
         end = time.time()
-        print 'Process Time:', end-start
+        t_p[i]=end-start
+        print 'Process Time:', t_p[i]
         v_t[i]=opt.value_time()
         v_jk[i]=opt.value_jerk()
+        print 'k:',opt.result()
         print 'Costo Tiempo:',v_t[i]
         print 'Costo Jerk:',v_jk[i]
         j,v,a,jk=generate_path_cub(q,v_time,f)
@@ -76,10 +80,17 @@ def main():
         save_matrix(a,str(alfa[i])+"_data_a.txt",f)
         save_matrix(jk,str(alfa[i])+"_data_y.txt",f)
         print v_time
-    plt.plot(v_t,v_jk,'r*',v_t,v_jk,)
-    plt.xlabel("Variable_tiempo")
-    plt.ylabel("Variable_jerk")
-    plt.show()
+    raw_data = {'alfa':alfa,
+    'time':t_p,
+    'v_t':v_t,
+    'v_jk':v_jk
+    }
+    df = pd.DataFrame(raw_data)
+    df.to_csv('example.csv')
+    #plt.plot(v_t,v_jk,'r*',v_t,v_jk,)
+    #plt.xlabel("Variable_tiempo")
+    #plt.ylabel("Variable_jerk")
+    #plt.show()
     print "Programa terminado."
 
 

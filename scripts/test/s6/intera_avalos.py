@@ -176,17 +176,15 @@ def path_simple_cub_get_jerk(_point,_time,_f):
 	s_v=_b[1]
 	s_ac=2*_c[1]
 	s_y=6*_d[1]
-	h_0=h[0]
 	h_e=h[-1]
 
 	# Spline 7 grade begin
-	a00 =(10*s_v)/h_0**6 - (2*s_ac)/h_0**5 + s_y/(6*h_0**4) + (20*(a[0]-a[1]))/h_0**7
-	a01 =(13*s_ac)/(2*h_0**4) - (34*s_v)/h_0**5 - s_y/(2*h_0**3) - (70*(a[0]-a[1]))/h_0**6
-	a02 =(39*s_v)/h_0**4 - (7*s_ac)/h_0**3 + s_y/(2*h_0**2) + (84*(a[0]-a[1]))/h_0**5
-	a03 =(5*s_ac)/(2*h_0**2) - (15*s_v)/h_0**3 - s_y/(6*h_0) - (35*(a[0]-a[1]))/h_0**4
+	a00 =(10*s_v)/h[0]**6 - (2*s_ac)/h[0]**5 + s_y/(6*h[0]**4) + (20*(a[0]-a[1]))/h[0]**7
+	a01 =(13*s_ac)/(2*h[0]**4) - (34*s_v)/h[0]**5 - s_y/(2*h[0]**3) - (70*(a[0]-a[1]))/h[0]**6
+	a02 =(39*s_v)/h[0]**4 - (7*s_ac)/h[0]**3 + s_y/(2*h[0]**2) + (84*(a[0]-a[1]))/h[0]**5
+	a03 =(5*s_ac)/(2*h[0]**2) - (15*s_v)/h[0]**3 - s_y/(6*h[0]) - (35*(a[0]-a[1]))/h[0]**4
 	for j in range(k1):
 	    y[j]=210*a00*(j*0.01)**4+120*a01*(j*0.01)**3+60*a02*(j*0.01)**2+24*a03*(j*0.01)**1
-
 	#  Spline 7 grade end
 	a7=a[-2]
 	a6=_b[-1]
@@ -199,13 +197,9 @@ def path_simple_cub_get_jerk(_point,_time,_f):
 	ak1 = (3*a4)/h_e**3 - (13*(2*a5 + 6*a4*h_e))/(2*h_e**4) + (34*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**5 - (70*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**6
 	ak2 = (7*(2*a5 + 6*a4*h_e))/h_e**3 - (3*a4)/h_e**2 - (39*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**4 + (84*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**5
 	ak3 = a4/h_e - (5*(2*a5 + 6*a4*h_e))/(2*h_e**2) + (15*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**3 - (35*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**4
-	ak4 =a4
-	ak5 =a5
-	ak6 =a6
-	ak7 =a7
 
 	for j in range(k2):
-	    y[-k2+j]=210*ak0*(j*0.01)**4+120*ak1*(j*0.01)**3+60*ak2*(j*0.01)**2+24*ak3*(j*0.01)**1+6*ak4
+	    y[-k2+j]=210*ak0*(j*0.01)**4+120*ak1*(j*0.01)**3+60*ak2*(j*0.01)**2+24*ak3*(j*0.01)**1+6*a4
 
 	return y
 
@@ -303,16 +297,12 @@ def path_simple_cub_v0(_point,_time,_f):
 	ak1 = (3*a4)/h_e**3 - (13*(2*a5 + 6*a4*h_e))/(2*h_e**4) + (34*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**5 - (70*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**6
 	ak2 = (7*(2*a5 + 6*a4*h_e))/h_e**3 - (3*a4)/h_e**2 - (39*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**4 + (84*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**5
 	ak3 = a4/h_e - (5*(2*a5 + 6*a4*h_e))/(2*h_e**2) + (15*(3*a4*h_e**2 + 2*a5*h_e + a6))/h_e**3 - (35*(a4*h_e**3 + a5*h_e**2 + a6*h_e + a7 - p_e))/h_e**4
-	ak4 =a4
-	ak5 =a5
-	ak6 =a6
-	ak7 =a7
 
 	for j in range(k2):
-	    p[-k2+j]=ak0*(j*0.01)**7+ak1*(j*0.01)**6+ak2*(j*0.01)**5+ak3*(j*0.01)**4+ak4*(j*0.01)**3+ak5*(j*0.01)**2+ak6*(j*0.01)+ak7
-	    v[-k2+j]=7*ak0*(j*0.01)**6+6*ak1*(j*0.01)**5+5*ak2*(j*0.01)**4+4*ak3*(j*0.01)**3+3*ak4*(j*0.01)**2+2*ak5*(j*0.01)+ak6
-	    ac[-k2+j]=42*ak0*(j*0.01)**5+30*ak1*(j*0.01)**4+20*ak2*(j*0.01)**3+12*ak3*(j*0.01)**2+6*ak4*(j*0.01)+2*ak5
-	    y[-k2+j]=210*ak0*(j*0.01)**4+120*ak1*(j*0.01)**3+60*ak2*(j*0.01)**2+24*ak3*(j*0.01)**1+6*ak4
+	    p[-k2+j]=ak0*(j*0.01)**7+ak1*(j*0.01)**6+ak2*(j*0.01)**5+ak3*(j*0.01)**4+a4*(j*0.01)**3+a5*(j*0.01)**2+a6*(j*0.01)+a7
+	    v[-k2+j]=7*ak0*(j*0.01)**6+6*ak1*(j*0.01)**5+5*ak2*(j*0.01)**4+4*ak3*(j*0.01)**3+3*a4*(j*0.01)**2+2*a5*(j*0.01)+a6
+	    ac[-k2+j]=42*ak0*(j*0.01)**5+30*ak1*(j*0.01)**4+20*ak2*(j*0.01)**3+12*ak3*(j*0.01)**2+6*a4*(j*0.01)+2*a5
+	    y[-k2+j]=210*ak0*(j*0.01)**4+120*ak1*(j*0.01)**3+60*ak2*(j*0.01)**2+24*ak3*(j*0.01)**1+6*a4
 
 	return p,v,ac,y,tl
 
@@ -388,18 +378,15 @@ class Opt_2_avalos():
 		bnds = ()
 		for i in range(self.l):
 			bnds+=((1,None),)
-			tmp=self.min_time[i+1]-self.min_time[i]
-			self.delta_t[i]=tmp
+			self.delta_t[i]=self.min_time[i+1]-self.min_time[i]
 		x0 = np.ones(self.l)
 		print "Working in solution alfa=",str(_alfa)
-
 		#print bnds
-		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds, tol=0.01,options={ 'disp': False})
+		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={ 'disp': False,'ftol':2e-03})
 	def costo(self,k):
 		t=k*self.delta_t
 		for i in range(self.l):
-			tmp=self.v_time[i]+t[i]
-			self.v_time[i+1]=tmp
+			self.v_time[i+1]=self.v_time[i]+t[i]
 		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
 		# Funcion Costo
 		self.value_t=round(6*(ext/float(self.f)),2)
@@ -427,7 +414,7 @@ class Opt_2_avalos():
 	def full_time(self):
 		return self.v_time
 	def result(self):
-		return self.res
+		return self.res.x
 	def value_time(self):
 		return self.value_t
 	def value_jerk(self):
