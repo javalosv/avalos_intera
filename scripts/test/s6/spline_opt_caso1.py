@@ -12,7 +12,7 @@ from intera_avalos import *
 import intera_interface
 import intera_external_devices
 
-# Python 3.5
+# Python 2.9
 def main():
 
     try:

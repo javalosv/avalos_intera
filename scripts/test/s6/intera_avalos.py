@@ -82,11 +82,9 @@ def ik_service_client_full(_p):
 		return False, q
 
 def get_area(_vector,_f):
-	h=1.0/float(_f)
 	_v=np.power(_vector,2)
-	k=np.sum(_v)
-	k=k-0.5*(_v[0]+_v[-1])
-	area=k*h
+	k=np.sum(_v)-0.5*(_v[0]+_v[-1])
+	area=k/float(_f)
 	return area
 
 def save_matrix(_j,_name,_f):
@@ -311,7 +309,7 @@ def path_simple_cub_v0(_point,_time,_f):
 def min_time(_q):
 	vel_lim=[1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]
 	# Es un concepto de seguridad para las pruebas.
-	v_factor=1
+	v_factor=0.9
 	N=len(vel_lim)
 	k=len(_q[0])
 	t_min=np.zeros(k, dtype=np.float_)
@@ -328,69 +326,30 @@ class Opt_1_avalos():
 		self.q=_q
 		self.f=_f
 		self.alfa=_alfa
-		[self.t_v,self.t_rec]=min_time(self.q)
-		g=np.array([0.0])
-		x0 = np.array([1.0])
-		self.res = minimize(self.costo, x0, method='nelder-mead',options={'xtol': 1e-1, 'disp': False})
-	def costo(self,k):
-		self.t=k*self.t_v
-		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.t,self.f)
-		self.value_t=round(6*(ext/float(self.f)),2)
-		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
-		return ecu
-	def value_sum_jerk(self,_points,_time,_f):
-		jk0=path_simple_cub_get_jerk(_points[0],_time,_f)
-		jk1=path_simple_cub_get_jerk(_points[1],_time,_f)
-		jk2=path_simple_cub_get_jerk(_points[2],_time,_f)
-		jk3=path_simple_cub_get_jerk(_points[3],_time,_f)
-		jk4=path_simple_cub_get_jerk(_points[4],_time,_f)
-		jk5=path_simple_cub_get_jerk(_points[5],_time,_f)
-		jk6=path_simple_cub_get_jerk(_points[6],_time,_f)
-		ext= len(jk0)
-		a_jk0=get_area(jk0,_f)
-		a_jk1=get_area(jk1,_f)
-		a_jk2=get_area(jk2,_f)
-		a_jk3=get_area(jk3,_f)
-		a_jk4=get_area(jk4,_f)
-		a_jk5=get_area(jk5,_f)
-		a_jk6=get_area(jk6,_f)
-		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
-		ind=sqrt(value_jk)
-		return ind,ext
-	def value(self):
-		return self.t
-	def result(self):
-		return self.res
-	def value_time(self):
-		return self.value_t
-	def value_jerk(self):
-		return self.value_jk
-
-class Opt_2_avalos():
-	def __init__(self,_q,_f,_alfa):
-		self.q=_q
-		self.f=_f
-		self.alfa=_alfa
 		[self.min_time,self.t_rec]=min_time(self.q)
 		self.l=len(self.min_time)-1
 		self.delta_t=np.ones(self.l)
 		self.v_time=self.min_time
-		bnds = ()
-		for i in range(self.l):
-			bnds+=((1,None),)
-			self.delta_t[i]=self.min_time[i+1]-self.min_time[i]
-		x0 = np.ones(self.l)
+		print "Min_time:",self.min_time
+		x0 = np.ones(1)
+		bnds=[(1,None)]
+		print "x0:",len(x0)
+		print "b:",len(bnds)
 		print "Working in solution alfa=",str(_alfa)
-		#print bnds
-		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={ 'disp': False,'ftol':2e-03})
+		#self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol': 2e-3, 'disp': False})
+		myfactr = 1e18* np.finfo(float).eps
+		print "myfactr:",myfactr
+		self.res = minimize(self.costo, x0, method='nelder-mead',options={'ftol' : myfactr ,'disp': False})
+
 	def costo(self,k):
-		t=k*self.delta_t
-		for i in range(self.l):
-			self.v_time[i+1]=self.v_time[i]+t[i]
-		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
+		#print "k_value:",k
+		self.t=k*self.v_time
+		#print "t", self.t 
+		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.t,self.f)
 		# Funcion Costo
 		self.value_t=round(6*(ext/float(self.f)),2)
 		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
+		print "ecu:", k, ecu
 		return ecu
 	def value_sum_jerk(self,_points,_time,_f):
 		jk0=path_simple_cub_get_jerk(_points[0],_time,_f)
@@ -412,11 +371,74 @@ class Opt_2_avalos():
 		ind=sqrt(value_jk)
 		return ind,ext
 	def full_time(self):
+		return self.t
+	def result(self):
+		return self.res.x
+	def value_time(self):
+		return self.value_t
+	def value_jerk(self):
+		return self.value_jk
+
+class Opt_2_avalos():
+	def __init__(self,_q,_f,_alfa):
+		self.q=_q
+		self.f=_f
+		self.alfa=_alfa
+		[self.min_time,self.t_rec]=min_time(self.q)
+		self.l=len(self.min_time)-1
+		self.delta_t=np.ones(self.l)
+		self.tmp=np.zeros(self.l)
+		bnds = ()
+		for i in range(self.l):
+			bnds+=((1,None),)
+			self.delta_t[i]=self.min_time[i+1]-self.min_time[i]
+		x0 = np.ones(self.l)
+		print "Working in solution alfa=",str(_alfa)
+		#print bnds
+		myfactr = 5e-3
+		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol' : myfactr ,'disp': False, 'eps': 0.0002})
+		self.tmp=self.res.x*self.delta_t
+		self.v_time=np.append([0],self.tmp.cumsum())
+		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
+		# Funcion Costo
+		self.value_t=round(6*(ext/float(self.f)),2)
+
+	def costo(self,k):
+		k=k*self.delta_t
+		# Funcion Costo
+		[value_jk,ext]=self.value_sum_jerk(self.q,np.append([0],k.cumsum()),self.f)
+		value_t=round(6*(ext/float(self.f)),2)
+		ecu=self.alfa*value_t+(1-self.alfa)*value_jk
+		print "ecu:", k, ecu
+		return ecu
+	def value_sum_jerk(self,_points,_time,_f):
+		jk0=path_simple_cub_get_jerk(_points[0],_time,_f)
+		jk1=path_simple_cub_get_jerk(_points[1],_time,_f)
+		jk2=path_simple_cub_get_jerk(_points[2],_time,_f)
+		jk3=path_simple_cub_get_jerk(_points[3],_time,_f)
+		jk4=path_simple_cub_get_jerk(_points[4],_time,_f)
+		jk5=path_simple_cub_get_jerk(_points[5],_time,_f)
+		jk6=path_simple_cub_get_jerk(_points[6],_time,_f)
+		ext= len(jk0)
+		a_jk0=get_area(jk0,_f)
+		a_jk1=get_area(jk1,_f)
+		a_jk2=get_area(jk2,_f)
+		a_jk3=get_area(jk3,_f)
+		a_jk4=get_area(jk4,_f)
+		a_jk5=get_area(jk5,_f)
+		a_jk6=get_area(jk6,_f)
+		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
+		ind=sqrt(value_jk)
+		return ind,ext
+
+	def full_time(self):
 		return self.v_time
 	def result(self):
 		return self.res.x
 	def value_time(self):
 		return self.value_t
+	def minimal_time(self):
+		return self.min_time
 	def value_jerk(self):
 		return self.value_jk
 

@@ -8,8 +8,10 @@ from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
 from trajectory_msgs.msg import JointTrajectoryPoint
+# rosrun intera_interface enable_robot.py -e
+# roslaunch sawyer_moveit_config sawyer_moveit.launch electric_gripper:=true
 # roslaunch sawyer_moveit_config sawyer_moveit.launch
-# python moveit.py joint_states:=/robot/joint_states
+# python final_moveit.py joint_states:=/robot/joint_states
 moveit_commander.roscpp_initialize(sys.argv)
 rospy.init_node('move_group_python_interface_tutorial',anonymous=True)
 robot = moveit_commander.RobotCommander()
@@ -38,23 +40,25 @@ print "============ Robot Groups:", robot.get_group_names()
 print "============ Printing robot state"
 #print robot.get_current_state()
 group.clear_pose_targets()
+group.set_start_state_to_current_state()
 # We can get the joint values from the group and adjust some of the values:
 pose_goal = geometry_msgs.msg.Pose()
 # Orientation
-pose_goal.orientation.x = 0.99
-pose_goal.orientation.y = 0.00
+pose_goal.orientation.x = 0.00
+pose_goal.orientation.y = 0.99
 pose_goal.orientation.z = 0.00
 pose_goal.orientation.w = 0.00
 # Cartesian position
-pose_goal.position.x = 0.6
+pose_goal.position.x = 0.7
 pose_goal.position.y = -0.20
-pose_goal.position.z = 0.2
-q=[1,0,0,0]
-p=[0.6,-0.2,0.2]
+pose_goal.position.z = 0.5
+
 group.set_pose_target(pose_goal)
 a=group.plan()
 print "Values:"
-print a.joint_trajectory.points
+points=a.joint_trajectory.points
+print len(points)
+print points[0].positions[0]
 #plan = group.go(wait=True)
 # Calling `stop()` ensures that there is no residual movement
 #group.stop()

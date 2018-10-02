@@ -47,7 +47,7 @@ joint_goal[3] = 0
 joint_goal[4] = 0
 joint_goal[5] = 0
 joint_goal[6] = 0
-
+group.set_start_state_to_current_state()
 a= group.plan(joint_goal)
 position=a.joint_trajectory.points
 print len(position) 
