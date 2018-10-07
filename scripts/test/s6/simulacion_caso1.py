@@ -16,9 +16,6 @@ import pandas as pd
 
 # Python 3.5
 def main():
-
-
-
     #frecuency for Sawyer robot
     f=100
     #Initial position
@@ -44,7 +41,7 @@ def main():
 
     t_min, t_min_tiempo=min_time(q)
     print t_min_tiempo
-    tasa=1/0.2
+    tasa=1/0.3
     knots_sec=np.round(t_min*tasa,0)
     t_k2=np.arange(knots_sec[-1])
     k_j0 = sp.interpolate.interp1d(knots_sec, [ik1[0],ik2[0],ik3[0],ik4[0],ik5[0]], kind='linear')(t_k2)
@@ -56,11 +53,16 @@ def main():
     k_j6 = sp.interpolate.interp1d(knots_sec, [ik1[6],ik2[6],ik3[6],ik4[6],ik5[6]], kind='linear')(t_k2)
     q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
 
-    alfa=[0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95]
+    alfa=[0.10,0.5,0.90]
+    #alfa=[0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95]
+    
     l_alfa=len(alfa)
-    v_t=np.ones(l_alfa)
-    v_jk=np.ones(l_alfa)
-    t_p=np.ones(l_alfa)
+    v_t=np.zeros(l_alfa)
+    v_jk=np.zeros(l_alfa)
+    t_p=np.zeros(l_alfa)
+    max_v=np.zeros(l_alfa)
+    max_ac=np.zeros(l_alfa)
+    max_jk=np.zeros(l_alfa)
     for i in xrange(l_alfa):
         print "------------------------------------------------"
         start = time.time()
@@ -75,18 +77,27 @@ def main():
         print 'Costo Tiempo:',v_t[i]
         print 'Costo Jerk:',v_jk[i]
         j,v,a,jk=generate_path_cub(q,v_time,f)
-        save_matrix(j,str(alfa[i])+"_data_p.txt",f)
-        save_matrix(v,str(alfa[i])+"_data_v.txt",f)
-        save_matrix(a,str(alfa[i])+"_data_a.txt",f)
-        save_matrix(jk,str(alfa[i])+"_data_y.txt",f)
+        max_v[i]=np.amax(np.absolute(v))
+        max_ac[i]=np.amax(np.absolute(a))
+        max_jk[i]=np.amax(np.absolute(jk))
+        print "Max Velo:",max_v[i]
+        print "Max Acel:",max_ac[i]
+        print "Max Jerk:",max_jk[i]
+        #save_matrix(j,str(alfa[i])+"_data_p.txt",f)
+        #save_matrix(v,str(alfa[i])+"_data_v.txt",f)
+        #save_matrix(a,str(alfa[i])+"_data_a.txt",f)
+        #save_matrix(jk,str(alfa[i])+"_data_y.txt",f)
         print v_time
     raw_data = {'alfa':alfa,
-    'time':t_p,
-    'v_t':v_t,
-    'v_jk':v_jk
+    'time_process':t_p,
+    'time_value':v_t,
+    'jk_value':v_jk,
+    'max_v':max_v,
+    'max_ac':max_ac,
+    'max_jk': max_jk
     }
     df = pd.DataFrame(raw_data)
-    df.to_csv('example.csv')
+    df.to_csv('.csv')
     #plt.plot(v_t,v_jk,'r*',v_t,v_jk,)
     #plt.xlabel("Variable_tiempo")
     #plt.ylabel("Variable_jerk")

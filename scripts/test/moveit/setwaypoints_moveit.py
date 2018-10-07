@@ -58,6 +58,7 @@ waypoints.append(copy.deepcopy(wpose))
                                    waypoints,   # waypoints to follow
                                    0.001,        # eef_step
                                    0.0)         # jump_threshold
-group.execute(plan)
+print plan 
+#group.execute(plan)
 # Note: We are just planning, not asking move_group to actually move the robot yet:
 # return plan, fraction

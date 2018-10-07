@@ -22,9 +22,11 @@ from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
 from trajectory_msgs.msg import JointTrajectoryPoint
+from moveit_msgs.msg import RobotState
 # rosrun intera_interface enable_robot.py -e
 # roslaunch sawyer_moveit_config sawyer_moveit.launch electric_gripper:=true
 # python opt_caso1.py joint_states:=/robot/joint_states
+# rostopic echo /robot/limb/right/endpoint_state/pose
 # Python 2.9
 def main():
 
@@ -51,6 +53,11 @@ def main():
         gripper.calibrate()
         gripper.open()
 
+        moveit_robot_state = RobotState()
+        joint_state = JointState()
+        joint_state.header = Header()
+        joint_state.header.stamp = rospy.Time.now()
+        joint_state.name = ['right_j0', 'right_j1', 'right_j2', 'right_j3', 'right_j4', 'right_j5', 'right_j6']
 
         #Define topic
         pub = rospy.Publisher('/robot/limb/right/joint_command', JointCommand, queue_size=10)
@@ -68,39 +75,65 @@ def main():
         pose_goal.orientation.y = 0.0
         pose_goal.orientation.z = 0.0
         pose_goal.orientation.w = 0.0   
-        # Cartesian position
-        pose_goal.position.x = 0.7
-        pose_goal.position.y = -0.1
-        pose_goal.position.z = -0.05
+        
+        q0=np.array([])
+        q1=np.array([])
+        q2=np.array([])
+        q3=np.array([])
+        q4=np.array([])
+        q5=np.array([])
+        q6=np.array([])
 
+        # Cartesian position
+        pose_goal.position.x = -0.1
+        pose_goal.position.y = 0.6
+        pose_goal.position.z = 0.05
         group.set_pose_target(pose_goal)
         a=group.plan()
-        print "Values:"
         points=a.joint_trajectory.points
-        n_points = len(points)
-        print n_points
+        n=len(points)
+        joint_state.position = [points[n-1].positions[0], points[n-1].positions[1], points[n-1].positions[2], points[n-1].positions[3],points[n-1].positions[4], points[n-1].positions[5], points[n-1].positions[6]]
+        moveit_robot_state.joint_state = joint_state
+        group.set_start_state(moveit_robot_state)
+        
+        for i in range(n):
+            q0=np.append(q0, points[i].positions[0])
+            q1=np.append(q1, points[i].positions[1])
+            q2=np.append(q2, points[i].positions[2])
+            q3=np.append(q3, points[i].positions[3])
+            q4=np.append(q4, points[i].positions[4])
+            q5=np.append(q5, points[i].positions[5])
+            q6=np.append(q6, points[i].positions[6])
 
-        #Initial position
-        k_j0 = np.zeros(n_points)
-        k_j1 = np.zeros(n_points)
-        k_j2 = np.zeros(n_points)
-        k_j3 = np.zeros(n_points)
-        k_j4 = np.zeros(n_points)
-        k_j5 = np.zeros(n_points)
-        k_j6 = np.zeros(n_points)
+        print "q000",q0
 
-        for i in range(n_points):
-            k_j0[i]=points[i].positions[0]
-            k_j1[i]=points[i].positions[1]
-            k_j2[i]=points[i].positions[2]
-            k_j3[i]=points[i].positions[3]
-            k_j4[i]=points[i].positions[4]
-            k_j5[i]=points[i].positions[5]
-            k_j6[i]=points[i].positions[6]
+        # Cartesian position
+        pose_goal.position.x = 0.43
+        pose_goal.position.y = -0.4
+        pose_goal.position.z = 0.2
+        group.set_pose_target(pose_goal)
+        a=group.plan()
+        points=a.joint_trajectory.points
+        n=len(points)
+        joint_state.position = [points[n-1].positions[0], points[n-1].positions[1], points[n-1].positions[2], points[n-1].positions[3],points[n-1].positions[4], points[n-1].positions[5], points[n-1].positions[6]]
+        moveit_robot_state.joint_state = joint_state
+        group.set_start_state(moveit_robot_state)
 
-        q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
-        print q
-        alfa=0.75  
+        for i in range(n-1): # Si se repite un numero en posicion entra en un bug
+            q0=np.append(q0, points[i+1].positions[0])
+            q1=np.append(q1, points[i+1].positions[1])
+            q2=np.append(q2, points[i+1].positions[2])
+            q3=np.append(q3, points[i+1].positions[3])
+            q4=np.append(q4, points[i+1].positions[4])
+            q5=np.append(q5, points[i+1].positions[5])
+            q6=np.append(q6, points[i+1].positions[6])
+        #'''
+        q=np.array([q0,q1,q2,q3,q4,q5,q6])
+        print "q001",q0
+        print q[0]
+        #return 0 
+        
+        alfa=0.5  
         start = time.time()
         opt=Opt_2_avalos(q,f,alfa)
         v_time=opt.full_time()

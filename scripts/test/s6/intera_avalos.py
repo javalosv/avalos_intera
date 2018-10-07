@@ -81,7 +81,7 @@ def ik_service_client_full(_p):
 		q=np.array([0,0,0,0,0,0,0])
 		return False, q
 
-def get_area(_vector,_f):
+def get_area_cuadrada(_vector,_f):
 	_v=np.power(_vector,2)
 	k=np.sum(_v)-0.5*(_v[0]+_v[-1])
 	area=k/float(_f)
@@ -349,7 +349,8 @@ class Opt_1_avalos():
 		# Funcion Costo
 		self.value_t=round(6*(ext/float(self.f)),2)
 		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
-		print "ecu:", k, ecu
+		print "ecu:", k
+		print "Tiempo",self.value_t
 		return ecu
 	def value_sum_jerk(self,_points,_time,_f):
 		jk0=path_simple_cub_get_jerk(_points[0],_time,_f)
@@ -360,13 +361,13 @@ class Opt_1_avalos():
 		jk5=path_simple_cub_get_jerk(_points[5],_time,_f)
 		jk6=path_simple_cub_get_jerk(_points[6],_time,_f)
 		ext= len(jk0)
-		a_jk0=get_area(jk0,_f)
-		a_jk1=get_area(jk1,_f)
-		a_jk2=get_area(jk2,_f)
-		a_jk3=get_area(jk3,_f)
-		a_jk4=get_area(jk4,_f)
-		a_jk5=get_area(jk5,_f)
-		a_jk6=get_area(jk6,_f)
+		a_jk0=get_area_cuadrada(jk0,_f)
+		a_jk1=get_area_cuadrada(jk1,_f)
+		a_jk2=get_area_cuadrada(jk2,_f)
+		a_jk3=get_area_cuadrada(jk3,_f)
+		a_jk4=get_area_cuadrada(jk4,_f)
+		a_jk5=get_area_cuadrada(jk5,_f)
+		a_jk6=get_area_cuadrada(jk6,_f)
 		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
 		ind=sqrt(value_jk)
 		return ind,ext
@@ -395,8 +396,8 @@ class Opt_2_avalos():
 		x0 = np.ones(self.l)
 		print "Working in solution alfa=",str(_alfa)
 		#print bnds
-		myfactr = 5e-3
-		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol' : myfactr ,'disp': False, 'eps': 0.0002})
+		myfactr = 6e-3
+		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol' : myfactr ,'disp': False, 'eps': 5e-5})
 		self.tmp=self.res.x*self.delta_t
 		self.v_time=np.append([0],self.tmp.cumsum())
 		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
@@ -409,8 +410,8 @@ class Opt_2_avalos():
 		[value_jk,ext]=self.value_sum_jerk(self.q,np.append([0],k.cumsum()),self.f)
 		value_t=round(6*(ext/float(self.f)),2)
 		ecu=self.alfa*value_t+(1-self.alfa)*value_jk
-		print "ecu:", k, ecu
 		return ecu
+
 	def value_sum_jerk(self,_points,_time,_f):
 		jk0=path_simple_cub_get_jerk(_points[0],_time,_f)
 		jk1=path_simple_cub_get_jerk(_points[1],_time,_f)
@@ -419,16 +420,17 @@ class Opt_2_avalos():
 		jk4=path_simple_cub_get_jerk(_points[4],_time,_f)
 		jk5=path_simple_cub_get_jerk(_points[5],_time,_f)
 		jk6=path_simple_cub_get_jerk(_points[6],_time,_f)
+		
 		ext= len(jk0)
-		a_jk0=get_area(jk0,_f)
-		a_jk1=get_area(jk1,_f)
-		a_jk2=get_area(jk2,_f)
-		a_jk3=get_area(jk3,_f)
-		a_jk4=get_area(jk4,_f)
-		a_jk5=get_area(jk5,_f)
-		a_jk6=get_area(jk6,_f)
+		a_jk0=get_area_cuadrada(jk0,_f)
+		a_jk1=get_area_cuadrada(jk1,_f)
+		a_jk2=get_area_cuadrada(jk2,_f)
+		a_jk3=get_area_cuadrada(jk3,_f)
+		a_jk4=get_area_cuadrada(jk4,_f)
+		a_jk5=get_area_cuadrada(jk5,_f)
+		a_jk6=get_area_cuadrada(jk6,_f)
 		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
-		ind=sqrt(value_jk)
+		ind=sqrt(value_jk/float(6.0))
 		return ind,ext
 
 	def full_time(self):
