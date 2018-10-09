@@ -111,6 +111,8 @@ def main():
         pose_goal.position.x = 0.43
         pose_goal.position.y = -0.4
         pose_goal.position.z = 0.2
+
+        
         group.set_pose_target(pose_goal)
         a=group.plan()
         points=a.joint_trajectory.points
@@ -135,23 +137,23 @@ def main():
         
         alfa=0.5  
         start = time.time()
-        opt=Opt_2_avalos(q,f,alfa)
+        opt=Opt_avalos(q,f,alfa)
         v_time=opt.full_time()
-        m_time=opt.minimal_time()
         j,v,a,jk=generate_path_cub(q,v_time,f)
         ext=len(j[0,:])
         end = time.time()
         print('Process Time:', end-start)
         print ext
-        save_matrix(j,"data_p.txt",f)
-        save_matrix(v,"data_v.txt",f)
-        save_matrix(a,"data_a.txt",f)
-        save_matrix(jk,"data_y.txt",f)
+        #save_matrix(j,"data_p.txt",f)
+        #save_matrix(v,"data_v.txt",f)
+        #save_matrix(a,"data_a.txt",f)
+        #save_matrix(jk,"data_y.txt",f)
+        v_jk=sqrt(np.mean(np.square(jk)))
         print("Opt Time:",v_time)
         print("Min Time:",m_time)
         #print('Optimizacion:',opt.result())
-        print('Costo Tiempo:',opt.value_time())
-        print('Costo Jerk:',opt.value_jerk())
+        print('Costo Tiempo:',len(j[0])/float(100.0))
+        print('Costo Jerk:', v_jk)
 
         # Position init
         #raw_input('Iniciar_CT_initial_position?')

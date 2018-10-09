@@ -40,8 +40,7 @@ def main():
             ])
 
     t_min, t_min_tiempo=min_time(q)
-    print t_min_tiempo
-    tasa=1/0.3
+    tasa=1/0.2
     knots_sec=np.round(t_min*tasa,0)
     t_k2=np.arange(knots_sec[-1])
     k_j0 = sp.interpolate.interp1d(knots_sec, [ik1[0],ik2[0],ik3[0],ik4[0],ik5[0]], kind='linear')(t_k2)
@@ -52,9 +51,12 @@ def main():
     k_j5 = sp.interpolate.interp1d(knots_sec, [ik1[5],ik2[5],ik3[5],ik4[5],ik5[5]], kind='linear')(t_k2)
     k_j6 = sp.interpolate.interp1d(knots_sec, [ik1[6],ik2[6],ik3[6],ik4[6],ik5[6]], kind='linear')(t_k2)
     q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
+    t_min, t_min_tiempo=min_time(q)
+    print "tiempo_min:",t_min
+    print "tiempo_min", t_min_tiempo
 
-    alfa=[0.10,0.5,0.90]
-    #alfa=[0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95]
+    #alfa=[0.05,0.5,0.95]
+    alfa=[0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90]
     
     l_alfa=len(alfa)
     v_t=np.zeros(l_alfa)
@@ -64,19 +66,16 @@ def main():
     max_ac=np.zeros(l_alfa)
     max_jk=np.zeros(l_alfa)
     for i in xrange(l_alfa):
-        print "------------------------------------------------"
+        print "----------------------------------------------------"
         start = time.time()
-        opt=Opt_2_avalos(q,f,alfa[i])
+        opt=Opt_avalos(q,f,alfa[i])
         v_time=opt.full_time()
         end = time.time()
         t_p[i]=end-start
-        print 'Process Time:', t_p[i]
-        v_t[i]=opt.value_time()
-        v_jk[i]=opt.value_jerk()
-        print 'k:',opt.result()
-        print 'Costo Tiempo:',v_t[i]
-        print 'Costo Jerk:',v_jk[i]
+        print 'Process Time:', t_p[i]        
         j,v,a,jk=generate_path_cub(q,v_time,f)
+        v_t[i]=len(j[0])/float(100.0)
+        v_jk[i]=sqrt(np.mean(np.square(jk)))
         max_v[i]=np.amax(np.absolute(v))
         max_ac[i]=np.amax(np.absolute(a))
         max_jk[i]=np.amax(np.absolute(jk))
@@ -88,16 +87,16 @@ def main():
         #save_matrix(a,str(alfa[i])+"_data_a.txt",f)
         #save_matrix(jk,str(alfa[i])+"_data_y.txt",f)
         print v_time
-    raw_data = {'alfa':alfa,
-    'time_process':t_p,
-    'time_value':v_t,
-    'jk_value':v_jk,
-    'max_v':max_v,
-    'max_ac':max_ac,
-    'max_jk': max_jk
+    raw_data = {'01alfa':alfa,
+    '02time_process':t_p,
+    '03time':v_t,
+    '04jk_rms':v_jk,
+    '05max_v':max_v,
+    '06max_ac':max_ac,
+    '07max_jk': max_jk
     }
     df = pd.DataFrame(raw_data)
-    df.to_csv('.csv')
+    df.to_csv('eq_me01.csv')
     #plt.plot(v_t,v_jk,'r*',v_t,v_jk,)
     #plt.xlabel("Variable_tiempo")
     #plt.ylabel("Variable_jerk")

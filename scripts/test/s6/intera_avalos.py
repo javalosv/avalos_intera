@@ -29,58 +29,6 @@ from intera_core_msgs.srv import (
 	SolvePositionIKRequest,
 )
 
-def ik_service_client_full(_p):
-	_limb = intera_interface.Limb('right')
-	ns = "ExternalTools/right/PositionKinematicsNode/IKService"
-	iksvc = rospy.ServiceProxy(ns, SolvePositionIK)
-	ikreq = SolvePositionIKRequest()
-	hdr = Header(stamp=rospy.Time.now(), frame_id='base')
-	poses = {
-		'right': PoseStamped(
-			header=hdr,
-			pose=Pose(
-				position=Point(
-					x=_p[0],
-					y=_p[1],
-					z=_p[2],
-				),
-				orientation=Quaternion(
-					x=_p[3],
-					y=_p[4],
-					z=_p[5],
-					w=_p[6],
-				),
-			),
-		),
-	}
-	# Add desired pose for inverse kinematics
-	ikreq.pose_stamp.append(poses["right"])
-	# Request inverse kinematics from base to "right_hand" link
-	ikreq.tip_names.append('right_hand')
-
-
-	try:
-		rospy.wait_for_service(ns, 5.0)
-		resp = iksvc(ikreq)
-	except (rospy.ServiceException, rospy.ROSException), e:
-		rospy.logerr("Service call failed: %s" % (e,))
-		return False
-
-	# Check if result valid, and type of seed ultimately used to get solution
-	if (resp.result_type[0] > 0):
-		# Format solution into Limb API-compatible dictionary
-		limb_joints = dict(zip(resp.joints[0].name, resp.joints[0].position))
-		rospy.loginfo("Solucion IK ok.")
-		_limb.move_to_joint_positions(limb_joints)
-		q=np.array([resp.joints[0].position[0],resp.joints[0].position[1],resp.joints[0].position[2],resp.joints[0].position[3],resp.joints[0].position[4],resp.joints[0].position[5],resp.joints[0].position[6]])
-		print q
-		return True , q
-	else:
-		rospy.logerr("INVALID POSE - No Valid Joint Solution Found.")
-		rospy.logerr("Result Error %d", resp.result_type[0])
-		q=np.array([0,0,0,0,0,0,0])
-		return False, q
-
 def get_area_cuadrada(_vector,_f):
 	_v=np.power(_vector,2)
 	k=np.sum(_v)-0.5*(_v[0]+_v[-1])
@@ -98,13 +46,13 @@ def save_matrix(_j,_name,_f):
 	return True
 
 def generate_path_cub(_points,_time,_f,p=True):
-	[q0,v0,a0,y0,l]=path_simple_cub_v0(_points[0],_time,_f)
-	[q1,v1,a1,y1,l]=path_simple_cub_v0(_points[1],_time,_f)
-	[q2,v2,a2,y2,l]=path_simple_cub_v0(_points[2],_time,_f)
-	[q3,v3,a3,y3,l]=path_simple_cub_v0(_points[3],_time,_f)
-	[q4,v4,a4,y4,l]=path_simple_cub_v0(_points[4],_time,_f)
-	[q5,v5,a5,y5,l]=path_simple_cub_v0(_points[5],_time,_f)
-	[q6,v6,a6,y6,l]=path_simple_cub_v0(_points[6],_time,_f)
+	[q0,v0,a0,y0,l]=path_simple_cub(_points[0],_time,_f)
+	[q1,v1,a1,y1,l]=path_simple_cub(_points[1],_time,_f)
+	[q2,v2,a2,y2,l]=path_simple_cub(_points[2],_time,_f)
+	[q3,v3,a3,y3,l]=path_simple_cub(_points[3],_time,_f)
+	[q4,v4,a4,y4,l]=path_simple_cub(_points[4],_time,_f)
+	[q5,v5,a5,y5,l]=path_simple_cub(_points[5],_time,_f)
+	[q6,v6,a6,y6,l]=path_simple_cub(_points[6],_time,_f)
 	q= np.array([q0,q1,q2,q3,q4,q5,q6])
 	v= np.array([v0,v1,v2,v3,v4,v5,v6])
 	a= np.array([a0,a1,a2,a3,a4,a5,a6])
@@ -201,7 +149,7 @@ def path_simple_cub_get_jerk(_point,_time,_f):
 
 	return y
 
-def path_simple_cub_v0(_point,_time,_f):
+def path_simple_cub(_point,_time,_f):
 	x=_time
 	a=_point
 	f=_f
@@ -308,8 +256,7 @@ def path_simple_cub_v0(_point,_time,_f):
 
 def min_time(_q):
 	vel_lim=[1.74, 1.328, 1.957, 1.957, 3.485, 3.485, 4.545]
-	# Es un concepto de seguridad para las pruebas.
-	v_factor=0.9
+	v_factor=0.9 # Es un concepto de seguridad para las pruebas.
 	N=len(vel_lim)
 	k=len(_q[0])
 	t_min=np.zeros(k, dtype=np.float_)
@@ -319,71 +266,12 @@ def min_time(_q):
 			t_tmp[j]= abs((_q[j,i+1]-_q[j,i])/((v_factor)*vel_lim[j]))
 		w=np.amax(t_tmp)# Se asume t[0]=0
 		t_min[i+1]=w+t_min[i]
-	return t_min, sum(t_min)
+	return t_min, t_min[-1]
 
-class Opt_1_avalos():
+class Opt_avalos():
 	def __init__(self,_q,_f,_alfa):
 		self.q=_q
-		self.f=_f
-		self.alfa=_alfa
-		[self.min_time,self.t_rec]=min_time(self.q)
-		self.l=len(self.min_time)-1
-		self.delta_t=np.ones(self.l)
-		self.v_time=self.min_time
-		print "Min_time:",self.min_time
-		x0 = np.ones(1)
-		bnds=[(1,None)]
-		print "x0:",len(x0)
-		print "b:",len(bnds)
-		print "Working in solution alfa=",str(_alfa)
-		#self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol': 2e-3, 'disp': False})
-		myfactr = 1e18* np.finfo(float).eps
-		print "myfactr:",myfactr
-		self.res = minimize(self.costo, x0, method='nelder-mead',options={'ftol' : myfactr ,'disp': False})
-
-	def costo(self,k):
-		#print "k_value:",k
-		self.t=k*self.v_time
-		#print "t", self.t 
-		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.t,self.f)
-		# Funcion Costo
-		self.value_t=round(6*(ext/float(self.f)),2)
-		ecu=self.alfa*self.value_t+(1-self.alfa)*self.value_jk
-		print "ecu:", k
-		print "Tiempo",self.value_t
-		return ecu
-	def value_sum_jerk(self,_points,_time,_f):
-		jk0=path_simple_cub_get_jerk(_points[0],_time,_f)
-		jk1=path_simple_cub_get_jerk(_points[1],_time,_f)
-		jk2=path_simple_cub_get_jerk(_points[2],_time,_f)
-		jk3=path_simple_cub_get_jerk(_points[3],_time,_f)
-		jk4=path_simple_cub_get_jerk(_points[4],_time,_f)
-		jk5=path_simple_cub_get_jerk(_points[5],_time,_f)
-		jk6=path_simple_cub_get_jerk(_points[6],_time,_f)
-		ext= len(jk0)
-		a_jk0=get_area_cuadrada(jk0,_f)
-		a_jk1=get_area_cuadrada(jk1,_f)
-		a_jk2=get_area_cuadrada(jk2,_f)
-		a_jk3=get_area_cuadrada(jk3,_f)
-		a_jk4=get_area_cuadrada(jk4,_f)
-		a_jk5=get_area_cuadrada(jk5,_f)
-		a_jk6=get_area_cuadrada(jk6,_f)
-		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
-		ind=sqrt(value_jk)
-		return ind,ext
-	def full_time(self):
-		return self.t
-	def result(self):
-		return self.res.x
-	def value_time(self):
-		return self.value_t
-	def value_jerk(self):
-		return self.value_jk
-
-class Opt_2_avalos():
-	def __init__(self,_q,_f,_alfa):
-		self.q=_q
-		self.f=_f
+		self.f=_f/5 # For optimization we reduce the time with less frecuency
 		self.alfa=_alfa
 		[self.min_time,self.t_rec]=min_time(self.q)
 		self.l=len(self.min_time)-1
@@ -396,19 +284,19 @@ class Opt_2_avalos():
 		x0 = np.ones(self.l)
 		print "Working in solution alfa=",str(_alfa)
 		#print bnds
-		myfactr = 6e-3
-		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol' : myfactr ,'disp': False, 'eps': 5e-5})
+		myfactr = 5e-4
+		self.res = minimize(self.costo, x0,method='L-BFGS-B', bounds=bnds ,options={'ftol' : myfactr ,'disp': False, 'eps': 1e-8})
 		self.tmp=self.res.x*self.delta_t
 		self.v_time=np.append([0],self.tmp.cumsum())
-		[self.value_jk,ext]=self.value_sum_jerk(self.q,self.v_time,self.f)
-		# Funcion Costo
-		self.value_t=round(6*(ext/float(self.f)),2)
 
 	def costo(self,k):
 		k=k*self.delta_t
 		# Funcion Costo
-		[value_jk,ext]=self.value_sum_jerk(self.q,np.append([0],k.cumsum()),self.f)
-		value_t=round(6*(ext/float(self.f)),2)
+		[jk,ext]=self.value_sum_jerk(self.q,np.append([0],k.cumsum()),self.f)
+		value_jk=sqrt(jk) # Me
+		#value_jk=jk #Pareto
+		#value_jk=sqrt(jk) #Me-2
+		value_t=round(7*(ext/float(self.f)),2)
 		ecu=self.alfa*value_t+(1-self.alfa)*value_jk
 		return ecu
 
@@ -430,20 +318,14 @@ class Opt_2_avalos():
 		a_jk5=get_area_cuadrada(jk5,_f)
 		a_jk6=get_area_cuadrada(jk6,_f)
 		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
-		ind=sqrt(value_jk/float(6.0))
-		return ind,ext
+		#value_jk=sqrt(a_jk0)+sqrt(a_jk1)+sqrt(a_jk2)+sqrt(a_jk3)+sqrt(a_jk4)+sqrt(a_jk5)+sqrt(a_jk6)
+		# SQRT
+		# ind=sqrt(value_jk/float(6.0))
+		return value_jk,ext
 
 	def full_time(self):
 		return self.v_time
-	def result(self):
-		return self.res.x
-	def value_time(self):
-		return self.value_t
-	def minimal_time(self):
-		return self.min_time
-	def value_jerk(self):
-		return self.value_jk
-
+	
 class Data():
 	def __init__(self):
 		self.write=False
