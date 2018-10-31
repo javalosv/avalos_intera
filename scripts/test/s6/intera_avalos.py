@@ -193,7 +193,7 @@ def path_simple_cub(_point,_time,_f):
 	_d=np.arange(n, dtype=np.float_)
 
 	for j in reversed(range(n)):
-		_b[j]=((a[j+1]-a[j])/h[j] )-(h[j]*(_c[j+1]+2*_c[j])/3.0)
+		_b[j]=((x|[j+1]-a[j])/h[j] )-(h[j]*(_c[j+1]+2*_c[j])/3.0)
 		_d[j]=(_c[j+1]-_c[j])/(3.0*h[j])
 
 	# Graphic
