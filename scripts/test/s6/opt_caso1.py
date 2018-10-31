@@ -23,7 +23,6 @@ from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
 from trajectory_msgs.msg import JointTrajectoryPoint
 from moveit_msgs.msg import RobotState
-import math
 # rosrun intera_interface enable_robot.py -e
 # roslaunch sawyer_moveit_config sawyer_moveit.launch electric_gripper:=true
 # python opt_caso1.py joint_states:=/robot/joint_states
@@ -85,192 +84,58 @@ def main():
         q5=np.array([])
         q6=np.array([])
 
-        # Cartesian position - Carga '01'
-        pose_goal.position.x = 0.85
-        pose_goal.position.y = -0.4
-        pose_goal.position.z = 0.25
+        # Cartesian position
+        pose_goal.position.x = -0.1
+        pose_goal.position.y = 0.6
+        pose_goal.position.z = 0.05
         group.set_pose_target(pose_goal)
-        carga1=group.plan().joint_trajectory.points
-        n=len(carga1)
-        joint_state.position = [carga1[-1].positions[0], carga1[-1].positions[1], carga1[-1].positions[2], carga1[-1].positions[3],carga1[-1].positions[4], carga1[-1].positions[5], carga1[-1].positions[6]]
+        a=group.plan()
+        points=a.joint_trajectory.points
+        n=len(points)
+        joint_state.position = [points[n-1].positions[0], points[n-1].positions[1], points[n-1].positions[2], points[n-1].positions[3],points[n-1].positions[4], points[n-1].positions[5], points[n-1].positions[6]]
         moveit_robot_state.joint_state = joint_state
         group.set_start_state(moveit_robot_state)
         
-
-        tmp=np.array([])
-        tmp=np.append(tmp,0)
-        if(n>10):
-            k=int(math.sqrt(n)+2)
-            r=int((n-1)/float(k))
-            for i in range(k):
-                print i
-                tmp=np.append(tmp,int(r*(i+1)-1))
-            tmp=np.append(tmp,n-1)
-
-        print "tmp:", tmp
-        for i in range(len(tmp)):
-            q0=np.append(q0, carga1[int(tmp[i])].positions[0])
-            q1=np.append(q1, carga1[int(tmp[i])].positions[1])
-            q2=np.append(q2, carga1[int(tmp[i])].positions[2])
-            q3=np.append(q3, carga1[int(tmp[i])].positions[3])
-            q4=np.append(q4, carga1[int(tmp[i])].positions[4])
-            q5=np.append(q5, carga1[int(tmp[i])].positions[5])
-            q6=np.append(q6, carga1[int(tmp[i])].positions[6])
+        for i in range(n):
+            q0=np.append(q0, points[i].positions[0])
+            q1=np.append(q1, points[i].positions[1])
+            q2=np.append(q2, points[i].positions[2])
+            q3=np.append(q3, points[i].positions[3])
+            q4=np.append(q4, points[i].positions[4])
+            q5=np.append(q5, points[i].positions[5])
+            q6=np.append(q6, points[i].positions[6])
 
         print "q000",q0
 
-        # Cartesian position - Carga '00'
-        pose_goal.position.x = 0.85
+        # Cartesian position
+        pose_goal.position.x = 0.43
         pose_goal.position.y = -0.4
-        pose_goal.position.z = 0.03
+        pose_goal.position.z = 0.2
 
         
         group.set_pose_target(pose_goal)
-        carga0=group.plan().joint_trajectory.points
-     
-        q0=np.append(q0, carga0[-1].positions[0])
-        q1=np.append(q1, carga0[-1].positions[1])
-        q2=np.append(q2, carga0[-1].positions[2])
-        q3=np.append(q3, carga0[-1].positions[3])
-        q4=np.append(q4, carga0[-1].positions[4])
-        q5=np.append(q5, carga0[-1].positions[5])
-        q6=np.append(q6, carga0[-1].positions[6])
+        a=group.plan()
+        points=a.joint_trajectory.points
+        n=len(points)
+        joint_state.position = [points[n-1].positions[0], points[n-1].positions[1], points[n-1].positions[2], points[n-1].positions[3],points[n-1].positions[4], points[n-1].positions[5], points[n-1].positions[6]]
+        moveit_robot_state.joint_state = joint_state
+        group.set_start_state(moveit_robot_state)
+
+        for i in range(n-1): # Si se repite un numero en posicion entra en un bug
+            q0=np.append(q0, points[i+1].positions[0])
+            q1=np.append(q1, points[i+1].positions[1])
+            q2=np.append(q2, points[i+1].positions[2])
+            q3=np.append(q3, points[i+1].positions[3])
+            q4=np.append(q4, points[i+1].positions[4])
+            q5=np.append(q5, points[i+1].positions[5])
+            q6=np.append(q6, points[i+1].positions[6])
         #'''
         q=np.array([q0,q1,q2,q3,q4,q5,q6])
         print "q001",q0
-        #print q[0]
+        print q[0]
         #return 0 
-        m_time, t_min_tiempo=min_time(q)
-        alfa=0.75
-        start = time.time()
-        opt=Opt_avalos(q,f,alfa)
-        v_time=opt.full_time()
-        j,v,a,jk=generate_path_cub(q,v_time,f)
-        ext=len(j[0,:])
-        end = time.time()
-        print('Process Time:', end-start)
-        print ext
-        #save_matrix(j,"data_p.txt",f)
-        #save_matrix(v,"data_v.txt",f)
-        #save_matrix(a,"data_a.txt",f)
-        #save_matrix(jk,"data_y.txt",f)
-        v_jk=sqrt(np.mean(np.square(jk)))
-        print("Opt Time:",v_time)
-        print("Min Time:",m_time)
-        #print('Optimizacion:',opt.result())
-        max_v=np.amax(np.absolute(v))
-        max_ac=np.amax(np.absolute(a))
-        max_jk=np.amax(np.absolute(jk))
-        print "Max Velo:",max_v
-        print "Max Acel:",max_ac
-        print "Max Jerk:",max_jk
-        # Position init
-        #raw_input('Iniciar_CT_initial_position?')
-        #limb.move_to_joint_positions({"right_j6": ik1[6],"right_j5": ik1[5], "right_j4": ik1[4], "right_j3": ik1[3], "right_j2":
-        #ik1[2],"right_j1": ik1[1],"right_j0": ik1[0]})
-        raw_input('Iniciar_CT_execute?')
-        #Build message
-        my_msg=JointCommand()
-        # POSITION_MODE
-        my_msg.mode=4
-        my_msg.names=["right_j0","right_j1","right_j2","right_j3","right_j4","right_j5","right_j6"]
-        #data.writeon(str(alfa)+"trayectoria.txt")
-        print("Control por trayectoria iniciado.")
-        #time.sleep(0.25)
-        for n in xrange(ext):
-            my_msg.position=[j[0][n],j[1][n],j[2][n],j[3][n],j[4][n],j[5][n],j[6][n]]
-            my_msg.velocity=[v[0][n],v[1][n],v[2][n],v[3][n],v[4][n],v[5][n],v[6][n]]
-            my_msg.acceleration=[a[0][n],a[1][n],a[2][n],a[3][n],a[4][n],a[5][n],a[6][n]]
-            pub.publish(my_msg)
-            rate.sleep()
-        print("Control por trayectoria terminado.")
-
-        time.sleep(0.25)
-        gripper.close()
-
-        q0=np.array([])
-        q1=np.array([])
-        q2=np.array([])
-        q3=np.array([])
-        q4=np.array([])
-        q5=np.array([])
-        q6=np.array([])
-
-        q0=np.append(q0, carga0[-1].positions[0])
-        q1=np.append(q1, carga0[-1].positions[1])
-        q2=np.append(q2, carga0[-1].positions[2])
-        q3=np.append(q3, carga0[-1].positions[3])
-        q4=np.append(q4, carga0[-1].positions[4])
-        q5=np.append(q5, carga0[-1].positions[5])
-        q6=np.append(q6, carga0[-1].positions[6])
-
-
-
-        joint_state.position = [carga1[-1].positions[0], carga1[-1].positions[1], carga1[-1].positions[2], carga1[-1].positions[3],carga1[-1].positions[4], carga1[-1].positions[5], carga1[-1].positions[6]]
-        moveit_robot_state.joint_state = joint_state
-        group.set_start_state(moveit_robot_state)
-
-        # Cartesian position - Base '01'
-        pose_goal.position.x = 0.85
-        pose_goal.position.y = 0.35
-        pose_goal.position.z = 0.27
-        group.set_pose_target(pose_goal)
-
-        base1=group.plan().joint_trajectory.points
-        n=len(base1)
-        joint_state.position = [base1[-1].positions[0], base1[-1].positions[1], base1[-1].positions[2], base1[-1].positions[3],base1[-1].positions[4], base1[-1].positions[5], base1[-1].positions[6]]
-        moveit_robot_state.joint_state = joint_state
-        group.set_start_state(moveit_robot_state)
-
-
-        tmp=np.array([])
-        tmp=np.append(tmp,0)
-        if(n>16):
-            k=int(math.sqrt(n)+2)
-            r=int((n-1)/float(k))
-            for i in range(k):
-                print i
-                tmp=np.append(tmp,int(r*(i+1)-1))
-            tmp=np.append(tmp,n-1)
-        else:
-            for i in range(n):
-                print i
-                tmp=np.append(tmp,i)
-
-        print "tmp:", tmp
-        for i in range(len(tmp)):
-            q0=np.append(q0, base1[int(tmp[i])].positions[0])
-            q1=np.append(q1, base1[int(tmp[i])].positions[1])
-            q2=np.append(q2, base1[int(tmp[i])].positions[2])
-            q3=np.append(q3, base1[int(tmp[i])].positions[3])
-            q4=np.append(q4, base1[int(tmp[i])].positions[4])
-            q5=np.append(q5, base1[int(tmp[i])].positions[5])
-            q6=np.append(q6, base1[int(tmp[i])].positions[6])
-
-        print "q000",q0
-
-        # Cartesian position - Base '00'
-        #pose_goal.position.x = 0.90
-        #pose_goal.position.y = 0.38
-        pose_goal.position.z = 0.05
-
         
-        group.set_pose_target(pose_goal)
-        base0=group.plan().joint_trajectory.points
-     
-        q0=np.append(q0, base0[-1].positions[0])
-        q1=np.append(q1, base0[-1].positions[1])
-        q2=np.append(q2, base0[-1].positions[2])
-        q3=np.append(q3, base0[-1].positions[3])
-        q4=np.append(q4, base0[-1].positions[4])
-        q5=np.append(q5, base0[-1].positions[5])
-        q6=np.append(q6, base0[-1].positions[6])
-
-        q=np.array([q0,q1,q2,q3,q4,q5,q6])
-        print "q001",q0
-        #print q[0]
-        #return 0 
-        m_time, t_min_tiempo=min_time(q) 
+        alfa=0.5  
         start = time.time()
         opt=Opt_avalos(q,f,alfa)
         v_time=opt.full_time()
@@ -287,12 +152,9 @@ def main():
         print("Opt Time:",v_time)
         print("Min Time:",m_time)
         #print('Optimizacion:',opt.result())
-        max_v=np.amax(np.absolute(v))
-        max_ac=np.amax(np.absolute(a))
-        max_jk=np.amax(np.absolute(jk))
-        print "Max Velo:",max_v
-        print "Max Acel:",max_ac
-        print "Max Jerk:",max_jk
+        print('Costo Tiempo:',len(j[0])/float(100.0))
+        print('Costo Jerk:', v_jk)
+
         # Position init
         #raw_input('Iniciar_CT_initial_position?')
         #limb.move_to_joint_positions({"right_j6": ik1[6],"right_j5": ik1[5], "right_j4": ik1[4], "right_j3": ik1[3], "right_j2":
@@ -313,8 +175,7 @@ def main():
             pub.publish(my_msg)
             rate.sleep()
         print("Control por trayectoria terminado.")
-
-        gripper.open()
+        time.sleep(0.25)
         #data.writeoff()
         print("Programa terminado.")
 

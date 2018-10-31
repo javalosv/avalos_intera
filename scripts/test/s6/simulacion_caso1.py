@@ -96,7 +96,7 @@ def main():
     '07max_jk': max_jk
     }
     df = pd.DataFrame(raw_data)
-    df.to_csv('eq_11_10_huang.csv')
+    df.to_csv('eq_me01.csv')
     #plt.plot(v_t,v_jk,'r*',v_t,v_jk,)
     #plt.xlabel("Variable_tiempo")
     #plt.ylabel("Variable_jerk")

@@ -83,9 +83,9 @@ def main():
         q=np.array([k_j0,k_j1,k_j2,k_j3,k_j4,k_j5,k_j6])
 
 
-        alfa=0.5    
+        alfa=0.15    
         start = time.time()
-        opt=Opt_avalos(q,f,alfa)
+        opt=Opt_2_avalos(q,f,alfa)
         v_time=opt.full_time()
         j,v,a,jk=generate_path_cub(q,v_time,f)
         ext=len(j[0,:])

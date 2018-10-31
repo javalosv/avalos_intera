@@ -193,7 +193,7 @@ def path_simple_cub(_point,_time,_f):
 	_d=np.arange(n, dtype=np.float_)
 
 	for j in reversed(range(n)):
-		_b[j]=((x|[j+1]-a[j])/h[j] )-(h[j]*(_c[j+1]+2*_c[j])/3.0)
+		_b[j]=((a[j+1]-a[j])/h[j] )-(h[j]*(_c[j+1]+2*_c[j])/3.0)
 		_d[j]=(_c[j+1]-_c[j])/(3.0*h[j])
 
 	# Graphic
@@ -295,9 +295,8 @@ class Opt_avalos():
 		[jk,ext]=self.value_sum_jerk(self.q,np.append([0],k.cumsum()),self.f)
 		value_jk=sqrt(jk) # Me
 		#value_jk=jk #Pareto
-		value_jk=jk #Huang
-		#value_t=round(7*(ext/float(self.f)),2)
-		value_t=round((ext/float(self.f)),2) #Huang
+		#value_jk=sqrt(jk) #Me-2
+		value_t=round(7*(ext/float(self.f)),2)
 		ecu=self.alfa*value_t+(1-self.alfa)*value_jk
 		return ecu
 
@@ -318,8 +317,8 @@ class Opt_avalos():
 		a_jk4=get_area_cuadrada(jk4,_f)
 		a_jk5=get_area_cuadrada(jk5,_f)
 		a_jk6=get_area_cuadrada(jk6,_f)
-		#value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
-		value_jk=sqrt(a_jk0)+sqrt(a_jk1)+sqrt(a_jk2)+sqrt(a_jk3)+sqrt(a_jk4)+sqrt(a_jk5)+sqrt(a_jk6)
+		value_jk=a_jk0+a_jk1+a_jk2+a_jk3+a_jk4+a_jk5+a_jk6
+		#value_jk=sqrt(a_jk0)+sqrt(a_jk1)+sqrt(a_jk2)+sqrt(a_jk3)+sqrt(a_jk4)+sqrt(a_jk5)+sqrt(a_jk6)
 		# SQRT
 		# ind=sqrt(value_jk/float(6.0))
 		return value_jk,ext
