@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import time as t
 
-cv_image = cv2.imread('/home/jose/Desktop/model.png',1)
+cv_image = cv2.imread('/home/jose/Desktop/model_final.jpg',1)
 cv_copy  = cv_image.copy()
 #cv2.imshow('image',cv_image)
 height, width , depth  = cv_image.shape
@@ -19,8 +19,8 @@ obj_color = 0
 if obj_color == 0: 
 
 	#hsv
-    low  = [1,0,0]
-    up = [255,255,255]
+    low  = [0,50,100]
+    up = [50,250,150]
 
     lower = np.array(low, np.uint8)
     upper = np.array(up, np.uint8)
@@ -51,7 +51,7 @@ if obj_color == 0:
     thresholded = cv2.erode(thresholded, np.ones((2,2), np.uint8), iterations=1)
 
     ret,thresh = cv2.threshold(thresholded,127,255,0)
-    _, contours, hierarchy = cv2.findContours(cv_image,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
+    _, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
     #contours= cv2.findContours(canny_output, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     #c = max(contours, key = cv2.contourArea)
     #cv2.drawContours(thresh,[c],0,(0, 255, 0),3)

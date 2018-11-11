@@ -1,0 +1,82 @@
+import numpy as np 
+import cv2
+from matplotlib import pyplot as plt
+cam = cv2.VideoCapture(1)
+
+
+while (cam.isOpened()):
+    # Leer los frames: retval=True si hay una imagen valida en la camara
+    retval, cv_image = cam.read()
+    cv_copy  = cv_image.copy()
+    # Si hay una imagen valida
+    if retval == True:
+        # Mostrar la imagen de la camara
+        
+        hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
+
+        thresholded = 0
+        obj_color = 0
+        if obj_color == 0: 
+
+            #hsv
+            low  = [0,40,30]
+            up = [100,150,150]
+
+            lower = np.array(low, np.uint8)
+            upper = np.array(up, np.uint8)
+
+            thresholded = cv2.inRange(hsv, lower, upper)
+            #Morphological opening (remove small objects from the foreground)
+            thresholded = cv2.erode(thresholded, np.ones((2,2), np.uint8), iterations=3)
+            thresholded = cv2.dilate(thresholded, np.ones((2,2), np.uint8), iterations=3)
+            #Morphological closing (fill small holes in the foreground)
+            thresholded = cv2.dilate(thresholded, np.ones((2,2), np.uint8), iterations=3)
+            thresholded = cv2.erode(thresholded, np.ones((2,2), np.uint8), iterations=3)
+
+            ret,thresh = cv2.threshold(thresholded,200,255,0)
+            
+            _, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+            cnt = contours[0]
+            (x,y),radius = cv2.minEnclosingCircle(cnt)
+            center = (int(x),int(y))
+            radius = int(radius)
+            cv2.circle(cv_copy,center,radius,(0,255,0),2)
+            
+
+
+            cv2.imshow('draw contours',cv_copy)
+
+        # Esperar 30 segundos. Finalizar si se presiona q
+        if cv2.waitKey(30) & 0xFF == ord('q'):
+            break
+    else:
+        break
+
+'''
+while (cam.isOpened()):
+    # Leer los frames: retval=True si hay una imagen valida en la camara
+    retval, cv_image = cam.read()
+
+    I = cv_image
+    Igray = cv2.cvtColor(I, cv2.COLOR_BGR2GRAY)
+    Igray = cv2.medianBlur(Igray, 5)
+
+    minDist = 30  # Distancia minima entre centro de circulos detectados
+    THCanny = 150 # Threshold max del detector de Canny
+    minVotes = 50
+    circles = cv2.HoughCircles(Igray, cv2.HOUGH_GRADIENT, 1, minDist, param1=THCanny,
+                               param2=minVotes, minRadius=10, maxRadius=200)
+
+    circles = np.uint16(np.around(circles))
+    for i in circles[0,:]:
+        # Dibujar el circulo externo
+        cv2.circle(I,(i[0],i[1]),i[2],(0,255,0),2)
+        # Dibujar el centro del circulo
+        cv2.circle(I,(i[0],i[1]),2,(0,0,255),3)
+
+    cv2.imshow('Circulos detectados', I)
+    cv2.waitKey(0)
+cv2.destroyAllWindows()
+'''
+
+
